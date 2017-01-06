@@ -58,4 +58,18 @@ const blogItemStyle = {
   }
 };
 
+const TitleBox  = ({ title }) => (
+  DOM.div(
+    { style: titleStyle },
+    DOM.h3(null, title)
+  )
+);
+
+const titleStyle = {
+  border: '2px solid red',
+  margin: '10px',
+  padding: '10px',
+  color: 'blue',
+};
+
 export default BlogItem;
