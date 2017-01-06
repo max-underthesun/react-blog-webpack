@@ -1,37 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import { AppContainer } from 'react-hot-loader';
-
+import { AppContainer } from 'react-hot-loader';
 import App from './App';
 
 // import '../semantic/dist/semantic.min.css';
 
 const rootEl = document.getElementById('app');
 
-ReactDOM.render(
-  // <App />,
-  React.createElement(App),
-  rootEl
-);
-
-
 // ReactDOM.render(
-//   <AppContainer>
-//     <App />
-//   </AppContainer>,
+//   // <App />,
+//   React.createElement(App),
 //   rootEl
 // );
 
-// if (module.hot) {
-//   module.hot.accept('./App', () => {
-//     const NextApp = require('./App').default;
-//
-//     ReactDOM.render(
-//       <AppContainer>
-//         <NextApp />
-//       </AppContainer>,
-//       rootEl
-//     );
-//   });
-// }
+ReactDOM.render(
+  <AppContainer>
+    <App />
+  </AppContainer>,
+  rootEl
+);
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
+
+    ReactDOM.render(
+      <AppContainer>
+        <NextApp />
+      </AppContainer>,
+      rootEl
+    );
+  });
+}

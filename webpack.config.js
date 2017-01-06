@@ -8,9 +8,9 @@ var root = path.join(process.cwd(), 'src');
 
 module.exports = {
   entry: [
-    // 'react-hot-loader/patch',
-    // 'webpack-dev-server/client?http://localhost:3000',
-    // 'webpack/hot/only-dev-server',
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
     './src/index.js'
   ],
 
@@ -39,12 +39,10 @@ module.exports = {
       // { test: /\.(eot|png|ttf|svg|woff|woff2)$/, loader: 'url-loader'}
     ]
   },
-
   resolve: {
     root: root
-  }
-  // ,
-  // plugins: [
-  //   new webpack.HotModuleReplacementPlugin()
-  // ]
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };

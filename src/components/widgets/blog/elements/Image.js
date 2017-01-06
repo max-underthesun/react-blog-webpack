@@ -21,7 +21,7 @@ Image.defaultProps = {
 };
 
 const imageStyle = {
-  border: '2px solid red',
+  border: '2px solid purple',
   margin: '10px',
   padding: '5px',
   maxWidth: '30%',
