@@ -1,5 +1,6 @@
 import React, { DOM } from 'react';
 import { bind } from 'lodash';
+import { Button } from 'semantic-ui-react';
 
 class Like extends React.Component {
   constructor(props) {
@@ -24,7 +25,8 @@ const LikeBox = (props) => (
     { style: likeBoxStyle.outerWrapper },
     DOM.span({ style: likeBoxStyle.title }, 'Like: '),
     DOM.span({ style: likeBoxStyle.count }, props.count),
-    DOM.button({ onClick: props.handleClick }, '+')
+    React.createElement(Button, { onClick: props.handleClick }, 'like')
+    // DOM.button({ onClick: props.handleClick }, '+')
   )
 );
 

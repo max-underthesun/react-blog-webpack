@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './App';
 
-// import '../semantic/dist/semantic.min.css';
+import '../semantic/dist/semantic.min.css';
 
 const rootEl = document.getElementById('app');
 
