@@ -1,5 +1,6 @@
 import React from 'react';
-import update from 'react-addons-update';
+// import update from 'react-addons-update';
+import update from 'immutability-helper';
 import { bind } from 'lodash/collection';
 
 import { items as staticItems } from 'constants/static/items';
