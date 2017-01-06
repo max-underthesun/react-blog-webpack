@@ -1,0 +1,28 @@
+{
+  "name": "react-blog-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-max_underthesun:max-underthesun/react-blog-webpack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-plugin-destructuring": "^2.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.8.0"
+  },
+  "dependencies": {
+    "immutability-helper": "^2.1.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  }
+}
