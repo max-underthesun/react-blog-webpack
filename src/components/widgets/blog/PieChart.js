@@ -1,7 +1,7 @@
-// import React from 'react';
-import { React, DOM, ReactDOM } from 'react';
-import c3 from 'c3';
+import React, { DOM } from 'react';
+import ReactDOM from 'react-dom';
 
+import c3 from 'c3';
 
 class PieChart extends React.Component {
   componentDidMount() {

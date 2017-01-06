@@ -1,28 +1,10 @@
-// import React from 'react';
-// import { React, DOM, PropTypes } from 'react';
-import { React, DOM } from 'react';
-// import update from 'react-addons-update';
+import React, { DOM } from 'react';
 import update from 'immutability-helper';
-import { bind, map } from 'lodash/collection';
+import { bind, map } from 'lodash';
 
 import { items as staticItems } from 'constants/static/items';
 import BlogList from 'components/widgets/blog/List';
 import PieChart from 'components/widgets/blog/PieChart';
-
-// class BlogPage extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { items: staticItems };
-//   }
-//
-//   render() {
-//     const { items } = this.state;
-//
-//     return (
-//       <BlogList items={items} />
-//     );
-//   }
-// }
 
 class BlogPage extends React.Component {
   constructor(props) {
@@ -43,7 +25,7 @@ class BlogPage extends React.Component {
       // )
       items: update(
         items,
-        {[index]: {meta: {count(x) {return x + 1;}}}}
+        {[index]: {meta: {count: {$apply(x) {return x + 1;}}}}}
       )
     });
   }

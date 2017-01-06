@@ -1,16 +1,5 @@
-import { React, DOM, PropTypes } from 'react';
+import React, { DOM, PropTypes } from 'react';
 import moment from 'moment';
-
-// import { formatDate } from 'helpers/date';
-
-// const Meta = ({ createdAt, updatedAt, author, likes }) => (
-//   <ul>
-//     <li>создано: { formatDate(createdAt) }</li>
-//     <li>обновлено: { formatDate(updatedAt) }</li>
-//     <li>автор: { author }</li>
-//     <li>понравилось: { likes }</li>
-//   </ul>
-// );
 
 class MetaData extends React.Component {
   constructor(props) {
@@ -89,5 +78,4 @@ const metaItemStyle = {
   title: { color: 'grey'}
 };
 
-// export default Meta;
 export default MetaData;

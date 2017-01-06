@@ -1,26 +1,10 @@
-import { React, DOM, PropTypes } from 'react';
+import React, { DOM, PropTypes } from 'react';
 // import { Button } from 'semantic-ui-react';
 
 import TextBox  from './elements/TextBox';
 import Like     from './elements/Like';
-// import Meta     from './elements/Meta';
 import MetaData     from './elements/Meta';
 import Image    from './elements/Image';
-
-// const BlogItem = ({item}) => (
-//   <div style={style}>
-//     <Button>Like</Button>
-//     <Image {...item.image} />
-//     <TextBox>{item.title}</TextBox>
-//     <Meta { ...item.meta } />
-//   </div>
-// );
-
-// const style = {
-//   padding: '20px 10px',
-//   marginBottom: '50px',
-//   border: '1px solid #666'
-// };
 
 const BlogItem = ({ id, title, image, text, meta, like }) => (
   DOM.div(

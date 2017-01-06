@@ -1,9 +1,5 @@
 import { DOM, PropTypes } from 'react';
 
-// const TextBox = ({children}) => (
-//   <p>{children}</p>
-// );
-
 const TextBox = ({ post }) => (
   DOM.div({ style: textBoxStyle }, post)
 );

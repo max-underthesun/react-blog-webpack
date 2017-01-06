@@ -1,14 +1,5 @@
 import { DOM, PropTypes } from 'react';
-import { assign } from 'lodash/collection';
-
-// const Image = ({ src, width, height, alt }) => (
-//   <img
-//     src={src}
-//     width={width}
-//     height={height}
-//     alt={alt}
-//   />
-// );
+import { assign } from 'lodash';
 
 const Image = ({ src, width, height }) => (
   DOM.div(
