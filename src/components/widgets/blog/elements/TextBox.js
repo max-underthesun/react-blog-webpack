@@ -1,4 +1,4 @@
-import React from 'react';
+import { DOM, PropTypes } from 'react';
 
 // const TextBox = ({children}) => (
 //   <p>{children}</p>
@@ -13,7 +13,7 @@ TextBox.propTypes = {
 };
 
 TextBox.defaultProps = {
-  post: "** empty entry **"
+  post: '** empty entry **'
 };
 
 const textBoxStyle = {

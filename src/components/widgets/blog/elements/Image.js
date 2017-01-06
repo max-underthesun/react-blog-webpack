@@ -1,4 +1,4 @@
-import React from 'react';
+import { DOM, PropTypes } from 'react';
 import { assign } from 'lodash/collection';
 
 // const Image = ({ src, width, height, alt }) => (
@@ -24,9 +24,9 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  src: "https://js.cx/gallery/img6-lg.jpg",
-  width: "250px",
-  height: "200px"
+  src: 'https://js.cx/gallery/img6-lg.jpg',
+  width: '250px',
+  height: '200px'
 };
 
 const imageStyle = {

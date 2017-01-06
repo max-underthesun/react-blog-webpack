@@ -1,8 +1,8 @@
 export const items = [
   {
     id: 1,
-    image: { src: "https://js.cx/gallery/img1-lg.jpg" },
-    title: "First title",
+    image: { src: 'https://js.cx/gallery/img1-lg.jpg' },
+    title: 'First title',
     text: {
       post:
       `Here is the post for a TextBox. Here is the post for a TextBox.
@@ -11,7 +11,7 @@ export const items = [
       Here is the post for a TextBox. Here is the post for a TextBox.`
     },
     meta: {
-      author: "Ivan Ivanich",
+      author: 'Ivan Ivanich',
       createdAt: '2016-12-29T10:53:54.000Z',
       updatedAt: '2016-12-29T10:53:54.000Z',
       count: 5
@@ -19,9 +19,13 @@ export const items = [
   },
   {
     id: 2,
-    image: { src: "https://js.cx/gallery/img2-lg.jpg", width: "300px", height: "240px" },
-    title: "Second title",
-    text: { post: "Second post for a TextBox" },
+    image: {
+      src: 'https://js.cx/gallery/img2-lg.jpg',
+      width: '300px',
+      height: '240px'
+    },
+    title: 'Second title',
+    text: { post: 'Second post for a TextBox' },
     meta: {
       createdAt: '2016-12-29T10:53:54.000Z',
       updatedAt: '2016-12-29T10:53:54.000Z',
@@ -31,10 +35,10 @@ export const items = [
   {
     id: 3,
     image: { },
-    title: "Third post",
+    title: 'Third post',
     text: { },
     meta: {
-      author: "Ivan Ivanich",
+      author: 'Ivan Ivanich',
       createdAt: '2016-12-29T10:53:54.000Z',
       updatedAt: '2016-12-29T10:53:54.000Z',
       count: 13

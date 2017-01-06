@@ -1,5 +1,4 @@
-import React from 'react';
-
+import { React, DOM, PropTypes } from 'react';
 // import { Button } from 'semantic-ui-react';
 
 import TextBox  from './elements/TextBox';

@@ -1,6 +1,7 @@
-import React from 'react';
+import { React, DOM, PropTypes } from 'react';
+import moment from 'moment';
 
-import { formatDate } from 'helpers/date';
+// import { formatDate } from 'helpers/date';
 
 // const Meta = ({ createdAt, updatedAt, author, likes }) => (
 //   <ul>
@@ -46,7 +47,7 @@ function dateFormattedJS(
     minute: 'numeric',
     second: 'numeric'
   },
-  locale = "en-US"
+  locale = 'en-US'
 ) {
   return new Date(dateStringISO).toLocaleString(locale, format);
 }
@@ -58,7 +59,7 @@ MetaData.propTypes = {
 };
 
 MetaData.defaultProps = {
-  author: "** anonimus **"
+  author: '** anonimus **'
 };
 
 const MetaBox = ({ author, createdAt, updatedAt }) => (

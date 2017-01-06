@@ -1,4 +1,7 @@
-import React from 'react';
+// import React from 'react';
+import { React, DOM, ReactDOM } from 'react';
+import c3 from 'c3';
+
 
 class PieChart extends React.Component {
   componentDidMount() {
@@ -7,7 +10,7 @@ class PieChart extends React.Component {
       // bindto: '#chart',
       data: {
         columns: this.props.columns,
-        type: "pie"
+        type: 'pie'
       }
     });
   }

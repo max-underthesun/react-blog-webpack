@@ -1,5 +1,4 @@
-import React from 'react';
-
+import { React, DOM } from 'react';
 import { map } from 'lodash/collection';
 
 import BlogItem from './Item';
@@ -24,8 +23,11 @@ const BlogList = ({ items, like }) => (
     // _.map(
     map(
       items,
-      (item) =>(
-        React.createElement(BlogItem, Object.assign({ key: item.id }, item, { like }))
+      (item) => (
+        React.createElement(
+          BlogItem,
+          Object.assign({ key: item.id }, item, { like })
+        )
       )
     )
   )

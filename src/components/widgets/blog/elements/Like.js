@@ -1,4 +1,5 @@
-import React from 'react';
+// import { React, DOM, PropTypes } from 'react';
+import { React, DOM } from 'react';
 import { bind } from 'lodash/collection';
 
 class Like extends React.Component {
@@ -7,7 +8,8 @@ class Like extends React.Component {
     this.handleClick = bind(this.handleClick, this);
   }
 
-  handleClick(e) {
+  // handleClick(e) {
+  handleClick() {
     return this.props.like(this.props.id);
   }
 
