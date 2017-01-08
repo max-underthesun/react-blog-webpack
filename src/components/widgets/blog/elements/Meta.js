@@ -8,6 +8,7 @@ class MetaData extends React.Component {
   }
 
   render() {
+    // console.log(this.state.updatedAt);
     return React.createElement(
       MetaBox,
       {
@@ -38,7 +39,9 @@ function dateFormattedJS(
   },
   locale = 'en-US'
 ) {
-  return new Date(dateStringISO).toLocaleString(locale, format);
+  return (
+    dateStringISO  && new Date(dateStringISO).toLocaleString(locale, format)
+  );
 }
 
 MetaData.propTypes = {
@@ -54,27 +57,42 @@ MetaData.defaultProps = {
 const MetaBox = ({ author, createdAt, updatedAt }) => (
   DOM.div(
     { style: metaBoxStyle },
-    React.createElement(MetaItem, { title: 'Author', value: author }),
+    React.createElement(MetaAuthor, { value: author }),
     React.createElement(MetaItem, { title: 'Created', value: createdAt }),
-    React.createElement(MetaItem, { title: 'Updated', value: updatedAt })
+    // !isEmpty(updatedAt) && React.createElement(
+    updatedAt === undefined || React.createElement(
+      MetaItem, { title: 'Updated', value: updatedAt }
+    )
   )
 );
 
 const MetaItem = (props) => (
-  DOM.p(
+  DOM.div(
     { style: metaItemStyle.outerWrapper },
     DOM.span({ style: metaItemStyle.title }, `${props.title}: `),
     DOM.span(null, `${props.value}`)
   )
 );
 
+const MetaAuthor = (props) => (
+  DOM.div(
+    { style: { fontSize: '1em', fontWeight: 'bold' } },
+    // DOM.span({ style: metaItemStyle.title }, `${props.title}: `),
+    DOM.span(
+      { style: {} },
+      `${props.value}`
+    )
+  )
+);
+
 const metaBoxStyle = {
-  border: '2px solid blue',
-  margin: '10px'
+  // border: '2px solid blue',
+  margin: '15px'
 };
 
 const metaItemStyle = {
-  outerWrapper: { margin: '10px'},
+  // outerWrapper: { margin: '10px', fontSize: '0.8em'},
+  outerWrapper: { fontSize: '0.8em' },
   title: { color: 'grey'}
 };
 

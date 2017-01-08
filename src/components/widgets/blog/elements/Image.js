@@ -1,10 +1,14 @@
-import { DOM, PropTypes } from 'react';
+import React, { DOM, PropTypes } from 'react';
 import { assign } from 'lodash';
+import { Image as semanticImage } from 'semantic-ui-react';
 
 const Image = ({ src, width, height }) => (
   DOM.div(
-    { style: assign({}, imageStyle, { minWidth: width, minHeight: height }) },
-    DOM.img({ src, width, height })
+    { style: assign({ minWidth: width, minHeight: height }, imageStyle) },
+    React.createElement(
+      semanticImage,
+      assign({}, { src, fluid: true })
+    )
   )
 );
 
@@ -15,17 +19,16 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  src: 'https://js.cx/gallery/img6-lg.jpg',
+  // src: 'https://js.cx/gallery/img6-lg.jpg',
+  src: 'dist/images/no_image.png',
   width: '250px',
   height: '200px'
 };
 
 const imageStyle = {
-  border: '2px solid purple',
-  margin: '10px',
-  padding: '5px',
-  maxWidth: '30%',
-  display: 'inline-block'
+  // border: '2px solid purple',
+  margin: '15px',
+  // padding: '5px',
 };
 
 export default Image;
