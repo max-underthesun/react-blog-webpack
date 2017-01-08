@@ -8,16 +8,10 @@ import '../semantic/dist/semantic.min.css';
 
 const rootEl = document.getElementById('app');
 
-// ReactDOM.render(
-//   // <App />,
-//   React.createElement(App),
-//   rootEl
-// );
-
 ReactDOM.render(
-  <AppContainer>
-    <App />
-  </AppContainer>,
+  React.createElement(
+    AppContainer, {}, React.createElement(App)
+  ),
   rootEl
 );
 
@@ -26,9 +20,9 @@ if (module.hot) {
     const NextApp = require('./App').default;
 
     ReactDOM.render(
-      <AppContainer>
-        <NextApp />
-      </AppContainer>,
+      React.createElement(
+        AppContainer, {}, React.createElement(NextApp)
+      ),
       rootEl
     );
   });
