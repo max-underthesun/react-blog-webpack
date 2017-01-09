@@ -1,5 +1,8 @@
 import React, { DOM, PropTypes } from 'react';
-import moment from 'moment';
+// import moment from 'moment';
+
+import { dateFormattedMoment, dateFormattedJS } from 'helpers/date';
+
 
 class MetaData extends React.Component {
   constructor(props) {
@@ -20,29 +23,29 @@ class MetaData extends React.Component {
   }
 }
 
-function dateFormattedMoment(
-  dateStringISO,
-  format = 'MMMM Do YYYY, h:mm:ss a'
-) {
-  return moment(dateStringISO).format(format);
-}
-
-function dateFormattedJS(
-  dateStringISO,
-  format = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric'
-  },
-  locale = 'en-US'
-) {
-  return (
-    dateStringISO  && new Date(dateStringISO).toLocaleString(locale, format)
-  );
-}
+// function dateFormattedMoment(
+//   dateStringISO,
+//   format = 'MMMM Do YYYY, h:mm:ss a'
+// ) {
+//   return moment(dateStringISO).format(format);
+// }
+//
+// function dateFormattedJS(
+//   dateStringISO,
+//   format = {
+//     year: 'numeric',
+//     month: 'long',
+//     day: 'numeric',
+//     hour: 'numeric',
+//     minute: 'numeric',
+//     second: 'numeric'
+//   },
+//   locale = 'en-US'
+// ) {
+//   return (
+//     dateStringISO  && new Date(dateStringISO).toLocaleString(locale, format)
+//   );
+// }
 
 MetaData.propTypes = {
   author: PropTypes.string,
