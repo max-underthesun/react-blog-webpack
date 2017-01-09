@@ -1,10 +1,9 @@
 import React, { DOM, PropTypes } from 'react';
 import { Container, Header } from 'semantic-ui-react';
 
-
 import TextBox  from './elements/TextBox';
 import Like     from './elements/Like';
-import MetaData     from './elements/Meta';
+import MetaData from './elements/Meta';
 import Image    from './elements/Image';
 
 const BlogItem = ({ id, title, image, text, meta, like }) => (
@@ -13,7 +12,8 @@ const BlogItem = ({ id, title, image, text, meta, like }) => (
     { style: blogItemStyle.outerWrapper, text: true },
     DOM.div(
       { style: blogItemStyle.postWrapper },
-      React.createElement(TitleBox, { title }),
+      // React.createElement(TitleBox, { title }),
+      React.createElement(Header, { as: 'h2', style: headerStyle}, title),
       React.createElement(MetaData, meta),
       React.createElement(Image, image),
       React.createElement(TextBox, text)
@@ -44,16 +44,16 @@ const blogItemStyle = {
   }
 };
 
-const TitleBox  = ({ title }) => (
-  DOM.div(
-    { style: titleStyle },
-    DOM.h2(null, title)
-  )
-);
+// const TitleBox  = ({ title }) => (
+//   DOM.div(
+//     { style: titleStyle },
+//     DOM.h2(null, title)
+//   )
+// );
 
-const titleStyle = {
+const headerStyle = {
   margin: '15px',
-  marginTop: '30px',
+  marginTop: '20px',
   color: '#666',
 };
 
