@@ -1,4 +1,4 @@
-import React, { DOM } from 'react';
+import React, { DOM, PropTypes } from 'react';
 import { bind, assign } from 'lodash';
 import { Button } from 'semantic-ui-react';
 
@@ -34,6 +34,11 @@ const LikeBox = (props) => (
   )
 );
 
+Like.propTypes = {
+  id: PropTypes.number.isRequired,
+  like: PropTypes.func.isRequired,
+  meta: PropTypes.object.isRequired
+};
 
 const likeBoxStyle = {
   margin: '25px'
