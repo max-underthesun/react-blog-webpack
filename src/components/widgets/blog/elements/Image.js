@@ -7,7 +7,7 @@ const Image = ({ src, width, height }) => (
     { style: assign({ minWidth: width, minHeight: height }, imageStyle) },
     React.createElement(
       semanticImage,
-      assign({}, { src, fluid: true })
+      { src, fluid: true }
     )
   )
 );
@@ -19,16 +19,13 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  // src: 'https://js.cx/gallery/img6-lg.jpg',
   src: 'dist/images/no_image.png',
   width: '250px',
   height: '200px'
 };
 
 const imageStyle = {
-  // border: '2px solid purple',
   margin: '15px',
-  // padding: '5px',
 };
 
 export default Image;

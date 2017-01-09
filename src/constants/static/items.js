@@ -1,7 +1,6 @@
 export const items = [
   {
     id: 1,
-    // image: { src: 'https://js.cx/gallery/img1-lg.jpg' },
     image: { src: 'dist/images/img1-lg.jpg' },
     title: 'First title',
     text: {
@@ -14,7 +13,6 @@ export const items = [
     meta: {
       author: 'Ivan Ivanich',
       createdAt: '2016-12-29T10:53:54.000Z',
-      // updatedAt: '2016-12-29T10:53:54.000Z',
       count: 5
     }
   },

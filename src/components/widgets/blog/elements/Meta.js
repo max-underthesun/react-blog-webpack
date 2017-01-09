@@ -1,5 +1,4 @@
 import React, { DOM, PropTypes } from 'react';
-// import moment from 'moment';
 
 import { dateFormattedMoment, dateFormattedJS } from 'helpers/date';
 
@@ -11,7 +10,6 @@ class MetaData extends React.Component {
   }
 
   render() {
-    // console.log(this.state.updatedAt);
     return React.createElement(
       MetaBox,
       {
@@ -22,30 +20,6 @@ class MetaData extends React.Component {
     );
   }
 }
-
-// function dateFormattedMoment(
-//   dateStringISO,
-//   format = 'MMMM Do YYYY, h:mm:ss a'
-// ) {
-//   return moment(dateStringISO).format(format);
-// }
-//
-// function dateFormattedJS(
-//   dateStringISO,
-//   format = {
-//     year: 'numeric',
-//     month: 'long',
-//     day: 'numeric',
-//     hour: 'numeric',
-//     minute: 'numeric',
-//     second: 'numeric'
-//   },
-//   locale = 'en-US'
-// ) {
-//   return (
-//     dateStringISO  && new Date(dateStringISO).toLocaleString(locale, format)
-//   );
-// }
 
 MetaData.propTypes = {
   author: PropTypes.string,
@@ -62,7 +36,6 @@ const MetaBox = ({ author, createdAt, updatedAt }) => (
     { style: metaBoxStyle },
     React.createElement(MetaAuthor, { value: author }),
     React.createElement(MetaDate, { title: 'Created', value: createdAt }),
-    // !isEmpty(updatedAt) && React.createElement(
     updatedAt === undefined || React.createElement(
       MetaDate, { title: 'Updated', value: updatedAt }
     )
@@ -85,8 +58,9 @@ const MetaAuthor = (props) => (
 );
 
 const metaBoxStyle = {
-  // border: '2px solid blue',
-  margin: '15px'
+  margin: '15px',
+  padding: '10px',
+  backgroundColor: '#ddd'
 };
 
 const metaAuthorStyle = {
@@ -95,7 +69,6 @@ const metaAuthorStyle = {
 };
 
 const metaDateStyle = {
-  // outerWrapper: { margin: '10px', fontSize: '0.8em'},
   outerWrapper: { fontSize: '0.8em' },
   title: { color: 'grey'}
 };

@@ -5,10 +5,6 @@ import {
   DEFAULT_DATE_FORMAT_JS
 } from 'constants/Date';
 
-// export function formatDate(date) {
-//   return moment(date).format(DEFAULT_DATE_FORMAT);
-// }
-
 export function dateFormattedMoment(
   dateStringISO,
   format = DEFAULT_DATE_FORMAT_MOM
