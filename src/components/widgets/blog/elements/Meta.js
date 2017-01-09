@@ -61,30 +61,26 @@ const MetaBox = ({ author, createdAt, updatedAt }) => (
   DOM.div(
     { style: metaBoxStyle },
     React.createElement(MetaAuthor, { value: author }),
-    React.createElement(MetaItem, { title: 'Created', value: createdAt }),
+    React.createElement(MetaDate, { title: 'Created', value: createdAt }),
     // !isEmpty(updatedAt) && React.createElement(
     updatedAt === undefined || React.createElement(
-      MetaItem, { title: 'Updated', value: updatedAt }
+      MetaDate, { title: 'Updated', value: updatedAt }
     )
   )
 );
 
-const MetaItem = (props) => (
+const MetaDate = (props) => (
   DOM.div(
-    { style: metaItemStyle.outerWrapper },
-    DOM.span({ style: metaItemStyle.title }, `${props.title}: `),
+    { style: metaDateStyle.outerWrapper },
+    DOM.span({ style: metaDateStyle.title }, `${props.title}: `),
     DOM.span(null, `${props.value}`)
   )
 );
 
 const MetaAuthor = (props) => (
   DOM.div(
-    { style: { fontSize: '1em', fontWeight: 'bold' } },
-    // DOM.span({ style: metaItemStyle.title }, `${props.title}: `),
-    DOM.span(
-      { style: {} },
-      `${props.value}`
-    )
+    { style: metaAuthorStyle },
+    DOM.span(null, `${props.value}`)
   )
 );
 
@@ -93,7 +89,12 @@ const metaBoxStyle = {
   margin: '15px'
 };
 
-const metaItemStyle = {
+const metaAuthorStyle = {
+  fontSize: '1em',
+  fontWeight: 'bold'
+};
+
+const metaDateStyle = {
   // outerWrapper: { margin: '10px', fontSize: '0.8em'},
   outerWrapper: { fontSize: '0.8em' },
   title: { color: 'grey'}
