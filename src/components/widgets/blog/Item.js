@@ -12,7 +12,6 @@ const BlogItem = ({ id, title, image, text, meta, like }) => (
     { style: blogItemStyle.outerWrapper, text: true },
     DOM.div(
       { style: blogItemStyle.postWrapper },
-      // React.createElement(TitleBox, { title }),
       React.createElement(Header, { as: 'h2', style: headerStyle}, title),
       React.createElement(MetaData, meta),
       React.createElement(Image, image),
@@ -43,13 +42,6 @@ const blogItemStyle = {
     padding: '10px'
   }
 };
-
-// const TitleBox  = ({ title }) => (
-//   DOM.div(
-//     { style: titleStyle },
-//     DOM.h2(null, title)
-//   )
-// );
 
 const headerStyle = {
   margin: '15px',

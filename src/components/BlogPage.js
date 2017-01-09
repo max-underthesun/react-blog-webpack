@@ -21,7 +21,7 @@ class BlogPage extends React.Component {
       items: update(
         items,
         // {[index]: {meta: {count: {$apply: function(x) {return x + 1;}}}}}
-        {[index]: {meta: {count: {$apply(x) {return x + 1;}}}}}
+        {[index]: { meta: { count: { $apply(x) { return x + 1; } } } } }
       )
     });
   }
