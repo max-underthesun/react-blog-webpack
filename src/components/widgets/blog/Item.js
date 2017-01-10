@@ -26,9 +26,9 @@ BlogItem.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   like: PropTypes.func.isRequired,
-  image: PropTypes.object.isRequired,
-  text: PropTypes.object.isRequired,
-  meta: PropTypes.object.isRequired
+  image: PropTypes.shape(Image.propTypes).isRequired,
+  text: PropTypes.shape(TextBox.propTypes).isRequired,
+  meta: PropTypes.shape(MetaData.propTypes).isRequired
 };
 
 const blogItemStyle = {
