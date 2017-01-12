@@ -8,7 +8,6 @@ class PieChart extends React.Component {
   componentDidMount() {
     this.chart = c3.generate({
       bindto: ReactDOM.findDOMNode(this.refs.chart),
-      // bindto: '#chart',
       data: {
         columns: this.props.columns,
         type: 'pie'
@@ -25,8 +24,6 @@ class PieChart extends React.Component {
   }
 
   render() {
-    // return DOM.div({ ref: 'chart' });
-    // return DOM.div({ id: 'chart' });
     return React.createElement(
       Container,
       { style: chartContainerStyle, text: true },
