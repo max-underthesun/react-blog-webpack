@@ -2,6 +2,7 @@ import React, { DOM, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 import c3 from 'c3';
+import 'c3/c3.css';
 import { Container, Header } from 'semantic-ui-react';
 
 class PieChart extends React.Component {
