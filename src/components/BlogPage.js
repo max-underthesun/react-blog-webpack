@@ -29,7 +29,7 @@ class BlogPage extends React.Component {
   render() {
     const { items } = this.state;
     return DOM.div(
-      { style: { backgroundColor: 'black' } },
+      {},
       React.createElement(BlogList, { items, like: this.like }),
       React.createElement(
         PieChart,
