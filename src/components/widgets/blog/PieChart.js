@@ -2,13 +2,33 @@ import React, { DOM, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 import c3 from 'c3';
+import 'c3/c3.css';
 import { Container, Header } from 'semantic-ui-react';
 
-class PieChart extends React.Component {
+const PieChart = (props) => (
+  React.createElement(
+    Container,
+    { style: chartContainerStyle, text: true },
+    React.createElement(
+      Header,
+      { as: 'h2', style: headerStyle },
+      'Likes Chart'
+    ),
+    React.createElement(
+      Chart,
+      { columns: props.columns }
+    )
+  )
+);
+
+PieChart.propTypes = {
+  columns: PropTypes.array.isRequired,
+};
+
+class Chart extends React.Component {
   componentDidMount() {
     this.chart = c3.generate({
       bindto: ReactDOM.findDOMNode(this.refs.chart),
-      // bindto: '#chart',
       data: {
         columns: this.props.columns,
         type: 'pie'
@@ -25,41 +45,13 @@ class PieChart extends React.Component {
   }
 
   render() {
-    // return DOM.div({ ref: 'chart' });
-    // return DOM.div({ id: 'chart' });
-    return React.createElement(
-      Container,
-      { style: chartContainerStyle, text: true },
-      React.createElement(
-        Header,
-        { as: 'h2', style: headerStyle },
-        'Likes Chart'
-      ),
-      DOM.div({ ref: 'chart', style: chartDivStyle })
-    );
-    // return React.createElement(
-    //   PieCartBox,
-    //   { ref: 'chart' }
-    // );
+    return DOM.div({ ref: 'chart', style: chartDivStyle });
   }
 }
 
-PieChart.propTypes = {
-  columns: PropTypes.array,
+Chart.propTypes = {
+  columns: PropTypes.array.isRequired,
 };
-
-// const PieCartBox = ({ ref }) => (
-//   React.createElement(
-//     Container,
-//     { style: chartContainerStyle, text: true },
-//     React.createElement(
-//       Header,
-//       { as: 'h2', style: headerStyle },
-//       'Likes Chart'
-//     ),
-//     DOM.div({ ref, style: chartDivStyle })
-//   )
-// );
 
 const headerStyle = {
   margin: '25px',
