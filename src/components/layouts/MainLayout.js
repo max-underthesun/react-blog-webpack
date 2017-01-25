@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
-
 import { Segment, Container, Header } from 'semantic-ui-react';
+
+import Link from 'components/elements/Link';
 
 const MainLayout = ({ children }) => (
   React.createElement(
@@ -23,7 +24,11 @@ const Logo = () => (
     React.createElement(
       Header,
       { as: 'h2'},
-      'ThinknetikaBlog'
+      React.createElement(
+        Link,
+        { to: '/' },
+        'ThinknetikaBlog'
+      )
     )
   )
 );

@@ -19,7 +19,7 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  src: 'dist/images/no_image.png',
+  src: '/dist/images/no_image.png',
   width: '250px',
   height: '200px'
 };

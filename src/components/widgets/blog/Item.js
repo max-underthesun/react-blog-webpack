@@ -5,6 +5,7 @@ import TextBox  from './elements/TextBox';
 import Like     from './elements/Like';
 import MetaData from './elements/Meta';
 import Image    from './elements/Image';
+import Link from 'components/elements/Link';
 
 const BlogItem = ({ id, title, image, text, meta, like }) => (
   React.createElement(
@@ -12,7 +13,18 @@ const BlogItem = ({ id, title, image, text, meta, like }) => (
     { style: blogItemStyle.outerWrapper, text: true },
     DOM.div(
       { style: blogItemStyle.postWrapper },
-      React.createElement(Header, { as: 'h2', style: headerStyle}, title),
+      React.createElement(
+        // Header,
+        // { as: 'h2', style: headerStyle},
+        // title
+        Header,
+        { as: 'h2', style: headerStyle},
+        React.createElement(
+          Link,
+          { to: `/posts/${id}` },
+          title
+        )
+      ),
       React.createElement(MetaData, meta),
       React.createElement(Image, image),
       React.createElement(TextBox, text)
