@@ -6,6 +6,7 @@ import Like     from './elements/Like';
 import MetaData from './elements/Meta';
 import Image    from './elements/Image';
 import Link from 'components/elements/Link';
+import { postsPath } from 'helpers/routes';
 
 const BlogItem = ({ id, title, image, text, meta, like }) => (
   React.createElement(
@@ -21,7 +22,8 @@ const BlogItem = ({ id, title, image, text, meta, like }) => (
         { as: 'h2', style: headerStyle},
         React.createElement(
           Link,
-          { to: `/posts/${id}` },
+          // { to: `/posts/${id}` },
+          { to: postsPath(id)},
           title
         )
       ),
