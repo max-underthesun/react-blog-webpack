@@ -45,6 +45,15 @@ BlogItem.propTypes = {
   meta: PropTypes.shape(MetaData.propTypes).isRequired
 };
 
+BlogItem.defaultProps = {
+  id: null,
+  title: '',
+  like: null,
+  image: {},
+  text: {},
+  meta: {}
+};
+
 const blogItemStyle = {
   outerWrapper: {
     backgroundColor: '#ccc',
