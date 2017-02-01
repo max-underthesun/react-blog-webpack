@@ -8,7 +8,8 @@ import { Container, Header } from 'semantic-ui-react';
 const PieChart = (props) => (
   React.createElement(
     Container,
-    { style: chartContainerStyle, text: true },
+    // { style: chartContainerStyle, text: true },
+    { style: chartContainerStyle },
     React.createElement(
       Header,
       { as: 'h2', style: headerStyle },
@@ -60,6 +61,7 @@ const headerStyle = {
 };
 
 const chartContainerStyle = {
+  margin: '10px',
   backgroundColor: '#888',
   padding: '15px'
 };

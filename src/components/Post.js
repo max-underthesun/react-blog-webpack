@@ -28,7 +28,7 @@ class Post extends React.Component {
   }
 
   componentDidMount() {
-    console.log("MOUNTED");
+    // console.log("MOUNTED");
     this.fetchPost();
   }
 
@@ -46,7 +46,7 @@ class Post extends React.Component {
   //
   fetchPost() {
     const id = this.props.params.id;
-    console.log(id);
+    // console.log(id);
 
     request.get(
       `http://localhost:3001/posts/${id}`,
@@ -59,7 +59,7 @@ class Post extends React.Component {
     // const { items } = this.state;
     // const id = this.props.params.id;
     const { item } = this.state;
-    console.log(item);
+    // console.log(item);
     return React.createElement(
       Item.Group,
       {},

@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-import { Button, Segment, Container, Header } from 'semantic-ui-react';
+import React, { PropTypes, DOM } from 'react';
+import { Button, Segment, Container, Header, Grid } from 'semantic-ui-react';
 
 import Link from 'components/elements/Link';
 import history from 'helpers/history';
@@ -22,9 +22,26 @@ MainLayout.propTypes = {
 const GoBackButton = () => (
   React.createElement(
     Button,
-    { onClick: () => history.goBack() },
+    { onClick: () => history.goBack(), inverted: true, color: 'orange' },
     'Back'
   )
+  // React.createElement(
+  //   Grid,
+  //   {},
+  //   React.createElement(
+  //     Grid.Row,
+  //     {},
+  //     React.createElement(
+  //       Grid.Column,
+  //       {},
+  //       React.createElement(
+  //         Button,
+  //         { onClick: () => history.goBack() },
+  //         'Back'
+  //       )
+  //     )
+  //   )
+  // )
 );
 
 const Logo = () => (

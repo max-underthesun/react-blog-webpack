@@ -3,6 +3,8 @@ import update from 'immutability-helper';
 import { bind, map } from 'lodash';
 import request from 'superagent';
 
+import { Grid, Container } from 'semantic-ui-react';
+
 // import { items as staticItems } from 'constants/static/items';
 import BlogList from 'components/widgets/blog/List';
 import PieChart from 'components/widgets/blog/PieChart';
@@ -42,14 +44,35 @@ class BlogPage extends React.Component {
 
   render() {
     const { items } = this.state;
-    return DOM.div(
-      {},
-      React.createElement(BlogList, { items, like: this.like }),
+    return React.createElement(
+      Grid,
+      { divided: 'vertically' },
       React.createElement(
-        PieChart,
-        { columns: map(items, (item) => ([item.title, item.meta.count])) }
+        Grid.Row,
+        { columns: 2 },
+        React.createElement(
+          Grid.Column,
+          { width: 10 },
+          React.createElement(BlogList, { items, like: this.like })
+        ),
+        React.createElement(
+          Grid.Column,
+          { width: 6 },
+          React.createElement(
+            PieChart,
+            { columns: map(items, (item) => ([item.title, item.meta.count])) }
+          )
+        )
       )
     );
+    // return DOM.div(
+    //   {},
+    //   React.createElement(BlogList, { items, like: this.like }),
+    //   React.createElement(
+    //     PieChart,
+    //     { columns: map(items, (item) => ([item.title, item.meta.count])) }
+    //   )
+    // );
   }
 }
 
