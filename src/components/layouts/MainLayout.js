@@ -61,7 +61,7 @@ const Logo = () => (
     // const { activeItem } = this.state;
     React.createElement(
       Menu,
-      { inverted: true, size: 'huge' },
+      { inverted: true, size: 'huge', color: 'grey' },
       React.createElement(
         Menu.Item,
         { header: true },
