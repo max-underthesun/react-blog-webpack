@@ -1,9 +1,9 @@
-import React, { DOM } from 'react';
+import React from 'react';
 import update from 'immutability-helper';
 import { bind, map } from 'lodash';
 import request from 'superagent';
 
-import { Grid, Container, Menu } from 'semantic-ui-react';
+import { Grid, Menu } from 'semantic-ui-react';
 
 // import { items as staticItems } from 'constants/static/items';
 import BlogList from 'components/widgets/blog/List';
@@ -13,10 +13,11 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
     // this.state = { items: staticItems };
-    this.state = { items: [], activeItem: '1' };
+    // this.state = { items: [], activeItem: '1' };
+    this.state = { items: [] };
 
     this.like = bind(this.like, this);
-    this.handleItemClick = bind(this.handleItemClick, this);
+    // this.handleItemClick = bind(this.handleItemClick, this);
   }
 
   componentDidMount() {
@@ -43,13 +44,13 @@ class BlogPage extends React.Component {
     );
   }
 
-  handleItemClick(e, { name }) {
-    this.setState({ activeItem: name });
-  }
-
+  // handleItemClick(e, { name }) {
+  //   this.setState({ activeItem: name });
+  // }
+  //
   render() {
     const { items } = this.state;
-    const { activeItem } = this.state;
+    // const { activeItem } = this.state;
     return React.createElement(
       Grid,
       { divided: 'vertically' },
@@ -57,22 +58,17 @@ class BlogPage extends React.Component {
         Grid.Row,
         { columns: 2 },
         React.createElement(
-          Grid.Column,
-          { width: 10 },
-          React.createElement(
-            Menu,
-            { pagination: true },
-            React.createElement(
-              Menu.Item,
-              { name: '1', active: (activeItem === '1'), onClick: this.handleItemClick }
-            ),
-            React.createElement(
-              Menu.Item,
-              { name: '2', active: (activeItem === '2'), onClick: this.handleItemClick }
-            )
-          ),
+          // Grid.Column,
+          // { width: 10 },
+          // React.createElement(
+          //   PaginationMenu,
+          //   { handleItemClick: this.handleItemClick, activeItem }
+          // ),
           // React.createElement(BlogList, { items, like: this.like })
-          React.createElement(Pagination, { items, like: this.like, page: this.state.activeItem })
+          // React.createElement(
+            Pagination,
+            { items, like: this.like }
+          // )
         ),
         React.createElement(
           Grid.Column,
@@ -99,32 +95,29 @@ class Pagination extends React.Component {
   constructor(props) {
     super(props);
     // console.log(props);
-    this.state = { items: [] };
+    this.state = { items: [], activeItem: '1', itemsPaginated: {} };
     this.paginate = bind(this.paginate, this);
+    this.handleItemClick = bind(this.handleItemClick, this);
   }
 
   paginate(newProps) {
-  // paginate() {
-    // console.log(newProps);
-    // const { items } = this.state;
-    // const { items } = this.props;
-    const { items, page } = newProps;
-    // console.log(items);
+    // const { items, page } = newProps;
+    const { items } = newProps;
     let k = 0;
     const j = {};
+
     for (let i = 0; k <= items.length; i++) {
       j[(i + 1).toString()] = items.slice(k, k + 2);
       k = k + 2;
     }
-    // console.log(j);
-    // return j;
 
-    this.setState({ items: j[page] });
+    this.setState({ itemsPaginated: j });
   }
 
-  // componentDidMount() {
-  //   this.paginate();
-  // }
+  handleItemClick(e, { name }) {
+    // console.log(name);
+    this.setState({ activeItem: name });
+  }
 
   componentWillReceiveProps(newProps) {
     this.paginate(newProps);
@@ -132,30 +125,40 @@ class Pagination extends React.Component {
   }
 
   render() {
-    const { items } = this.state;
+    // const { pageItems } = this.state;
+    const { activeItem } = this.state;
+    const { itemsPaginated } = this.state;
+    const names = Object.keys(itemsPaginated);
+    // console.log(pageItems);
     const { like } = this.props;
 
     return React.createElement(
-      BlogList, { items, like }
+      Grid.Column,
+      { width: 10 },
+      React.createElement(
+        PaginationMenu,
+        { handleItemClick: this.handleItemClick, activeItem, names }
+      ),
+      React.createElement(
+        BlogList, { items: itemsPaginated[activeItem], like }
+      )
     );
   }
 }
 
-// class Pagination extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { items: this.props.items };
-//   }
-//
-//   render() {
-//     const { items } = this.state;
-//     // const { items } = this.props;
-//     return React.createElement(
-//       BlogList, { items }
-//     );
-//   }
-// }
-//
-// const Pagination = ({ items, like: this.like }) => ();
+const PaginationMenu = ({ activeItem, handleItemClick, names }) => (
+  React.createElement(
+    Menu,
+    { pagination: true },
+    React.createElement(
+      Menu.Item,
+      { name: '1', active: (activeItem === '1'), onClick: handleItemClick }
+    ),
+    React.createElement(
+      Menu.Item,
+      { name: '2', active: (activeItem === '2'), onClick: handleItemClick }
+    )
+  )
+);
 
 export default BlogPage;
