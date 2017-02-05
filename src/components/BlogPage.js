@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 import { bind, map } from 'lodash';
 import request from 'superagent';
 
-import { Grid, Container } from 'semantic-ui-react';
+import { Grid, Container, Menu } from 'semantic-ui-react';
 
 // import { items as staticItems } from 'constants/static/items';
 import BlogList from 'components/widgets/blog/List';
@@ -13,9 +13,10 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
     // this.state = { items: staticItems };
-    this.state = { items: [] };
+    this.state = { items: [], activeItem: '1' };
 
     this.like = bind(this.like, this);
+    this.handleItemClick = bind(this.handleItemClick, this);
   }
 
   componentDidMount() {
@@ -42,8 +43,13 @@ class BlogPage extends React.Component {
     );
   }
 
+  handleItemClick(e, { name }) {
+    this.setState({ activeItem: name });
+  }
+
   render() {
     const { items } = this.state;
+    const { activeItem } = this.state;
     return React.createElement(
       Grid,
       { divided: 'vertically' },
@@ -53,7 +59,20 @@ class BlogPage extends React.Component {
         React.createElement(
           Grid.Column,
           { width: 10 },
-          React.createElement(BlogList, { items, like: this.like })
+          React.createElement(
+            Menu,
+            { pagination: true },
+            React.createElement(
+              Menu.Item,
+              { name: '1', active: (activeItem === '1'), onClick: this.handleItemClick }
+            ),
+            React.createElement(
+              Menu.Item,
+              { name: '2', active: (activeItem === '2'), onClick: this.handleItemClick }
+            )
+          ),
+          // React.createElement(BlogList, { items, like: this.like })
+          React.createElement(Pagination, { items, like: this.like, page: this.state.activeItem })
         ),
         React.createElement(
           Grid.Column,
@@ -75,5 +94,68 @@ class BlogPage extends React.Component {
     // );
   }
 }
+
+class Pagination extends React.Component {
+  constructor(props) {
+    super(props);
+    // console.log(props);
+    this.state = { items: [] };
+    this.paginate = bind(this.paginate, this);
+  }
+
+  paginate(newProps) {
+  // paginate() {
+    // console.log(newProps);
+    // const { items } = this.state;
+    // const { items } = this.props;
+    const { items, page } = newProps;
+    // console.log(items);
+    let k = 0;
+    const j = {};
+    for (let i = 0; k <= items.length; i++) {
+      j[(i + 1).toString()] = items.slice(k, k + 2);
+      k = k + 2;
+    }
+    // console.log(j);
+    // return j;
+
+    this.setState({ items: j[page] });
+  }
+
+  // componentDidMount() {
+  //   this.paginate();
+  // }
+
+  componentWillReceiveProps(newProps) {
+    this.paginate(newProps);
+    // this.setState({ items: newProps.items });
+  }
+
+  render() {
+    const { items } = this.state;
+    const { like } = this.props;
+
+    return React.createElement(
+      BlogList, { items, like }
+    );
+  }
+}
+
+// class Pagination extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { items: this.props.items };
+//   }
+//
+//   render() {
+//     const { items } = this.state;
+//     // const { items } = this.props;
+//     return React.createElement(
+//       BlogList, { items }
+//     );
+//   }
+// }
+//
+// const Pagination = ({ items, like: this.like }) => ();
 
 export default BlogPage;
