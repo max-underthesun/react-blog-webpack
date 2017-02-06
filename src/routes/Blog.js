@@ -1,23 +1,22 @@
 import MainLayout from 'components/layouts/MainLayout';
-import BlogPage from 'components/BlogPage';
-import Post from 'components/Post';
-import About from 'components/About';
+import BlogPageContainer from 'components/containers/BlogPage/BlogPageContainer';
+import PostContainer from 'components/containers/Post/PostContainer';
+import AboutContainer from 'components/containers/About/AboutContainer';
 import { postsPath } from 'helpers/routes';
 
 const Index = {
   path: '/',
-  component: BlogPage
+  component: BlogPageContainer
 };
 
 const PostRoute = {
-  // path: '/posts/:id',
   path: postsPath(),
-  component: Post
+  component: PostContainer
 };
 
 const AboutRoute = {
   path: '/about',
-  component: About
+  component: AboutContainer
 };
 
 export default {
