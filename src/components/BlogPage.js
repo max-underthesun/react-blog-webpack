@@ -146,19 +146,69 @@ class Pagination extends React.Component {
   }
 }
 
-const PaginationMenu = ({ activeItem, handleItemClick, names }) => (
-  React.createElement(
+// class PaginationMenu extends React.Component {
+//   // constructor(props) {
+//   //   super(props);
+//   // }
+//   //
+//   render() {
+//     const menuItems = [];
+//     const { activeItem, handleItemClick, names } = this.props;
+//     for (let i = 0; i < names.length; i++) {
+//       menuItems.push(
+//         React.createElement(
+//           Menu.Item,
+//           {
+//             name: `${i + 1}`,
+//             active: (activeItem === `${i + 1}`),
+//             onClick: handleItemClick
+//           }
+//         )
+//       );
+//     }
+//
+//     return React.createElement(
+//       Menu,
+//       { pagination: true },
+//       menuItems
+//     );
+//   }
+// }
+
+const PaginationMenu = ({ activeItem, handleItemClick, names }) => {
+  const menuItems = [];
+  // const { activeItem, handleItemClick, names } = this.props;
+  for (let i = 0; i < names.length; i++) {
+    menuItems.push(
+      React.createElement(
+        Menu.Item,
+        {
+          name: `${i + 1}`,
+          active: (activeItem === `${i + 1}`),
+          onClick: handleItemClick
+        }
+      )
+    );
+  }
+
+  return React.createElement(
     Menu,
     { pagination: true },
-    React.createElement(
-      Menu.Item,
-      { name: '1', active: (activeItem === '1'), onClick: handleItemClick }
-    ),
-    React.createElement(
-      Menu.Item,
-      { name: '2', active: (activeItem === '2'), onClick: handleItemClick }
-    )
-  )
-);
+    menuItems
+  );
+  // }
+  // React.createElement(
+  //   Menu,
+  //   { pagination: true },
+  //   React.createElement(
+  //     Menu.Item,
+  //     { name: '1', active: (activeItem === '1'), onClick: handleItemClick }
+  //   ),
+  //   React.createElement(
+  //     Menu.Item,
+  //     { name: '2', active: (activeItem === '2'), onClick: handleItemClick }
+  //   )
+  // )
+};
 
 export default BlogPage;
