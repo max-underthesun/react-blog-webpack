@@ -8,38 +8,40 @@ import Image    from './elements/Image';
 import Link from 'components/elements/Link';
 import { postsPath } from 'helpers/routes';
 
-const BlogItem = ({ id, title, image, text, meta, like }) => (
-  React.createElement(
+const BlogItem = ({ id, title, image, text, meta, like }) => {
+  const elements = [DOM.div(
+    { style: blogItemStyle.postWrapper, key: 'mainBlock' },
+    React.createElement(
+      Header,
+      { as: 'h2', style: headerStyle},
+      React.createElement(
+        Link,
+        { to: postsPath(id)},
+        title
+      )
+    ),
+    React.createElement(MetaData, meta),
+    React.createElement(Image, image),
+    React.createElement(TextBox, text)
+  )];
+  if (like != undefined) {
+    elements.push(
+      DOM.br({ key: 'br' }),
+      React.createElement(Like, { meta, id, like, key: 'like' })
+    );
+  }
+  return React.createElement(
     Container,
     { style: blogItemStyle.outerWrapper, text: true },
-    DOM.div(
-      { style: blogItemStyle.postWrapper },
-      React.createElement(
-        // Header,
-        // { as: 'h2', style: headerStyle},
-        // title
-        Header,
-        { as: 'h2', style: headerStyle},
-        React.createElement(
-          Link,
-          // { to: `/posts/${id}` },
-          { to: postsPath(id)},
-          title
-        )
-      ),
-      React.createElement(MetaData, meta),
-      React.createElement(Image, image),
-      React.createElement(TextBox, text)
-    ),
-    DOM.br(null),
-    React.createElement(Like, { meta, id, like })
-  )
-);
+    elements
+  );
+};
 
 BlogItem.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  like: PropTypes.func.isRequired,
+  like: PropTypes.func,
+  // like: PropTypes.func.isRequired,
   image: PropTypes.shape(Image.propTypes).isRequired,
   text: PropTypes.shape(TextBox.propTypes).isRequired,
   meta: PropTypes.shape(MetaData.propTypes).isRequired
