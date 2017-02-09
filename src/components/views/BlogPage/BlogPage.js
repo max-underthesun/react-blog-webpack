@@ -4,7 +4,7 @@ import { Grid } from 'semantic-ui-react';
 
 import BlogItem from 'components/widgets/blog/Item';
 import PaginationContainer from 'components/containers/BlogPage/PaginationContainer';
-import PieChart from 'components/widgets/blog/PieChart';
+import PieChartBox from 'components/shared/widgets/PieChartBox';
 
 const BlogPage = ({ items, like }) => (
   React.createElement(
@@ -21,7 +21,7 @@ const BlogPage = ({ items, like }) => (
         Grid.Column,
         { width: 6 },
         React.createElement(
-          PieChart,
+          PieChartBox,
           { columns: map(items, (item) => ([item.title, item.meta.count])) }
         )
       )
