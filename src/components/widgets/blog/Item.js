@@ -38,7 +38,7 @@ const BlogItem = ({ id, title, image, text, meta, like }) => {
 };
 
 BlogItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   title: PropTypes.string.isRequired,
   like: PropTypes.func,
   // like: PropTypes.func.isRequired,

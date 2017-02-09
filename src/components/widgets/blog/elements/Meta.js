@@ -23,7 +23,7 @@ class MetaData extends React.Component {
 
 MetaData.propTypes = {
   author: PropTypes.string,
-  createdAt: PropTypes.string.isRequired,
+  createdAt: PropTypes.string,
   updatedAt: PropTypes.string
 };
 

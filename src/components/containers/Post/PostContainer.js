@@ -1,10 +1,9 @@
 import React, { PropTypes } from 'react';
-import { Item } from 'semantic-ui-react';
 import request from 'superagent';
 
-import BlogItem from 'components/widgets/blog/Item';
+import Post from 'components/views/Post/Post';
 
-class Post extends React.Component {
+class PostContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { item: false };
@@ -25,19 +24,12 @@ class Post extends React.Component {
 
   render() {
     const { item } = this.state;
-    return React.createElement(
-      Item.Group,
-      {},
-      React.createElement(
-        BlogItem,
-        item
-      )
-    );
+    return React.createElement(Post, item);
   }
 }
 
-Post.propTypes = {
+PostContainer.propTypes = {
   params: PropTypes.object
 };
 
-export default Post;
+export default PostContainer;
