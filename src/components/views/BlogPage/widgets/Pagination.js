@@ -2,8 +2,6 @@ import React, { PropTypes } from 'react';
 
 import { Menu } from 'semantic-ui-react';
 
-// import BlogList from './List';
-
 const Pagination = ({ activeItem, pageNumberClick, pageNumbers }) => {
   const menuItems = [];
   for (let i = 0; i < pageNumbers.length; i++) {
@@ -11,7 +9,6 @@ const Pagination = ({ activeItem, pageNumberClick, pageNumbers }) => {
       React.createElement(
         Menu.Item,
         { key: (i).toString(),
-          // name: `${i + 1}`,
           name: pageNumbers[i],
           active: (activeItem === pageNumbers[i]),
           onClick: pageNumberClick
@@ -21,16 +18,9 @@ const Pagination = ({ activeItem, pageNumberClick, pageNumbers }) => {
   }
 
   return React.createElement(
-    // Grid.Column,
-    // { width: 10 },
-    // React.createElement(
-      Menu,
-      { pagination: true },
-      menuItems
-    // )
-    // React.createElement(
-    //   BlogList, { items: itemsPaginated[activeItem], like }
-    // )
+    Menu,
+    { pagination: true },
+    menuItems
   );
 };
 
@@ -38,8 +28,6 @@ Pagination.propTypes = {
   activeItem: PropTypes.string,
   pageNumberClick: PropTypes.func,
   pageNumbers: PropTypes.array
-  // like: PropTypes.func,
-  // itemsPaginated: PropTypes.object
 };
 
 export default Pagination;

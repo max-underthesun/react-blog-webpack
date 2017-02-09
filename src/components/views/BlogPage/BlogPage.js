@@ -21,13 +21,10 @@ const BlogPage = (
         { width: 10 },
         React.createElement(
           PaginationContainer,
-          // { items, like }
           { pageNumberClick, activeItem, pageNumbers }
         ),
         React.createElement(
           BlogList, { items: itemsCurrent, like }
-          // BlogList, { items: itemsPaginated[activeItem], like }
-          // BlogList, { items, like }
         )
       ),
       React.createElement(
