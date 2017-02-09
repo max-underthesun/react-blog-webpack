@@ -3,7 +3,7 @@ import { map } from 'lodash';
 import { Grid } from 'semantic-ui-react';
 
 import BlogItem from 'components/shared/widgets/BlogItem';
-import PaginationContainer from 'components/containers/BlogPage/PaginationContainer';
+import Pagination from 'components/views/BlogPage/widgets/Pagination';
 import PieChartBox from 'components/shared/widgets/PieChartBox';
 import BlogList from './widgets/List';
 
@@ -20,7 +20,7 @@ const BlogPage = (
         Grid.Column,
         { width: 10 },
         React.createElement(
-          PaginationContainer,
+          Pagination,
           { pageNumberClick, activeItem, pageNumbers }
         ),
         React.createElement(
@@ -40,8 +40,12 @@ const BlogPage = (
 );
 
 BlogPage.propTypes = {
-  items: PropTypes.arrayOf(React.PropTypes.shape(BlogItem.propTypes)),
-  like: PropTypes.func
+  items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
+  like: PropTypes.func,
+  itemsCurrent: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
+  pageNumberClick: PropTypes.func,
+  activeItem: PropTypes.string,
+  pageNumbers: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default BlogPage;
