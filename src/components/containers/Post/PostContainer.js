@@ -24,7 +24,7 @@ class PostContainer extends React.Component {
 
   render() {
     const { item } = this.state;
-    return React.createElement(Post, item);
+    return React.createElement(Post, { item });
   }
 }
 

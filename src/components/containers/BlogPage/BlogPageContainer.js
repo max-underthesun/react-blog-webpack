@@ -1,13 +1,9 @@
 import React from 'react';
 import update from 'immutability-helper';
-import { bind, map } from 'lodash';
+import { bind } from 'lodash';
 import request from 'superagent';
 
-// import { Grid } from 'semantic-ui-react';
-
 import BlogPage from 'components/views/BlogPage/BlogPage';
-// import PaginationContainer from './PaginationContainer';
-// import PieChart from 'components/widgets/blog/PieChart';
 
 class BlogPageContainer extends React.Component {
   constructor(props) {
