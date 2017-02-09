@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { map } from 'lodash';
 import { Grid } from 'semantic-ui-react';
 
-import BlogItem from 'components/widgets/blog/Item';
+import BlogItem from 'components/shared/widgets/BlogItem';
 import PaginationContainer from 'components/containers/BlogPage/PaginationContainer';
 import PieChartBox from 'components/shared/widgets/PieChartBox';
 

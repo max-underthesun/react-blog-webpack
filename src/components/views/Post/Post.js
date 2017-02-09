@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 import { Item } from 'semantic-ui-react';
 
-import BlogItem from 'components/widgets/blog/Item';
+import BlogItem from 'components/shared/widgets/BlogItem';
 
 const Post = ({ item }) => (
   React.createElement(

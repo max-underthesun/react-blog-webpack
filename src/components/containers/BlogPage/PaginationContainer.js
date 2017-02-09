@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { bind } from 'lodash';
 
-import Pagination from 'components/views/BlogPage/Pagination';
+import Pagination from 'components/views/BlogPage/widgets/Pagination';
 
 class PaginationContainer extends React.Component {
   constructor(props) {

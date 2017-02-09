@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 import { Menu, Grid } from 'semantic-ui-react';
 
-import BlogList from 'components/widgets/blog/List';
+import BlogList from './List';
 
 const Pagination = (
   { activeItem, handleItemClick, names, like, itemsPaginated }
