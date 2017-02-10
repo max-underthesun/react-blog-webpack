@@ -1,11 +1,11 @@
 import React, { DOM, PropTypes } from 'react';
 import { Container, Header } from 'semantic-ui-react';
 
-import TextBox  from './elements/TextBox';
-import Like     from './elements/Like';
-import MetaData from './elements/Meta';
-import Image    from './elements/Image';
-import Link from 'components/elements/Link';
+import TextBox  from 'components/shared/elements/TextBox';
+import Like     from 'components/shared/elements/Like';
+import MetaData from 'components/shared/elements/Meta';
+import Image    from 'components/shared/elements/Image';
+import Link from 'components/shared/elements/Link';
 import { postsPath } from 'helpers/routes';
 
 const BlogItem = ({ id, title, image, text, meta, like }) => {

@@ -27,7 +27,7 @@ const Pagination = ({ activeItem, pageNumberClick, pageNumbers }) => {
 Pagination.propTypes = {
   activeItem: PropTypes.string,
   pageNumberClick: PropTypes.func,
-  pageNumbers: PropTypes.array
+  pageNumbers: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Pagination;
