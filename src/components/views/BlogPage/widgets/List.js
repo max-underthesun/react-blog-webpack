@@ -1,7 +1,7 @@
 import React, { DOM } from 'react';
 import { map } from 'lodash/collection';
 
-import BlogItem from './Item';
+import BlogItem from 'components/shared/widgets/BlogItem';
 
 const BlogList = ({ items, like }) => (
   DOM.div(
