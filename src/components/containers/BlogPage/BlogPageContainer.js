@@ -3,6 +3,7 @@ import update from 'immutability-helper';
 import { bind } from 'lodash';
 import request from 'superagent';
 
+import { POSTS_PER_PAGE } from 'constants/Pagination';
 import BlogPage from 'components/views/BlogPage/BlogPage';
 
 class BlogPageContainer extends React.Component {
@@ -44,8 +45,8 @@ class BlogPageContainer extends React.Component {
     const paginated = {};
 
     for (let i = 0; k <= items.length; i++) {
-      paginated[(i + 1).toString()] = items.slice(k, k + 2);
-      k = k + 2;
+      paginated[(i + 1).toString()] = items.slice(k, k + POSTS_PER_PAGE);
+      k = k + POSTS_PER_PAGE;
     }
 
     return paginated;
