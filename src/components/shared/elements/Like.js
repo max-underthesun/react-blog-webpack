@@ -22,14 +22,27 @@ class Like extends React.Component {
 
 const LikeBox = (props) => (
   DOM.div(
-    { style: likeBoxStyle },
+    // { style: likeBoxStyle },
+    { className: 'like-box' },
     React.createElement(
       Button,
-      assign(
-        { onClick: props.handleClick },
-        likeButtonStyle,
-        { label: assign({ content: props.count }, likeLabelStyle) }
-      )
+      // assign(
+      //   { onClick: props.handleClick },
+      //   likeButtonAttributes,
+      //   { label: assign({ content: props.count }, likeLabelAttributes) }
+      // )
+      {
+        onClick: props.handleClick,
+        color: 'grey',
+        content: 'Like',
+        icon: 'thumbs up',
+        label: {
+          content: props.count,
+          basic: true,
+          color: 'grey',
+          pointing: 'left'
+        }
+      }
     )
   )
 );
@@ -40,20 +53,20 @@ Like.propTypes = {
   meta: PropTypes.object.isRequired
 };
 
-const likeBoxStyle = {
-  margin: '25px', marginLeft: '15px', marginTop: '50px'
-};
+// const likeBoxStyle = {
+//   margin: '25px', marginLeft: '15px', marginTop: '50px'
+// };
 
-const likeButtonStyle = {
-  color: 'grey',
-  content: 'Like',
-  icon: 'thumbs up',
-};
-
-const likeLabelStyle = {
-  basic: true,
-  color: 'grey',
-  pointing: 'left'
-};
+// const likeButtonAttributes = {
+//   color: 'grey',
+//   content: 'Like',
+//   icon: 'thumbs up'
+// };
+//
+// const likeLabelAttributes = {
+//   basic: true,
+//   color: 'grey',
+//   pointing: 'left'
+// };
 
 export default Like;

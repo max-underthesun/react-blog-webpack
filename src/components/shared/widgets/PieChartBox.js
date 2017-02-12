@@ -7,10 +7,12 @@ import PieChart from './PieChart';
 const PieChartBox = (props) => (
   React.createElement(
     Container,
-    { style: chartContainerStyle },
+    // { style: chartContainerStyle },
+    { className: 'chart-container' },
     React.createElement(
       Header,
-      { as: 'h2', style: headerStyle },
+      // { as: 'h2', style: headerStyle },
+      { as: 'h2', className: 'chart-header' },
       'Likes Chart'
     ),
     React.createElement(
@@ -25,16 +27,16 @@ PieChartBox.propTypes = {
 };
 
 
-const headerStyle = {
-  margin: '25px',
-  marginTop: '30px',
-  color: '#444',
-};
+// const headerStyle = {
+//   margin: '25px',
+//   marginTop: '30px',
+//   color: '#444',
+// };
 
-const chartContainerStyle = {
-  margin: '10px',
-  backgroundColor: '#888',
-  padding: '15px'
-};
+// const chartContainerStyle = {
+//   margin: '10px',
+//   backgroundColor: '#888',
+//   padding: '15px'
+// };
 
 export default PieChartBox;

@@ -1,4 +1,5 @@
 import React, { DOM, PropTypes } from 'react';
+
 import { Container, Header } from 'semantic-ui-react';
 
 import TextBox  from 'components/shared/elements/TextBox';
@@ -11,12 +12,15 @@ import { postsPath } from 'helpers/routes';
 const BlogItem = ({ id, title, image, text, meta, like }) => (
   React.createElement(
     Container,
-    { style: blogItemStyle.outerWrapper, text: true },
+    // { style: blogItemStyle.outerWrapper, text: true },
+    { className: 'blog-item-container', text: true },
     DOM.div(
-      { style: blogItemStyle.postWrapper, key: 'mainBlock' },
+      // { style: blogItemStyle.postWrapper, key: 'mainBlock' },
+      { className: 'blog-item', key: 'mainBlock' },
       React.createElement(
         Header,
-        { as: 'h2', style: headerStyle},
+        // { as: 'h2', style: headerStyle},
+        { as: 'h2', className: 'blog-item-header'},
         React.createElement(
           Link,
           { to: postsPath(id)},
@@ -50,22 +54,22 @@ BlogItem.defaultProps = {
   meta: {}
 };
 
-const blogItemStyle = {
-  outerWrapper: {
-    backgroundColor: '#ccc',
-    margin: '10px',
-    padding: '10px'
-  },
-  postWrapper: {
-    margin: '10px',
-    padding: '10px'
-  }
-};
+// const blogItemStyle = {
+//   outerWrapper: {
+//     backgroundColor: '#ccc',
+//     margin: '10px',
+//     padding: '10px'
+//   },
+//   postWrapper: {
+//     margin: '10px',
+//     padding: '10px'
+//   }
+// };
 
-const headerStyle = {
-  margin: '15px',
-  marginTop: '20px',
-  color: '#666',
-};
+// const headerStyle = {
+//   margin: '15px',
+//   marginTop: '20px',
+//   color: '#666',
+// };
 
 export default BlogItem;
