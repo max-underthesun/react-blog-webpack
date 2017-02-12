@@ -41,7 +41,7 @@ Like.propTypes = {
 };
 
 const likeBoxStyle = {
-  margin: '25px'
+  margin: '25px', marginLeft: '15px', marginTop: '50px'
 };
 
 const likeButtonStyle = {
