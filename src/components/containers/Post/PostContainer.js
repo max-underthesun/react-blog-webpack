@@ -3,7 +3,7 @@ import request from 'superagent';
 
 import { postsPath } from 'helpers/routes';
 import { SERVER_URL } from 'constants/ServerUrl';
-import Post from 'components/views/Post/Post';
+import Post from 'components/views/Post';
 
 class PostContainer extends React.Component {
   constructor(props) {

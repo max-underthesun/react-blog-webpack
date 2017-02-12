@@ -5,7 +5,7 @@ import request from 'superagent';
 
 import { POSTS_PER_PAGE } from 'constants/Pagination';
 import { SERVER_URL } from 'constants/ServerUrl';
-import BlogPage from 'components/views/BlogPage/BlogPage';
+import BlogPage from 'components/views/BlogPage';
 
 class BlogPageContainer extends React.Component {
   constructor(props) {

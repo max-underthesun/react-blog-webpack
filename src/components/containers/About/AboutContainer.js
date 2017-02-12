@@ -4,7 +4,7 @@ import request from 'superagent';
 
 import { SERVER_URL } from 'constants/ServerUrl';
 import { aboutPath } from 'helpers/routes';
-import About from 'components/views/About/About';
+import About from 'components/views/About';
 
 class AboutContainer extends React.Component {
   constructor(props) {
