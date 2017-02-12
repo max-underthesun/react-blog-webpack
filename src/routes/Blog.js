@@ -2,7 +2,7 @@ import MainLayout from 'components/layouts/MainLayout';
 import BlogPageContainer from 'components/containers/BlogPage/BlogPageContainer';
 import PostContainer from 'components/containers/Post/PostContainer';
 import AboutContainer from 'components/containers/About/AboutContainer';
-import { postsPath } from 'helpers/routes';
+import { postsPath, aboutPath } from 'helpers/routes';
 
 const Index = {
   path: '/',
@@ -15,7 +15,8 @@ const PostRoute = {
 };
 
 const AboutRoute = {
-  path: '/about',
+  path: aboutPath(),
+  // path: '/about',
   component: AboutContainer
 };
 

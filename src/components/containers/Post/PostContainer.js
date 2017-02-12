@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import request from 'superagent';
 
+import { postsPath } from 'helpers/routes';
+import { SERVER_URL } from 'constants/ServerUrl';
 import Post from 'components/views/Post/Post';
 
 class PostContainer extends React.Component {
@@ -14,9 +16,9 @@ class PostContainer extends React.Component {
   }
 
   fetchPost() {
-    const id = this.props.params.id;
+    const { id } = this.props.params;
     request.get(
-      `http://localhost:3001/posts/${id}`,
+      `${SERVER_URL}${postsPath(id)}`,
       {},
       (err, res) => this.setState({ item: res.body })
     );
