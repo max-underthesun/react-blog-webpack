@@ -33,7 +33,6 @@ MetaData.defaultProps = {
 
 const MetaBox = ({ author, createdAt, updatedAt }) => (
   DOM.div(
-    // { style: metaBoxStyle },
     { className: 'meta-box' },
     React.createElement(MetaAuthor, { value: author }),
     React.createElement(MetaDate, { title: 'Created', value: createdAt }),
@@ -45,9 +44,7 @@ const MetaBox = ({ author, createdAt, updatedAt }) => (
 
 const MetaDate = (props) => (
   DOM.div(
-    // { style: metaDateStyle.outerWrapper },
     { className: 'meta-date-box' },
-    // DOM.span({ style: metaDateStyle.title }, `${props.title}: `),
     DOM.span({ className: 'meta-date-title' }, `${props.title}: `),
     DOM.span(null, `${props.value}`)
   )
@@ -55,26 +52,9 @@ const MetaDate = (props) => (
 
 const MetaAuthor = (props) => (
   DOM.div(
-    // { style: metaAuthorStyle },
     { className: 'meta-author-box' },
     DOM.span(null, `${props.value}`)
   )
 );
-
-// const metaBoxStyle = {
-//   margin: '15px',
-//   padding: '10px',
-//   backgroundColor: '#ddd'
-// };
-
-// const metaAuthorStyle = {
-//   fontSize: '1em',
-//   fontWeight: 'bold'
-// };
-
-// const metaDateStyle = {
-//   outerWrapper: { fontSize: '0.8em' },
-//   title: { color: 'grey'}
-// };
 
 export default MetaData;

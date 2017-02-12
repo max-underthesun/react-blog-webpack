@@ -1,5 +1,5 @@
 import React, { DOM, PropTypes } from 'react';
-import { bind, assign } from 'lodash';
+import { bind } from 'lodash';
 import { Button } from 'semantic-ui-react';
 
 class Like extends React.Component {
@@ -22,15 +22,9 @@ class Like extends React.Component {
 
 const LikeBox = (props) => (
   DOM.div(
-    // { style: likeBoxStyle },
     { className: 'like-box' },
     React.createElement(
       Button,
-      // assign(
-      //   { onClick: props.handleClick },
-      //   likeButtonAttributes,
-      //   { label: assign({ content: props.count }, likeLabelAttributes) }
-      // )
       {
         onClick: props.handleClick,
         color: 'grey',
@@ -52,21 +46,5 @@ Like.propTypes = {
   like: PropTypes.func.isRequired,
   meta: PropTypes.object.isRequired
 };
-
-// const likeBoxStyle = {
-//   margin: '25px', marginLeft: '15px', marginTop: '50px'
-// };
-
-// const likeButtonAttributes = {
-//   color: 'grey',
-//   content: 'Like',
-//   icon: 'thumbs up'
-// };
-//
-// const likeLabelAttributes = {
-//   basic: true,
-//   color: 'grey',
-//   pointing: 'left'
-// };
 
 export default Like;
