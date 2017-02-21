@@ -4,7 +4,8 @@ import { bind } from 'lodash';
 import request from 'superagent';
 
 import { POSTS_PER_PAGE } from 'constants/Pagination';
-import BlogPage from 'components/views/BlogPage/BlogPage';
+import { SERVER_URL } from 'constants/ServerUrl';
+import BlogPage from 'components/views/BlogPage';
 
 class BlogPageContainer extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class BlogPageContainer extends React.Component {
 
   fetchPosts() {
     request.get(
-      'http://localhost:3001',
+      `${SERVER_URL}`,
       {},
       (err, res) => this.setState({ items: res.body })
     );

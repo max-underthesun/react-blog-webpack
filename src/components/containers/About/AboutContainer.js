@@ -2,7 +2,9 @@ import React from 'react';
 
 import request from 'superagent';
 
-import About from 'components/views/About/About';
+import { SERVER_URL } from 'constants/ServerUrl';
+import { aboutPath } from 'helpers/routes';
+import About from 'components/views/About';
 
 class AboutContainer extends React.Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class AboutContainer extends React.Component {
 
   fetchAbout() {
     request.get(
-      'http://localhost:3001/about',
+      `${SERVER_URL}${aboutPath()}`,
       {},
       (err, res) => this.setState({ info: res.body })
     );

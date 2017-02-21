@@ -24,18 +24,12 @@ class PieChartContainer extends React.Component {
   }
 
   render() {
-    return DOM.div({ ref: 'chart', style: chartDivStyle });
+    return DOM.div({ ref: 'chart', className: 'chart-inner-container' });
   }
 }
 
 PieChartContainer.propTypes = {
   columns: PropTypes.array.isRequired,
-};
-
-
-const chartDivStyle = {
-  backgroundColor: '#bbb',
-  margin: '25px'
 };
 
 export default PieChartContainer;
