@@ -1,10 +1,10 @@
 import React, { DOM, PropTypes } from 'react';
-import { assign } from 'lodash';
+
 import { Image as semanticImage } from 'semantic-ui-react';
 
 const Image = ({ src, width, height }) => (
   DOM.div(
-    { style: assign({ minWidth: width, minHeight: height }, imageStyle) },
+    { style: { minWidth: width, minHeight: height }, className: 'image-box' },
     React.createElement(
       semanticImage,
       { src, fluid: true }
@@ -19,13 +19,9 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-  src: 'dist/images/no_image.png',
+  src: '/dist/images/no_image.png',
   width: '250px',
   height: '200px'
-};
-
-const imageStyle = {
-  margin: '15px',
 };
 
 export default Image;
