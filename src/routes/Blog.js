@@ -4,19 +4,27 @@ import PostContainer from 'components/containers/Post/PostContainer';
 import AboutContainer from 'components/containers/About/AboutContainer';
 import { postsPath, aboutPath } from 'helpers/routes';
 
+import { fetchPosts } from 'actions/PostsAction';
+import { fetchPost } from 'actions/PostAction';
+
 const Index = {
   path: '/',
-  component: BlogPageContainer
+  component: BlogPageContainer,
+  prepareData: (store) => {
+    store.dispatch(fetchPosts);
+  }
 };
 
 const PostRoute = {
   path: postsPath(),
-  component: PostContainer
+  component: PostContainer,
+  prepareData: (store, query, params) => {
+    store.dispatch(fetchPost(params.id));
+  }
 };
 
 const AboutRoute = {
   path: aboutPath(),
-  // path: '/about',
   component: AboutContainer
 };
 
