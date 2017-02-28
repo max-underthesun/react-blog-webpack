@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Router, browserHistory, match } from 'react-router';
 import { Provider } from 'react-redux';
 
@@ -6,13 +7,20 @@ import routes from 'routes';
 import store from 'store';
 import prepareData from 'helpers/routes/prepareData';
 
-browserHistory.listenBefore(function(location) {
-  match({ history, location, routes }, (error, redirect, state) => {
+import DevTools from 'components/containers/DevToolsContainer';
+
+function historyCb(location) {
+  match({ location, routes }, (error, redirect, state) => {
     if (!error &&  !redirect) {
       prepareData(store, state);
     }
   });
-});
+
+  return true;
+}
+
+browserHistory.listenBefore(historyCb);
+historyCb(window.location);
 
 const App = () => (
   React.createElement(
@@ -23,6 +31,14 @@ const App = () => (
       { history: browserHistory, routes }
     )
   )
+);
+
+ReactDOM.render(
+  React.createElement(
+    DevTools,
+    { store }
+  ),
+  document.getElementById('devtools')
 );
 
 export default App;

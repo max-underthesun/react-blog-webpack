@@ -11,7 +11,7 @@ const Index = {
   path: '/',
   component: BlogPageContainer,
   prepareData: (store) => {
-    store.dispatch(fetchPosts);
+    store.dispatch(fetchPosts());
   }
 };
 
