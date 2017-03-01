@@ -1,6 +1,9 @@
 import MainLayout from 'components/layouts/MainLayout';
-import BlogPageContainer from 'components/containers/BlogPage/BlogPageContainer';
-import PostContainer from 'components/containers/Post/PostContainer';
+// import BlogPageContainer from 'components/containers/BlogPage/BlogPageContainer';
+// import PostContainer from 'components/containers/Post/PostContainer';
+import PostsContainer from 'components/containers/PostsContainer';
+import PostContainer from 'components/containers/PostContainer';
+
 import AboutContainer from 'components/containers/About/AboutContainer';
 import { postsPath, aboutPath } from 'helpers/routes';
 
@@ -9,7 +12,8 @@ import { fetchPost } from 'actions/PostAction';
 
 const Index = {
   path: '/',
-  component: BlogPageContainer,
+  // component: BlogPageContainer,
+  component: PostsContainer,
   prepareData: (store) => {
     store.dispatch(fetchPosts());
   }

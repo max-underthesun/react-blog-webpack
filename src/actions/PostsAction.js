@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-import { API_ROOT } from 'constants/API';
+import { SERVER_URL } from 'constants/ServerUrl';
 import * as types from 'constants/actionTypes/PostsActionTypes';
 
 const requestPosts = () => ({
@@ -21,7 +21,7 @@ export function fetchPosts() {
     dispatch(requestPosts());
 
     return request
-      .get(`${API_ROOT}/`)
+      .get(`${SERVER_URL}/`)
       .end(
         (err, response) => {
           err ? dispatch(errorPosts()) : dispatch(receivePosts(response.body));
