@@ -8,6 +8,7 @@ const stateToProps = (state) => ({
   items: state.posts.entries,
   isFetching: state.posts.isFetching,
   error: state.posts.error,
+  activeItem: state.posts.activeItem
   // itemsCurrent: state.posts.entries[1]
   // itemsCurrent: state.posts.entries.slice(0, 2)
 });

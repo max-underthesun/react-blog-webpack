@@ -4,7 +4,7 @@ import { bind } from 'lodash';
 // import request from 'superagent';
 
 import BlogItem from 'components/shared/widgets/BlogItem';
-import { addLike } from 'actions/PostsAction';
+import { addLike, setPage } from 'actions/PostsAction';
 import { POSTS_PER_PAGE } from 'constants/Pagination';
 // import { SERVER_URL } from 'constants/ServerUrl';
 import BlogPage from 'components/views/BlogPage';
@@ -13,8 +13,7 @@ class BlogPageContainer extends React.Component {
   constructor(props) {
     super(props);
     // this.state = { items: [], activeItem: '1' };
-    this.state = { activeItem: '1' };
-
+    // this.state = { activeItem: '1' };
     this.like = bind(this.like, this);
     this.pageNumberClick = bind(this.pageNumberClick, this);
     this.paginate = bind(this.paginate, this);
@@ -61,12 +60,15 @@ class BlogPageContainer extends React.Component {
   }
 
   pageNumberClick(e, { name }) {
-    this.setState({ activeItem: name });
+    // this.setState({ activeItem: name });
+    const { dispatch } = this.props;
+    dispatch(setPage(name));
   }
 
   render() {
     // const { items, activeItem } = this.state;
-    const { activeItem } = this.state;
+    // const { activeItem } = this.state;
+    const { activeItem } = this.props;
     const { items } = this.props;
     const itemsPaginated = this.paginate(items);
     const pageNumbers = Object.keys(itemsPaginated);

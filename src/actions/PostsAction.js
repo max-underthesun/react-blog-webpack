@@ -34,3 +34,8 @@ export const addLike = (index) => ({
   type: types.ADD_LIKE,
   index
 });
+
+export const setPage = (activeItem) => ({
+  type: types.SET_PAGE,
+  activeItem
+});

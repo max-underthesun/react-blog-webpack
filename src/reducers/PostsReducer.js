@@ -6,7 +6,8 @@ import * as types from 'constants/actionTypes/PostsActionTypes';
 const initialState = {
   isFetching: false,
   error: false,
-  entries: []
+  entries: [],
+  activeItem: 1
 };
 
 function addLike(entries, index) {
@@ -28,6 +29,8 @@ export default function(state = initialState, action) {
       return assign(
         {}, state, { entries: addLike(state.entries, action.index) }
       );
+    case types.SET_PAGE:
+      return assign({}, state, { activeItem: action.activeItem });
     default:
       return state;
   }
