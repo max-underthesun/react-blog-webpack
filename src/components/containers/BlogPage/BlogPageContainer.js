@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 // import update from 'immutability-helper';
 import { bind } from 'lodash';
 // import request from 'superagent';
 
+import BlogItem from 'components/shared/widgets/BlogItem';
 import { addLike } from 'actions/PostsAction';
 import { POSTS_PER_PAGE } from 'constants/Pagination';
 // import { SERVER_URL } from 'constants/ServerUrl';
@@ -33,9 +34,8 @@ class BlogPageContainer extends React.Component {
     //     { [index]: { meta: { count: { $apply(x) { return x + 1; } } } } }
     //   )
     // });
-    console.log(this.props);
+    // console.log(this.props);
     const { items, dispatch } = this.props;
-    // const { items } = this.props.items;
     const index = items.findIndex(function(obj) { return obj.id == id; });
     dispatch(addLike(index));
   }
@@ -83,5 +83,11 @@ class BlogPageContainer extends React.Component {
     );
   }
 }
+
+BlogPageContainer.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
+  dispatch: PropTypes.func
+};
+
 
 export default BlogPageContainer;
