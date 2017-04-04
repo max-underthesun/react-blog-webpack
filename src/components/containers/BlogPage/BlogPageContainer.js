@@ -88,7 +88,8 @@ class BlogPageContainer extends React.Component {
 
 BlogPageContainer.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  activeItem: PropTypes.string
 };
 
 

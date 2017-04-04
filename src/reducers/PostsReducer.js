@@ -7,7 +7,7 @@ const initialState = {
   isFetching: false,
   error: false,
   entries: [],
-  activeItem: 1
+  activeItem: '1'
 };
 
 function addLike(entries, index) {
