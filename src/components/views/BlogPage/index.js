@@ -8,7 +8,8 @@ import PieChartBox from 'components/shared/widgets/PieChartBox';
 import BlogList from './widgets/List';
 
 const BlogPage = (
-  { items, itemsCurrent = items, like, pageNumberClick, activeItem, pageNumbers }
+  // { items, itemsCurrent = items, like, pageNumberClick, currentPage, pageNumbers }
+  { items, itemsCurrent, like, pageNumberClick, currentPage, pageNumbers }
 ) => (
   React.createElement(
     Grid,
@@ -21,7 +22,7 @@ const BlogPage = (
         { width: 10 },
         pageNumbers && React.createElement(
           Pagination,
-          { pageNumberClick, activeItem, pageNumbers }
+          { pageNumberClick, currentPage, pageNumbers }
         ),
         React.createElement(
           BlogList, { items: itemsCurrent, like }
@@ -44,7 +45,7 @@ BlogPage.propTypes = {
   like: PropTypes.func,
   itemsCurrent: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
   pageNumberClick: PropTypes.func,
-  activeItem: PropTypes.string,
+  currentPage: PropTypes.string,
   pageNumbers: PropTypes.arrayOf(PropTypes.string)
 };
 

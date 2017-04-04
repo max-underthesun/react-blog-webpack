@@ -12,8 +12,8 @@ import BlogPage from 'components/views/BlogPage';
 class BlogPageContainer extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { items: [], activeItem: '1' };
-    // this.state = { activeItem: '1' };
+    // this.state = { items: [], currentPage: '1' };
+    // this.state = { currentPage: '1' };
     this.like = bind(this.like, this);
     this.pageNumberClick = bind(this.pageNumberClick, this);
     this.paginate = bind(this.paginate, this);
@@ -60,15 +60,17 @@ class BlogPageContainer extends React.Component {
   }
 
   pageNumberClick(e, { name }) {
-    // this.setState({ activeItem: name });
+    // this.setState({ currentPage: name });
     const { dispatch } = this.props;
     dispatch(setPage(name));
   }
 
+  // [1, 2].forEach(function(i) { aa.push(n[i]); })
+
   render() {
-    // const { items, activeItem } = this.state;
-    // const { activeItem } = this.state;
-    const { activeItem } = this.props;
+    // const { items, currentPage } = this.state;
+    // const { currentPage } = this.state;
+    const { currentPage } = this.props;
     const { items } = this.props;
     const itemsPaginated = this.paginate(items);
     const pageNumbers = Object.keys(itemsPaginated);
@@ -78,8 +80,8 @@ class BlogPageContainer extends React.Component {
         items,
         like: this.like,
         pageNumberClick: this.pageNumberClick,
-        activeItem,
-        itemsCurrent: itemsPaginated[activeItem],
+        currentPage,
+        itemsCurrent: itemsPaginated[currentPage],
         pageNumbers
       }
     );
@@ -89,7 +91,7 @@ class BlogPageContainer extends React.Component {
 BlogPageContainer.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
   dispatch: PropTypes.func,
-  activeItem: PropTypes.string
+  currentPage: PropTypes.string
 };
 
 
