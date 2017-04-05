@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 // import Posts from 'components/views/BlogPage';
-import BlogPageContainer from 'components/containers/BlogPage/BlogPageContainer';
+// import BlogPageContainer from 'components/containers/BlogPage/BlogPageContainer';
+import BlogPage from 'components/views/BlogPage';
 
 
 const stateToProps = (state) => ({
@@ -14,4 +15,5 @@ const stateToProps = (state) => ({
 });
 
 // export default connect(stateToProps)(Posts);
-export default connect(stateToProps)(BlogPageContainer);
+// export default connect(stateToProps)(BlogPageContainer);
+export default connect(stateToProps)(BlogPage);

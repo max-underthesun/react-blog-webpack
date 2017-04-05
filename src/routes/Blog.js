@@ -10,12 +10,30 @@ import { postsPath, aboutPath } from 'helpers/routes';
 import { fetchPosts } from 'actions/PostsAction';
 import { fetchPost } from 'actions/PostAction';
 
+import { addLike, setPage } from 'actions/PostsAction';
+
 const Index = {
   path: '/',
   // component: BlogPageContainer,
   component: PostsContainer,
-  prepareData: (store) => {
-    store.dispatch(fetchPosts());
+  prepareData: (store, query, params) => {
+  // prepareData: (store) => {
+    // if (get(store.getState(), 'posts.items', []).length == 0) {
+    //   store.dispatch(fetchPosts());
+    // }
+
+    // console.log(store.getState().posts.entries);
+    console.log(query.page);
+
+    if (store.getState().posts.entries.length === 0) {
+      store.dispatch(fetchPosts());
+    }
+
+    if (query.page) {
+      store.dispatch(setPage(query.page));
+    }
+
+    // store.dispatch(fetchPosts());
   }
 };
 
