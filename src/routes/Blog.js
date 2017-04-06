@@ -4,7 +4,8 @@ import MainLayout from 'components/layouts/MainLayout';
 import PostsContainer from 'components/containers/PostsContainer';
 import PostContainer from 'components/containers/PostContainer';
 
-import AboutContainer from 'components/containers/About/AboutContainer';
+// import AboutContainer from 'components/containers/About/AboutContainer';
+import AboutContainer from 'components/containers/AboutContainer';
 import { postsPath, aboutPath } from 'helpers/routes';
 
 // import { fetchPosts } from 'actions/PostsAction';
