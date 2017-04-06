@@ -1,22 +1,38 @@
 import MainLayout from 'components/layouts/MainLayout';
-import BlogPageContainer from 'components/containers/BlogPage/BlogPageContainer';
-import PostContainer from 'components/containers/Post/PostContainer';
-import AboutContainer from 'components/containers/About/AboutContainer';
+import PostsContainer from 'components/containers/PostsContainer';
+import PostContainer from 'components/containers/PostContainer';
+import AboutContainer from 'components/containers/AboutContainer';
 import { postsPath, aboutPath } from 'helpers/routes';
+import { fetchPosts, setPage } from 'actions/PostsAction';
+import { fetchPost } from 'actions/PostAction';
 
 const Index = {
   path: '/',
-  component: BlogPageContainer
+  component: PostsContainer,
+  prepareData: (store, query) => {
+    const posts = store.getState().posts.entries;
+    if (posts.length === 0) {
+      store.dispatch(fetchPosts());
+    }
+    else if (posts.length !== 0 && !query.page) {
+      store.dispatch(setPage('1'));
+    }
+    else if (posts.length !== 0 && query.page) {
+      store.dispatch(setPage(query.page));
+    }
+  }
 };
 
 const PostRoute = {
   path: postsPath(),
-  component: PostContainer
+  component: PostContainer,
+  prepareData: (store, query, params) => {
+    store.dispatch(fetchPost(params.id));
+  }
 };
 
 const AboutRoute = {
   path: aboutPath(),
-  // path: '/about',
   component: AboutContainer
 };
 

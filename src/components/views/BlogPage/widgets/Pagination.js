@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 import { Menu } from 'semantic-ui-react';
 
-const Pagination = ({ activeItem, pageNumberClick, pageNumbers }) => {
+const Pagination = ({ currentPage, pageNumberClick, pageNumbers }) => {
   const menuItems = [];
   for (let i = 0; i < pageNumbers.length; i++) {
     menuItems.push(
@@ -10,7 +10,7 @@ const Pagination = ({ activeItem, pageNumberClick, pageNumbers }) => {
         Menu.Item,
         { key: (i).toString(),
           name: pageNumbers[i],
-          active: (activeItem === pageNumbers[i]),
+          active: (currentPage === pageNumbers[i]),
           onClick: pageNumberClick
         }
       )
@@ -25,7 +25,7 @@ const Pagination = ({ activeItem, pageNumberClick, pageNumbers }) => {
 };
 
 Pagination.propTypes = {
-  activeItem: PropTypes.string,
+  currentPage: PropTypes.string,
   pageNumberClick: PropTypes.func,
   pageNumbers: PropTypes.arrayOf(PropTypes.string)
 };
