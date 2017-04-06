@@ -26,14 +26,14 @@ const Index = {
 
     // console.log(store.getState().posts.entries);
     // console.log(query.page);
-
+    const posts = store.getState().posts.entries;
     // if (store.getState().posts.entries.length === 0 && !query.page) {
-    if (store.getState().posts.entries.length === 0) {
+    if (posts.length === 0) {
       store.dispatch(fetchPosts());
       // store.dispatch(setPage('1'));
-    } else if (store.getState().posts.entries.length !== 0 && !query.page) {
+    } else if (posts.length !== 0 && !query.page) {
       store.dispatch(setPage('1'));
-    } else if (query.page) {
+    } else if (posts.length !== 0 && query.page) {
       store.dispatch(setPage(query.page));
     }
     // else {

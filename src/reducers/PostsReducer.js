@@ -8,8 +8,8 @@ const initialState = {
   isFetching: false,
   error: false,
   entries: [],
-  normilized: {},
-  paginated: {},
+  // normilized: {},
+  // paginated: {},
   currentPage: '1'
 };
 
