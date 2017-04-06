@@ -7,6 +7,8 @@ import BlogPage from 'components/views/BlogPage';
 
 const stateToProps = (state) => ({
   items: state.posts.entries,
+  // normilized: state.posts.normilized,
+  // paginated: state.posts.paginated,
   isFetching: state.posts.isFetching,
   error: state.posts.error,
   currentPage: state.posts.currentPage

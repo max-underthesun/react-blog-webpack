@@ -16,9 +16,9 @@ const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
 });
 
-const paginatePosts = () => ({
-  type: types.PAGINATE_POSTS
-});
+// const paginatePosts = () => ({
+//   type: types.PAGINATE_POSTS
+// });
 
 export function fetchPosts() {
   return (dispatch) => {
@@ -34,7 +34,8 @@ export function fetchPosts() {
           }
           else {
             dispatch(receivePosts(response.body));
-            dispatch(paginatePosts());
+            // dispatch(setPage('1'));
+            // dispatch(paginatePosts());
           }
         }
       );

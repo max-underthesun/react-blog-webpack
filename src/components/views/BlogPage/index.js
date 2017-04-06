@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { map } from 'lodash';
+// import { map } from 'lodash';
+import { map, bind } from 'lodash';
 import { Grid } from 'semantic-ui-react';
 
 import BlogItem from 'components/shared/widgets/BlogItem';
@@ -8,8 +9,9 @@ import PieChartBox from 'components/shared/widgets/PieChartBox';
 import BlogList from './widgets/List';
 
 
-import { bind } from 'lodash';
-import { addLike, setPage } from 'actions/PostsAction';
+// import { bind } from 'lodash';
+// import { addLike, setPage } from 'actions/PostsAction';
+import { addLike } from 'actions/PostsAction';
 import { POSTS_PER_PAGE } from 'constants/Pagination';
 import { browserHistory } from 'react-router';
 
@@ -19,6 +21,8 @@ class BlogPage extends React.Component {
     this.like = bind(this.like, this);
     this.pageNumberClick = bind(this.pageNumberClick, this);
     this.paginate = bind(this.paginate, this);
+
+    this.itemsCurrent = bind(this.itemsCurrent, this);
   }
 
   like(id) {
@@ -41,7 +45,7 @@ class BlogPage extends React.Component {
 
   pageNumberClick(e, { name }) {
     // this.setState({ currentPage: name });
-    const { dispatch } = this.props;
+    // const { dispatch } = this.props;
     // const { location } = this.props;
     // dispatch(setPage(name));
     // console.log(`${name}`)
@@ -56,16 +60,35 @@ class BlogPage extends React.Component {
 
   // [1, 2].forEach(function(i) { aa.push(n[i]); })
 
+  itemsCurrent(currentItemsIds, items) {
+    const itemsCurrent = [];
+    currentItemsIds.forEach(
+      function(id) { itemsCurrent.push(items[id]); }
+    );
+    return itemsCurrent;
+  }
+
   render() {
     // const { items, currentPage } = this.state;
     // const { currentPage } = this.state;
+    // console.log(this.props);
     const { currentPage } = this.props;
     const { items } = this.props;
+    // const { normilized } = this.props;
     const itemsPaginated = this.paginate(items);
     const pageNumbers = Object.keys(itemsPaginated);
     const pageNumberClick = this.pageNumberClick;
     const like = this.like;
     const itemsCurrent = itemsPaginated[currentPage];
+
+    // const { paginated } = this.props;
+    // console.log(paginated);
+    // const pageNumbers = Object.keys(paginated);
+    // console.log(pageNumbers);
+    // const currentItemsIds = paginated[currentPage];
+    // console.log(currentItemsIds);
+    // const itemsCurrent = this.itemsCurrent(currentItemsIds, normilized);
+
     return React.createElement(
       // React.createElement(
         Grid,
@@ -107,9 +130,6 @@ class BlogPage extends React.Component {
     );
   }
 }
-
-
-
 
 // const BlogPage = (
 //   // { items, itemsCurrent = items, like, pageNumberClick, currentPage, pageNumbers }
