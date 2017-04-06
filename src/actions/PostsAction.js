@@ -16,10 +16,6 @@ const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
 });
 
-// const paginatePosts = () => ({
-//   type: types.PAGINATE_POSTS
-// });
-
 export function fetchPosts() {
   return (dispatch) => {
     dispatch(requestPosts());
@@ -28,15 +24,7 @@ export function fetchPosts() {
       .get(`${SERVER_URL}/`)
       .end(
         (err, response) => {
-          // err ? dispatch(errorPosts()) : dispatch(receivePosts(response.body));
-          if (err) {
-            dispatch(errorPosts());
-          }
-          else {
-            dispatch(receivePosts(response.body));
-            // dispatch(setPage('1'));
-            // dispatch(paginatePosts());
-          }
+          err ? dispatch(errorPosts()) : dispatch(receivePosts(response.body));
         }
       );
   };
