@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router';
 import { map, bind } from 'lodash';
 import { Grid } from 'semantic-ui-react';
 
-import { POSTS_PER_PAGE } from 'constants/Pagination';
+// import { POSTS_PER_PAGE } from 'constants/Pagination';
 import BlogItem from 'components/shared/widgets/BlogItem';
 import Pagination from 'components/views/BlogPage/widgets/Pagination';
 import PieChartBox from 'components/shared/widgets/PieChartBox';
@@ -16,7 +16,7 @@ class BlogPage extends React.Component {
     super(props);
     // this.like = bind(this.like, this);
     this.pageNumberClick = bind(this.pageNumberClick, this);
-    this.paginate = bind(this.paginate, this);
+    // this.paginate = bind(this.paginate, this);
 
     this.itemsCurrent = bind(this.itemsCurrent, this);
   }
@@ -27,17 +27,17 @@ class BlogPage extends React.Component {
   //   dispatch(addLike(index));
   // }
 
-  paginate(items) {
-    let k = 0;
-    const paginated = {};
-
-    for (let i = 0; k <= items.length; i++) {
-      paginated[(i + 1).toString()] = items.slice(k, k + POSTS_PER_PAGE);
-      k = k + POSTS_PER_PAGE;
-    }
-
-    return paginated;
-  }
+  // paginate(items) {
+  //   let k = 0;
+  //   const paginated = {};
+  //
+  //   for (let i = 0; k <= items.length; i++) {
+  //     paginated[(i + 1).toString()] = items.slice(k, k + POSTS_PER_PAGE);
+  //     k = k + POSTS_PER_PAGE;
+  //   }
+  //
+  //   return paginated;
+  // }
 
   pageNumberClick(e, { name }) {
     browserHistory.push(`/?page=${name}`);
@@ -52,10 +52,12 @@ class BlogPage extends React.Component {
   }
 
   render() {
-    const { items, currentPage } = this.props;
+    // const { items, currentPage } = this.props;
+    const { items, currentPage, itemsPaginated } = this.props;
     const pageNumberClick = this.pageNumberClick;
     // const like = this.like;
-    const itemsPaginated = this.paginate(items);
+    // const itemsPaginated = this.paginate(items);
+    // const itemsPaginated = this.props.paginated;
     const pageNumbers = Object.keys(itemsPaginated);
     const itemsCurrent = itemsPaginated[currentPage];
 
@@ -93,6 +95,7 @@ class BlogPage extends React.Component {
 BlogPage.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
   // like: PropTypes.func,
+  itemsPaginated: PropTypes.object,
   itemsCurrent: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
   pageNumberClick: PropTypes.func,
   currentPage: PropTypes.string,
