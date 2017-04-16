@@ -15,13 +15,36 @@ function paginate(items) {
   return paginated;
 }
 
+// function itemsCurrent(currentItemsIds, items) {
+//   const itemsCurrent = [];
+//   currentItemsIds.forEach(
+//     function(id) { itemsCurrent.push(items[id]); }
+//   );
+//   return itemsCurrent;
+// }
 
-const stateToProps = (state) => ({
-  items: state.posts.entries,
-  isFetching: state.posts.isFetching,
-  error: state.posts.error,
-  itemsPaginated: paginate(state.posts.entries),
-  currentPage: state.posts.currentPage
-});
+// const stateToProps = (state, ownProps) => ({
+//   items: state.posts.entries,
+//   isFetching: state.posts.isFetching,
+//   error: state.posts.error,
+//   currentPage: state.posts.currentPage,
+//   itemsPaginated: paginate(state.posts.entries),
+//   itemsCurrent: ownProps.itemsPaginated[ownProps.currentPage]
+// });
+
+function stateToProps(state) {
+  const itemsPaginated = paginate(state.posts.entries);
+  const currentPage = state.posts.currentPage;
+  const itemsCurrent = itemsPaginated[currentPage];
+
+  return {
+    items: state.posts.entries,
+    isFetching: state.posts.isFetching,
+    error: state.posts.error,
+    currentPage,
+    itemsPaginated,
+    itemsCurrent
+  };
+}
 
 export default connect(stateToProps)(BlogPage);

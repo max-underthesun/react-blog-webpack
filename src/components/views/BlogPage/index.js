@@ -18,7 +18,7 @@ class BlogPage extends React.Component {
     this.pageNumberClick = bind(this.pageNumberClick, this);
     // this.paginate = bind(this.paginate, this);
 
-    this.itemsCurrent = bind(this.itemsCurrent, this);
+    // this.itemsCurrent = bind(this.itemsCurrent, this);
   }
 
   // like(id) {
@@ -36,30 +36,30 @@ class BlogPage extends React.Component {
   //     k = k + POSTS_PER_PAGE;
   //   }
   //
-  //   return paginated;
+  //   return , itemsCurrentpaginated;
   // }
 
   pageNumberClick(e, { name }) {
     browserHistory.push(`/?page=${name}`);
   }
 
-  itemsCurrent(currentItemsIds, items) {
-    const itemsCurrent = [];
-    currentItemsIds.forEach(
-      function(id) { itemsCurrent.push(items[id]); }
-    );
-    return itemsCurrent;
-  }
+  // itemsCurrent(currentItemsIds, items) {
+  //   const itemsCurrent = [];
+  //   currentItemsIds.forEach(
+  //     function(id) { itemsCurrent.push(items[id]); }
+  //   );
+  //   return itemsCurrent;
+  // }
 
   render() {
     // const { items, currentPage } = this.props;
-    const { items, currentPage, itemsPaginated } = this.props;
+    const { items, currentPage, itemsPaginated, itemsCurrent } = this.props;
     const pageNumberClick = this.pageNumberClick;
     // const like = this.like;
     // const itemsPaginated = this.paginate(items);
     // const itemsPaginated = this.props.paginated;
     const pageNumbers = Object.keys(itemsPaginated);
-    const itemsCurrent = itemsPaginated[currentPage];
+    // const itemsCurrent = itemsPaginated[currentPage];
 
     return React.createElement(
         Grid,
