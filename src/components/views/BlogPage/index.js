@@ -8,24 +8,24 @@ import BlogItem from 'components/shared/widgets/BlogItem';
 import Pagination from 'components/views/BlogPage/widgets/Pagination';
 import PieChartBox from 'components/shared/widgets/PieChartBox';
 import BlogList from './widgets/List';
-import { addLike } from 'actions/PostsAction';
+// import { addLike } from 'actions/PostsAction';
 
 
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-    this.like = bind(this.like, this);
+    // this.like = bind(this.like, this);
     this.pageNumberClick = bind(this.pageNumberClick, this);
     this.paginate = bind(this.paginate, this);
 
     this.itemsCurrent = bind(this.itemsCurrent, this);
   }
 
-  like(id) {
-    const { items, dispatch } = this.props;
-    const index = items.findIndex(function(obj) { return obj.id == id; });
-    dispatch(addLike(index));
-  }
+  // like(id) {
+  //   const { items, dispatch } = this.props;
+  //   const index = items.findIndex(function(obj) { return obj.id == id; });
+  //   dispatch(addLike(index));
+  // }
 
   paginate(items) {
     let k = 0;
@@ -54,7 +54,7 @@ class BlogPage extends React.Component {
   render() {
     const { items, currentPage } = this.props;
     const pageNumberClick = this.pageNumberClick;
-    const like = this.like;
+    // const like = this.like;
     const itemsPaginated = this.paginate(items);
     const pageNumbers = Object.keys(itemsPaginated);
     const itemsCurrent = itemsPaginated[currentPage];
@@ -73,7 +73,8 @@ class BlogPage extends React.Component {
               { pageNumberClick, currentPage, pageNumbers }
             ),
             React.createElement(
-              BlogList, { items: itemsCurrent, like }
+              // BlogList, { items: itemsCurrent, like }
+              BlogList, { items: itemsCurrent }
             )
           ),
           React.createElement(
@@ -91,7 +92,7 @@ class BlogPage extends React.Component {
 
 BlogPage.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
-  like: PropTypes.func,
+  // like: PropTypes.func,
   itemsCurrent: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
   pageNumberClick: PropTypes.func,
   currentPage: PropTypes.string,

@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 
 import BlogPage from 'components/views/BlogPage';
 
-
 const stateToProps = (state) => ({
   items: state.posts.entries,
   isFetching: state.posts.isFetching,

@@ -2,14 +2,15 @@ import React, { DOM, PropTypes } from 'react';
 
 import { Container, Header } from 'semantic-ui-react';
 
-import TextBox  from 'components/shared/elements/TextBox';
-import Like     from 'components/shared/elements/Like';
+import TextBox from 'components/shared/elements/TextBox';
+import Like from 'components/shared/elements/Like';
 import MetaData from 'components/shared/elements/Meta';
-import Image    from 'components/shared/elements/Image';
+import Image from 'components/shared/elements/Image';
 import Link from 'components/shared/elements/Link';
 import { postsPath } from 'helpers/routes';
 
-const BlogItem = ({ id, title, image, text, meta, like }) => (
+// const BlogItem = ({ id, title, image, text, meta, like }) => (
+const BlogItem = ({ id, title, image, text, meta, renderLike }) => (
   React.createElement(
     Container,
     { className: 'blog-item-container', text: true },
@@ -27,7 +28,9 @@ const BlogItem = ({ id, title, image, text, meta, like }) => (
       React.createElement(MetaData, meta),
       React.createElement(Image, image),
       React.createElement(TextBox, text),
-      like && React.createElement(Like, { meta, id, like })
+      // like && React.createElement(Like, { meta, id, like })
+      renderLike && React.createElement(Like, { meta, id })
+      // React.createElement(Like, { meta, id })
     )
   )
 );
@@ -35,7 +38,8 @@ const BlogItem = ({ id, title, image, text, meta, like }) => (
 BlogItem.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string.isRequired,
-  like: PropTypes.func,
+  renderLike: PropTypes.bool,
+  // like: PropTypes.func,
   // like: PropTypes.func.isRequired,
   image: PropTypes.shape(Image.propTypes).isRequired,
   text: PropTypes.shape(TextBox.propTypes).isRequired,
