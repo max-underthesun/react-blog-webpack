@@ -30,11 +30,6 @@ export function fetchPosts() {
   };
 }
 
-// export const addLike = (index) => ({
-//   type: types.ADD_LIKE,
-//   index
-// });
-
 export const addLike = (id) => ({
   type: types.ADD_LIKE,
   id
