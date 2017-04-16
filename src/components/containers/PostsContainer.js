@@ -36,13 +36,14 @@ function stateToProps(state) {
   const itemsPaginated = paginate(state.posts.entries);
   const currentPage = state.posts.currentPage;
   const itemsCurrent = itemsPaginated[currentPage];
+  const pageNumbers = Object.keys(itemsPaginated);
 
   return {
     items: state.posts.entries,
     isFetching: state.posts.isFetching,
     error: state.posts.error,
     currentPage,
-    itemsPaginated,
+    pageNumbers,
     itemsCurrent
   };
 }

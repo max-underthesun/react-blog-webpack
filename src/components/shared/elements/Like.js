@@ -48,7 +48,8 @@ const actionsToProps = (dispatch, ownProps) => ({
 //   }
 // }
 
-const LikeBox = (props) => (
+// const LikeBox = (props) => (
+const Like = (props) => (
   DOM.div(
     { className: 'like-box' },
     React.createElement(
@@ -105,7 +106,7 @@ const LikeBox = (props) => (
 
 // export default Like;
 // export default connect(stateToProps, actionsToProps)(LikeBox);
-export default connect(null, actionsToProps)(LikeBox);
+export default connect(null, actionsToProps)(Like);
 
 
     // import React, { DOM } from 'react';
