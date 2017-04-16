@@ -15,7 +15,7 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
     // this.like = bind(this.like, this);
-    this.pageNumberClick = bind(this.pageNumberClick, this);
+    // this.pageNumberClick = bind(this.pageNumberClick, this);
     // this.paginate = bind(this.paginate, this);
 
     // this.itemsCurrent = bind(this.itemsCurrent, this);
@@ -39,9 +39,9 @@ class BlogPage extends React.Component {
   //   return , itemsCurrentpaginated;
   // }
 
-  pageNumberClick(e, { name }) {
-    browserHistory.push(`/?page=${name}`);
-  }
+  // pageNumberClick(e, { name }) {
+  //   browserHistory.push(`/?page=${name}`);
+  // }
 
   // itemsCurrent(currentItemsIds, items) {
   //   const itemsCurrent = [];
@@ -54,7 +54,7 @@ class BlogPage extends React.Component {
   render() {
     // const { items, currentPage } = this.props;
     const { items, currentPage, itemsPaginated, itemsCurrent } = this.props;
-    const pageNumberClick = this.pageNumberClick;
+    // const pageNumberClick = this.pageNumberClick;
     // const like = this.like;
     // const itemsPaginated = this.paginate(items);
     // const itemsPaginated = this.props.paginated;
@@ -72,7 +72,8 @@ class BlogPage extends React.Component {
             { width: 10 },
             pageNumbers && React.createElement(
               Pagination,
-              { pageNumberClick, currentPage, pageNumbers }
+              // { pageNumberClick, currentPage, pageNumbers }
+              { currentPage, pageNumbers }
             ),
             React.createElement(
               // BlogList, { items: itemsCurrent, like }
