@@ -12,7 +12,6 @@ const Pagination = ({ currentPage, pageNumbers }) => {
         Link,
         {
           key: (i).toString(),
-          // to: `/?page=${i + 1}`
           to: pagePath(i + 1)
         },
         React.createElement(
