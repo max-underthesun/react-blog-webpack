@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { pagePath } from 'helpers/routes';
 
 import { Menu } from 'semantic-ui-react';
 import Link from 'components/shared/elements/Link';
@@ -11,7 +12,8 @@ const Pagination = ({ currentPage, pageNumbers }) => {
         Link,
         {
           key: (i).toString(),
-          to: `/?page=${i + 1}`
+          // to: `/?page=${i + 1}`
+          to: pagePath(i + 1)
         },
         React.createElement(
           Menu.Item,
