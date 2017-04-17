@@ -3,7 +3,7 @@ import React, { DOM, PropTypes } from 'react';
 import { Container, Header } from 'semantic-ui-react';
 
 import TextBox from 'components/shared/elements/TextBox';
-import Like from 'components/shared/elements/Like';
+import LikeContainer from 'components/containers/LikeContainer';
 import MetaData from 'components/shared/elements/Meta';
 import Image from 'components/shared/elements/Image';
 import Link from 'components/shared/elements/Link';
@@ -27,7 +27,7 @@ const BlogItem = ({ id, title, image, text, meta, renderLike }) => (
       React.createElement(MetaData, meta),
       React.createElement(Image, image),
       React.createElement(TextBox, text),
-      renderLike && React.createElement(Like, { meta, id })
+      renderLike && React.createElement(LikeContainer, { meta, id })
     )
   )
 );

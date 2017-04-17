@@ -1,13 +1,6 @@
 import React, { DOM } from 'react';
-import { connect } from 'react-redux';
 
 import { Button } from 'semantic-ui-react';
-
-import { addLike } from 'actions/PostsAction';
-
-const actionsToProps = (dispatch, ownProps) => ({
-  like: () => dispatch(addLike(ownProps.id))
-});
 
 const Like = (props) => (
   DOM.div(
@@ -30,4 +23,4 @@ const Like = (props) => (
   )
 );
 
-export default connect(null, actionsToProps)(Like);
+export default Like;
