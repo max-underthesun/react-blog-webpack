@@ -1,13 +1,17 @@
 import { assign } from 'lodash/object';
 import update from 'immutability-helper';
 
+import { POSTS_PER_PAGE } from 'constants/Pagination';
 import * as types from 'constants/actionTypes/PostsActionTypes';
 
 const initialState = {
   isFetching: false,
   error: false,
   entries: [],
-  currentPage: '1'
+  pagination: {
+    currentPage: '1',
+    postsPerPage: POSTS_PER_PAGE
+  }
 };
 
 function findIndex(items, id) {
@@ -35,7 +39,17 @@ export default function(state = initialState, action) {
         {}, state, { entries: addLike(state.entries, action.id) }
       );
     case types.SET_PAGE:
-      return assign({}, state, { currentPage: action.currentPage });
+      // return assign({}, state, { currentPage: action.currentPage });
+      return assign(
+        {},
+        state,
+        {
+          pagination: {
+            currentPage: action.currentPage,
+            postsPerPage: state.pagination.postsPerPage
+          }
+        }
+      );
     default:
       return state;
   }
