@@ -34,8 +34,3 @@ export const addLike = (id) => ({
   type: types.ADD_LIKE,
   id
 });
-
-// export const setPage = (currentPage) => ({
-//   type: types.SET_PAGE,
-//   currentPage
-// });
