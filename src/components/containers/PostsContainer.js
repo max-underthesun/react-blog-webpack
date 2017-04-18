@@ -26,9 +26,11 @@ function currentItems(items, currentPage, postsPerPage) {
 function stateToProps(state) {
   // const itemsPaginated = paginate(state.posts.entries);
   const items = state.posts.entries;
-  const postsPerPage = state.posts.pagination.postsPerPage;
+  // const postsPerPage = state.posts.pagination.postsPerPage;
+  const postsPerPage = state.pagination.postsPerPage;
   // const currentPage = state.posts.currentPage;
-  const currentPage = state.posts.pagination.currentPage;
+  // const currentPage = state.posts.pagination.currentPage;
+  const currentPage = state.pagination.currentPage;
   // const itemsCurrent = itemsPaginated[currentPage];
   const itemsCurrent = currentItems(items, currentPage, postsPerPage);
   // const pageNumbers = Object.keys(itemsPaginated);
