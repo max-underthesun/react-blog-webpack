@@ -19,7 +19,7 @@ const GoBackButton = () => (
             onClick: () => history.goBack(),
             inverted: true,
             color: 'orange',
-            floated: 'right'
+            floated: 'left'
           },
           'Back'
         )

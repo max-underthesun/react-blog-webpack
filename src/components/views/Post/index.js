@@ -10,7 +10,7 @@ const Post = ({ item }) => (
     {},
     item && React.createElement(
       BlogItem,
-      item
+      Object.assign(item, { renderLike: false })
     )
   )
 );

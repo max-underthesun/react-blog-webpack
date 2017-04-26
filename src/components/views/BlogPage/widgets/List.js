@@ -3,7 +3,7 @@ import { map } from 'lodash/collection';
 
 import BlogItem from 'components/shared/widgets/BlogItem';
 
-const BlogList = ({ items, like }) => (
+const BlogList = ({ items }) => (
   DOM.div(
     null,
     map(
@@ -11,7 +11,7 @@ const BlogList = ({ items, like }) => (
       (item) => (
         React.createElement(
           BlogItem,
-          Object.assign({ key: item.id }, item, { like })
+          Object.assign({ key: item.id }, item, { renderLike: true })
         )
       )
     )

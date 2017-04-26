@@ -30,12 +30,7 @@ export function fetchPosts() {
   };
 }
 
-export const addLike = (index) => ({
+export const addLike = (id) => ({
   type: types.ADD_LIKE,
-  index
-});
-
-export const setPage = (currentPage) => ({
-  type: types.SET_PAGE,
-  currentPage
+  id
 });

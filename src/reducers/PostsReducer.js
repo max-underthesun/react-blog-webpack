@@ -6,11 +6,15 @@ import * as types from 'constants/actionTypes/PostsActionTypes';
 const initialState = {
   isFetching: false,
   error: false,
-  entries: [],
-  currentPage: '1'
+  entries: []
 };
 
-function addLike(entries, index) {
+function findIndex(items, id) {
+  return items.findIndex(function(obj) { return obj.id == id; });
+}
+
+function addLike(entries, id) {
+  const index = findIndex(entries, id);
   return update(
     entries,
     { [index]: { meta: { count: { $apply(x) { return x + 1; } } } } }
@@ -27,10 +31,8 @@ export default function(state = initialState, action) {
       return assign({}, initialState, { entries: action.response });
     case types.ADD_LIKE:
       return assign(
-        {}, state, { entries: addLike(state.entries, action.index) }
+        {}, state, { entries: addLike(state.entries, action.id) }
       );
-    case types.SET_PAGE:
-      return assign({}, state, { currentPage: action.currentPage });
     default:
       return state;
   }

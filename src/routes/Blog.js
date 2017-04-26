@@ -3,7 +3,8 @@ import PostsContainer from 'components/containers/PostsContainer';
 import PostContainer from 'components/containers/PostContainer';
 import AboutContainer from 'components/containers/AboutContainer';
 import { postsPath, aboutPath } from 'helpers/routes';
-import { fetchPosts, setPage } from 'actions/PostsAction';
+import { fetchPosts } from 'actions/PostsAction';
+import { setPage } from 'actions/PaginationAction';
 import { fetchPost } from 'actions/PostAction';
 
 const Index = {
