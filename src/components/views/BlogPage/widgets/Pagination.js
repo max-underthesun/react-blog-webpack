@@ -1,18 +1,26 @@
 import React, { PropTypes } from 'react';
+import { pagePath } from 'helpers/routes';
 
 import { Menu } from 'semantic-ui-react';
+import Link from 'components/shared/elements/Link';
 
-const Pagination = ({ activeItem, pageNumberClick, pageNumbers }) => {
+const Pagination = ({ currentPage, pageNumbers }) => {
   const menuItems = [];
   for (let i = 0; i < pageNumbers.length; i++) {
     menuItems.push(
       React.createElement(
-        Menu.Item,
-        { key: (i).toString(),
-          name: pageNumbers[i],
-          active: (activeItem === pageNumbers[i]),
-          onClick: pageNumberClick
-        }
+        Link,
+        {
+          key: (i).toString(),
+          to: pagePath(i + 1)
+        },
+        React.createElement(
+          Menu.Item,
+          {
+            name: pageNumbers[i],
+            active: (currentPage === pageNumbers[i]),
+          }
+        )
       )
     );
   }
@@ -25,7 +33,7 @@ const Pagination = ({ activeItem, pageNumberClick, pageNumbers }) => {
 };
 
 Pagination.propTypes = {
-  activeItem: PropTypes.string,
+  currentPage: PropTypes.string,
   pageNumberClick: PropTypes.func,
   pageNumbers: PropTypes.arrayOf(PropTypes.string)
 };

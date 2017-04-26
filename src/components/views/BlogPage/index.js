@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { map } from 'lodash';
+
 import { Grid } from 'semantic-ui-react';
 
 import BlogItem from 'components/shared/widgets/BlogItem';
@@ -7,9 +8,7 @@ import Pagination from 'components/views/BlogPage/widgets/Pagination';
 import PieChartBox from 'components/shared/widgets/PieChartBox';
 import BlogList from './widgets/List';
 
-const BlogPage = (
-  { items, itemsCurrent, like, pageNumberClick, activeItem, pageNumbers }
-) => (
+const BlogPage = ({ items, currentPage, pageNumbers, itemsCurrent }) => (
   React.createElement(
     Grid,
     { divided: 'vertically' },
@@ -19,12 +18,13 @@ const BlogPage = (
       React.createElement(
         Grid.Column,
         { width: 10 },
-        React.createElement(
+        pageNumbers && React.createElement(
           Pagination,
-          { pageNumberClick, activeItem, pageNumbers }
+          { currentPage, pageNumbers }
         ),
         React.createElement(
-          BlogList, { items: itemsCurrent, like }
+          BlogList,
+          { items: itemsCurrent }
         )
       ),
       React.createElement(
@@ -41,10 +41,8 @@ const BlogPage = (
 
 BlogPage.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
-  like: PropTypes.func,
   itemsCurrent: PropTypes.arrayOf(PropTypes.shape(BlogItem.propTypes)),
-  pageNumberClick: PropTypes.func,
-  activeItem: PropTypes.string,
+  currentPage: PropTypes.string,
   pageNumbers: PropTypes.arrayOf(PropTypes.string)
 };
 
