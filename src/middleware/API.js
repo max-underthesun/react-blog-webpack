@@ -39,19 +39,6 @@ export default (store) => (next) => (action) => {
     pick(action[API_CALL], ['endpoint', 'method', 'query', 'payload'])
   );
 
-  // requestApiPromise.then(
-  //   (response) => next(
-  //     nextAction(action, { response, type: successType })
-  //   ),
-  //   (error) => next(
-  //     nextAction(action, { error, type: failureType })
-  //   )
-  // );
-
-  // requestApiPromise
-  //   .then((response) => next(nextAction(action, { response, type: successType })))
-  //   .catch((error) => next(nextAction(action, { error, type: failureType })));
-
   const requestSuccess = (response) => next(
     nextAction(action, { response, type: successType })
   );

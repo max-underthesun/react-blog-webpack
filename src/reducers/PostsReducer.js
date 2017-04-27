@@ -14,14 +14,6 @@ function findIndex(items, id) {
   return items.findIndex(function(obj) { return obj.id == id; });
 }
 
-// function addLike(entries, id) {
-//   const index = findIndex(entries, id);
-//   return update(
-//     entries,
-//     { [index]: { meta: { count: { $apply(x) { return x + 1; } } } } }
-//   );
-// }
-
 function addLike(entries, id, count) {
   const index = findIndex(entries, id);
   return update(
