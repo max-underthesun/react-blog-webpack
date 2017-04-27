@@ -35,34 +35,34 @@ export default (store) => (next) => (action) => {
 
   next(nextAction(action, { type: requestType }));
 
-  const promise = APICall(
+  const requestApiPromise = APICall(
     pick(action[API_CALL], ['endpoint', 'method', 'query', 'payload'])
   );
 
-  promise.then(
-    (response) => next(
-      nextAction(action, { response, type: successType })
-    ),
-    (error) => next(
-      nextAction(action, { error, type: failureType })
-    )
-  );
+  // requestApiPromise.then(
+  //   (response) => next(
+  //     nextAction(action, { response, type: successType })
+  //   ),
+  //   (error) => next(
+  //     nextAction(action, { error, type: failureType })
+  //   )
+  // );
 
-  // promise
+  // requestApiPromise
   //   .then((response) => next(nextAction(action, { response, type: successType })))
   //   .catch((error) => next(nextAction(action, { error, type: failureType })));
 
-  // const onSuccess = (response) => next(
-  //   nextAction(action, { response, type: successType })
-  // );
-  //
-  // const onError = (error) => next(
-  //   nextAction(action, { error, type: failureType })
-  // );
-  //
-  // promise
-  //   .then(onSuccess)
-  //   .catch(onError);
+  const requestSuccess = (response) => next(
+    nextAction(action, { response, type: successType })
+  );
 
-  return promise;
+  const requestError = (error) => next(
+    nextAction(action, { error, type: failureType })
+  );
+
+  requestApiPromise
+    .then(requestSuccess)
+    .catch(requestError);
+
+  return requestApiPromise;
 };
