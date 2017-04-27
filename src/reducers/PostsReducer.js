@@ -2,6 +2,7 @@ import { assign } from 'lodash/object';
 import update from 'immutability-helper';
 
 import * as types from 'constants/actionTypes/PostsActionTypes';
+import * as likeTypes from 'constants/actionTypes/LikeActionTypes';
 
 const initialState = {
   isFetching: false,
@@ -13,11 +14,19 @@ function findIndex(items, id) {
   return items.findIndex(function(obj) { return obj.id == id; });
 }
 
-function addLike(entries, id) {
+// function addLike(entries, id) {
+//   const index = findIndex(entries, id);
+//   return update(
+//     entries,
+//     { [index]: { meta: { count: { $apply(x) { return x + 1; } } } } }
+//   );
+// }
+
+function addLike(entries, id, count) {
   const index = findIndex(entries, id);
   return update(
     entries,
-    { [index]: { meta: { count: { $apply(x) { return x + 1; } } } } }
+    { [index]: { meta: { count: { $apply() { return count; } } } } }
   );
 }
 
@@ -29,10 +38,11 @@ export default function(state = initialState, action) {
       return assign({}, initialState, { error: true });
     case types.FETCH_POSTS_SUCCESS:
       return assign({}, initialState, { entries: action.response });
-    case types.ADD_LIKE:
-      return assign(
-        {}, state, { entries: addLike(state.entries, action.id) }
-      );
+    case likeTypes.POST_LIKE_SUCCESS: {
+      const id = action.response.id;
+      const count = action.response.count;
+      return assign({}, state, { entries: addLike(state.entries, id, count) });
+    }
     default:
       return state;
   }
