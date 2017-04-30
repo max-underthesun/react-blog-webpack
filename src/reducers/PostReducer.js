@@ -12,8 +12,7 @@ const initialState = {
 };
 
 function addLike(entry, id, count) {
-  // if (typeof entry !== 'undefined' && entry !== null) {
-  if (present(entry)) {
+  if (present(entry) && entry.meta.id == id) {
     return update(entry, { meta: { count: { $apply() { return count; } } } });
   } else {
     return entry;

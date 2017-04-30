@@ -16,15 +16,12 @@ function findIndex(items, id) {
 }
 
 function addLike(entries, id, count) {
-  // if (typeof entries !== 'undefined' && entries !== null && entries.length > 0) {
   if (present(entries) && entries.length > 0) {
     const index = findIndex(entries, id);
-    // if (typeof entries !== 'undefined' && entries !== null) {
     return update(
       entries,
       { [index]: { meta: { count: { $apply() { return count; } } } } }
     );
-    // }
   } else {
     return entries;
   }

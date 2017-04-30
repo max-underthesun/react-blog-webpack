@@ -9,7 +9,6 @@ import Image from 'components/shared/elements/Image';
 import Link from 'components/shared/elements/Link';
 import { postsPath } from 'helpers/routes';
 
-// const BlogItem = ({ id, title, image, text, meta, renderLike }) => (
 const BlogItem = ({ id, title, image, text, meta }) => (
   React.createElement(
     Container,
@@ -29,7 +28,6 @@ const BlogItem = ({ id, title, image, text, meta }) => (
       React.createElement(Image, image),
       React.createElement(TextBox, text),
       React.createElement(LikeContainer, { meta, id })
-      // renderLike && React.createElement(LikeContainer, { meta, id })
     )
   )
 );
@@ -37,7 +35,6 @@ const BlogItem = ({ id, title, image, text, meta }) => (
 BlogItem.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string.isRequired,
-  // renderLike: PropTypes.bool,
   image: PropTypes.shape(Image.propTypes).isRequired,
   text: PropTypes.shape(TextBox.propTypes).isRequired,
   meta: PropTypes.shape(MetaData.propTypes).isRequired
