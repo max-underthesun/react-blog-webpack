@@ -3,6 +3,7 @@ import update from 'immutability-helper';
 
 import * as types from 'constants/actionTypes/PostsActionTypes';
 import * as likeTypes from 'constants/actionTypes/LikeActionTypes';
+import present from 'helpers/presence';
 
 const initialState = {
   isFetching: false,
@@ -15,11 +16,18 @@ function findIndex(items, id) {
 }
 
 function addLike(entries, id, count) {
-  const index = findIndex(entries, id);
-  return update(
-    entries,
-    { [index]: { meta: { count: { $apply() { return count; } } } } }
-  );
+  // if (typeof entries !== 'undefined' && entries !== null && entries.length > 0) {
+  if (present(entries) && entries.length > 0) {
+    const index = findIndex(entries, id);
+    // if (typeof entries !== 'undefined' && entries !== null) {
+    return update(
+      entries,
+      { [index]: { meta: { count: { $apply() { return count; } } } } }
+    );
+    // }
+  } else {
+    return entries;
+  }
 }
 
 export default function(state = initialState, action) {

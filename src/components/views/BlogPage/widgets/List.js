@@ -11,7 +11,8 @@ const BlogList = ({ items }) => (
       (item) => (
         React.createElement(
           BlogItem,
-          Object.assign({ key: item.id }, item, { renderLike: true })
+          Object.assign({ key: item.id }, item)
+          // Object.assign({ key: item.id }, item, { renderLike: true })
         )
       )
     )
