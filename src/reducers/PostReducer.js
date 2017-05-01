@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 
 import * as types from 'constants/actionTypes/PostActionTypes';
 import * as likeTypes from 'constants/actionTypes/LikeActionTypes';
-import present from 'helpers/presence';
+import { present } from 'helpers/presence';
 
 const initialState = {
   isFetching: false,
@@ -12,7 +12,7 @@ const initialState = {
 };
 
 function addLike(entry, id, count) {
-  if (present(entry) && entry.meta.id == id) {
+  if (present(entry) && entry.id == id) {
     return update(entry, { meta: { count: { $apply() { return count; } } } });
   } else {
     return entry;
