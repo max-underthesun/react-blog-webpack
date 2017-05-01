@@ -8,10 +8,7 @@ const Post = ({ item }) => (
   React.createElement(
     Item.Group,
     {},
-    item && React.createElement(
-      BlogItem,
-      Object.assign(item, { renderLike: false })
-    )
+    item && React.createElement(BlogItem, item)
   )
 );
 

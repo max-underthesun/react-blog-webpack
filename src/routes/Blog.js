@@ -6,13 +6,14 @@ import { postsPath, aboutPath } from 'helpers/routes';
 import { fetchPosts } from 'actions/PostsAction';
 import { setPage } from 'actions/PaginationAction';
 import { fetchPost } from 'actions/PostAction';
+import { blank } from 'helpers/presence';
 
 const Index = {
   path: '/',
   component: PostsContainer,
   prepareData: (store, query) => {
     const posts = store.getState().posts.entries;
-    if (posts.length === 0) {
+    if (blank(posts) || posts.length === 0) {
       store.dispatch(fetchPosts());
     }
     else if (posts.length !== 0 && !query.page) {
