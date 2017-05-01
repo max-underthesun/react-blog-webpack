@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 
 import * as types from 'constants/actionTypes/PostsActionTypes';
 import * as likeTypes from 'constants/actionTypes/LikeActionTypes';
-import present from 'helpers/presence';
+import { present } from 'helpers/presence';
 
 const initialState = {
   isFetching: false,
