@@ -13,7 +13,6 @@ const Index = {
   component: PostsContainer,
   prepareData: (store, query) => {
     const posts = store.getState().posts.entries;
-    // if (typeof posts == 'undefined' || posts.length === 0) {
     if (blank(posts) || posts.length === 0) {
       store.dispatch(fetchPosts());
     }
