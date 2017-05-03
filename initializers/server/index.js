@@ -7,32 +7,11 @@ require.extensions['.css'] = () => {
   return;
 };
 
-// const webpack = require('webpack');
-// const webpackDevServer = require('webpack-dev-server');
-
-// const config = require('../../webpack.config.js');
-
-const host = 'localhost';
 const port = 3000;
-
-// new webpackDevServer(webpack(config), {
-//   hot: true,
-//   historyApiFallback: true,
-//   publicPath: config.output.publicPath,
-//   stats: {
-//     colors: true
-//   }
-// }).listen(port, host, (err) => {
-//   if (err)
-//     console.log(err);
-//
-//   console.log(`Listening at host: ${host} port: ${port}`);
-// });
-
 const express = require('express');
 const application = express();
 
-application.use(express.static('srs/static'));
+application.use(express.static('src/static'));
 application.set('views', __dirname);
 application.set('view engine', 'ejs');
 

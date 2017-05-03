@@ -2,18 +2,12 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
-
-// import Helmet from 'react-helmet';
 import { compact } from 'lodash/array';
+
 import createStore from 'store';
 import routes from 'routes';
 
 import prepareData from 'helpers/routes/prepareData';
-
-// export default (req, res) => {
-//   res.status(200);
-//   res.render('index');
-// };
 
 const store = createStore();
 
@@ -30,12 +24,9 @@ export default (req, res) => {
         )
       );
 
-      // const head = Helmet.rewind();
-
       res.status(200);
       res.render(
         'index',
-        // { initialState, content, head }
         { initialState, content }
       );
     })

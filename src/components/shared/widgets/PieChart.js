@@ -1,7 +1,6 @@
 import React, { DOM, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
-// import c3 from 'c3';
 import 'c3/c3.css';
 
 class PieChartContainer extends React.Component {
