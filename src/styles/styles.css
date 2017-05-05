@@ -69,3 +69,9 @@ body {
 .meta-date-title {
   color: grey
 }
+
+.error {
+  color: orange;
+  text-align: center;
+  margin-top: 50px;
+}

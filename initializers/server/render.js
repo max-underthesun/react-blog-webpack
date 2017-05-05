@@ -12,36 +12,46 @@ import prepareData from 'helpers/routes/prepareData';
 const store = createStore();
 
 // export default (req, res) => {
-//   match({ routes, location: req.url }, (error, redirectLocation, renderProps) =>
-//     Promise.all(compact(prepareData(store, renderProps))).then(() => {
-//       const initialState = JSON.stringify(store.getState());
+//   match({ routes, location: req.url },
+//     (error, redirectLocation, renderProps) =>
+//       Promise.all(compact(prepareData(store, renderProps))).then(() => {
+//         const initialState = JSON.stringify(store.getState());
 //
-//       const content = ReactDOMServer.renderToString(
-//         React.createElement(
-//           Provider,
-//           { store },
-//           React.createElement(RouterContext, renderProps)
-//         )
-//       );
+//         const content = ReactDOMServer.renderToString(
+//           React.createElement(
+//             Provider,
+//             { store },
+//             React.createElement(RouterContext, renderProps)
+//           )
+//         );
 //
-//       res.status(200);
-//       res.render(
-//         'index',
-//         { initialState, content }
-//       );
-//     })
+//         res.status(200);
+//         res.render(
+//           'index',
+//           { initialState, content }
+//         );
+//       })
 //   );
 // };
 
 export default (req, res) => {
-  return match({ routes, location: req.url }, prepareAndRender);
+  return match({ routes, location: req.url }, prepareDataAndRender);
 
-  function prepareAndRender(error, redirectLocation, renderProps) {
-    const prepareDataPromise = Promise.all(
-      compact(prepareData(store, renderProps))
-    );
+  function prepareDataAndRender(error, redirectLocation, renderProps) {
+    if (error) {
+      render500(res);
+      return;
+    }
+    if (redirectLocation) {
+      res.redirect(redirectLocation.pathname + redirectLocation.search);
+      return;
+    }
+    if (renderProps === undefined) {
+      render404(res);
+      return;
+    }
 
-    const renderIndex = () => {
+    const getContentAndRenderIndex = () => {
       const initialState = JSON.stringify(store.getState());
       const content = ReactDOMServer.renderToString(
         React.createElement(
@@ -50,101 +60,38 @@ export default (req, res) => {
           React.createElement(RouterContext, renderProps)
         )
       );
-
-      res.status(200);
-      res.render(
-        'index',
-        { initialState, content }
-      );
+      renderIndex(res, initialState, content);
     };
 
-    prepareDataPromise
-      .then(renderIndex);
+    Promise.all(compact(prepareData(store, renderProps)))
+      .then(getContentAndRenderIndex)
+      .catch(error => res.send(error.message));
   }
 };
 
-// export default (req, res) => {
-//   match(
-//     { routes, location: req.url },
-//     (error, redirectLocation, renderProps) => {
-//       const prepareDataPromise = Promise.all(
-//         compact(prepareData(store, renderProps))
-//       );
-//
-//       const promiseCb = () => {
-//         const initialState = JSON.stringify(store.getState());
-//         const content = ReactDOMServer.renderToString(
-//           React.createElement(
-//             Provider,
-//             { store },
-//             React.createElement(RouterContext, renderProps)
-//           )
-//         );
-//         const renderIndex = () => {
-//           res.status(200);
-//           res.render(
-//             'index',
-//             { initialState, content }
-//           );
-//         };
-//
-//         renderIndex();
-//       };
-//
-//       prepareDataPromise
-//         .then(promiseCb);
-//     }
-//   );
-// };
+function renderIndex(res, initialState, content) {
+  res.status(200);
+  res.render(
+    'index',
+    { initialState, content }
+  );
+}
 
-// export default (req, res) => {
-//   const callBack =  (error, redirectLocation, renderProps) => {
-//     const initialState = JSON.stringify(store.getState());
-//     const content = ReactDOMServer.renderToString(
-//       React.createElement(
-//         Provider,
-//         { store },
-//         React.createElement(RouterContext, renderProps)
-//       )
-//     );
-//     const renderIndex = () => {
-//       res.status(200);
-//       res.render(
-//         'index',
-//         { initialState, content }
-//       );
-//     };
-//
-//     return Promise.all(compact(prepareData(store, renderProps)))
-//       .then(renderIndex);
-//   };
-//
-//   return match({ routes, location: req.url }, callBack);
-// };
+function render500(res) {
+  res.status(500);
+  res.render(
+    'error',
+    {
+      status: '500',
+      message: 'If you are the application owner, please check the logs.'
+    }
+  );
+}
 
-// export default function(req, res) {
-//   function callBack(error, redirectLocation, renderProps) {
-//     const initialState = JSON.stringify(store.getState());
-//     const content = ReactDOMServer.renderToString(
-//       React.createElement(
-//         Provider,
-//         { store },
-//         React.createElement(RouterContext, renderProps)
-//       )
-//     );
-//     function renderIndex() {
-//       // console.log(initialState);
-//       // console.log(content);
-//       res.status(200);
-//       res.render(
-//         'index',
-//         { initialState, content }
-//       );
-//     }
-//
-//     Promise.all(compact(prepareData(store, renderProps)))
-//       .then(renderIndex);
-//   }
-//
-//   return match({ routes, location: req.url }, callBack);
-// }
+function render404(res) {
+  res.status(404);
+  res.render(
+    'error',
+    { status: '404', message: 'Not found' }
+  );
+}
