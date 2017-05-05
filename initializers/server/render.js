@@ -3,6 +3,7 @@ import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 import { compact } from 'lodash/array';
+import Helmet from 'react-helmet';
 
 import createStore from 'store';
 import routes from 'routes';
@@ -40,6 +41,8 @@ export default (req, res) => {
   function prepareDataAndRender(error, redirectLocation, renderProps) {
     if (noRender(res, error, redirectLocation, renderProps)) return;
 
+    const head = Helmet.rewind();
+
     const getContentAndRenderIndex = () => {
       const initialState = JSON.stringify(store.getState());
       const content = ReactDOMServer.renderToString(
@@ -49,7 +52,7 @@ export default (req, res) => {
           React.createElement(RouterContext, renderProps)
         )
       );
-      renderIndex(res, initialState, content);
+      renderIndex(res, initialState, content, head);
     };
 
     // function respondError(error) { res.send(error); }
@@ -83,11 +86,11 @@ function noRender(res, error, redirectLocation, renderProps) {
   return false;
 }
 
-function renderIndex(res, initialState, content) {
+function renderIndex(res, initialState, content, head) {
   res.status(200);
   res.render(
     'index',
-    { initialState, content }
+    { initialState, content, head }
   );
 }
 

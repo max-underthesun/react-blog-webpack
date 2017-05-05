@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
 import { map } from 'lodash';
 
 import { Grid } from 'semantic-ui-react';
@@ -35,7 +36,8 @@ const BlogPage = ({ items, currentPage, pageNumbers, itemsCurrent }) => (
           { columns: map(items, (item) => ([item.title, item.meta.count])) }
         )
       )
-    )
+    ),
+    React.createElement(Helmet, { title: 'Posts list' })
   )
 );
 

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
 
 import { Item } from 'semantic-ui-react';
 
@@ -8,7 +9,8 @@ const Post = ({ item }) => (
   React.createElement(
     Item.Group,
     {},
-    item && React.createElement(BlogItem, item)
+    item && React.createElement(BlogItem, item),
+    item && React.createElement(Helmet, { title: item.title })
   )
 );
 
