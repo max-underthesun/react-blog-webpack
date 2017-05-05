@@ -38,18 +38,7 @@ export default (req, res) => {
   return match({ routes, location: req.url }, prepareDataAndRender);
 
   function prepareDataAndRender(error, redirectLocation, renderProps) {
-    if (error) {
-      render500(res);
-      return;
-    }
-    if (redirectLocation) {
-      res.redirect(redirectLocation.pathname + redirectLocation.search);
-      return;
-    }
-    if (renderProps === undefined) {
-      render404(res);
-      return;
-    }
+    if (noRender(res, error, redirectLocation, renderProps)) return;
 
     const getContentAndRenderIndex = () => {
       const initialState = JSON.stringify(store.getState());
@@ -63,11 +52,36 @@ export default (req, res) => {
       renderIndex(res, initialState, content);
     };
 
+    // function respondError(error) { res.send(error); }
+    function respondError(error) { renderError(error, res); }
+
     Promise.all(compact(prepareData(store, renderProps)))
       .then(getContentAndRenderIndex)
-      .catch(error => res.send(error.message));
+      .catch(respondError);
   }
 };
+
+function renderError(error, res) {
+  if (error.status == 500) { render500(res, error.response.text); }
+  else if (error.status == 404) { render404(res); }
+  else { res.status(error.status).send(error.response.text); }
+}
+
+function noRender(res, error, redirectLocation, renderProps) {
+  if (error) {
+    render500(res);
+    return true;
+  }
+  if (redirectLocation) {
+    res.redirect(redirectLocation.pathname + redirectLocation.search);
+    return true;
+  }
+  if (renderProps === undefined) {
+    render404(res);
+    return true;
+  }
+  return false;
+}
 
 function renderIndex(res, initialState, content) {
   res.status(200);
@@ -77,13 +91,15 @@ function renderIndex(res, initialState, content) {
   );
 }
 
-function render500(res) {
+function render500(res, message) {
+  const messDef = 'If you are the application owner, please check the logs.';
+  const text = message || messDef;
   res.status(500);
   res.render(
     'error',
     {
       status: '500',
-      message: 'If you are the application owner, please check the logs.'
+      message: text
     }
   );
 }
