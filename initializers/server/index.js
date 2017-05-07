@@ -15,7 +15,6 @@ application.use(express.static('src/static'));
 application.set('views', __dirname);
 application.set('view engine', 'ejs');
 
-
 const webpack = require('webpack');
 const config = require('../../webpack.config.js').default;
 const webpackDev = require('webpack-dev-middleware');
