@@ -99,38 +99,46 @@ class UncontrolledForm extends React.Component {
 
   render() {
     return (
-      DOM.form(
-        {
-          onSubmit: this.onSubmit,
-          className: 'ui form'
-        },
+      DOM.div(
+        { className: 'meta-box' },
         React.createElement(
-          Text,
-          {
-            label: 'Full name',
-            name: 'fullName',
-            fieldRef: this.generateRef('fullName')
-          }
+          Header,
+          { as: 'h3' },
+          'Uncontrolled Form'
         ),
-        React.createElement(
-          Text,
+        DOM.form(
           {
-            label: 'Email',
-            name: 'email',
-            error: this.state.errors.email,
-            fieldRef: this.generateRef('email')
-          }
-        ),
-        React.createElement(
-          TextArea,
-          {
-            label: 'Message',
-            name: 'message',
-            fieldRef: this.generateRef('message')
-          }
-        ),
-        DOM.input(
-          { className:'ui button primary', type: 'submit', value: 'Submit'}
+            onSubmit: this.onSubmit,
+            className: 'ui form'
+          },
+          React.createElement(
+            Text,
+            {
+              label: 'Full name',
+              name: 'fullName',
+              fieldRef: this.generateRef('fullName')
+            }
+          ),
+          React.createElement(
+            Text,
+            {
+              label: 'Email',
+              name: 'email',
+              error: this.state.errors.email,
+              fieldRef: this.generateRef('email')
+            }
+          ),
+          React.createElement(
+            TextArea,
+            {
+              label: 'Message',
+              name: 'message',
+              fieldRef: this.generateRef('message')
+            }
+          ),
+          DOM.input(
+            { className:'ui button primary', type: 'submit', value: 'Submit'}
+          )
         )
       )
     );
