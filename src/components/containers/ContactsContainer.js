@@ -92,6 +92,7 @@ class ControlledForm extends React.Component {
     // this.form = {};
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     // this.generateRef = this.generateRef.bind(this);
   }
 
@@ -114,7 +115,19 @@ class ControlledForm extends React.Component {
     // alert(JSON.stringify(values));
     alert(JSON.stringify(this.state.form.values));
   }
-  //
+
+  handleChange(fieldName) {
+    return (e) => (
+      this.setState(
+        set(
+          assign({}, this.state),
+          ['form','values', fieldName],
+          e.target.value
+        )
+      )
+    );
+  }
+
   // generateRef(fieldName) {
   //   return (input) => { this.form[fieldName] = input; };
   // }
@@ -141,15 +154,7 @@ class ControlledForm extends React.Component {
               label: 'Full name',
               name: 'fullName',
               value: fullName,
-              onChange: (e) => (
-                this.setState(
-                  set(
-                    assign({}, this.state),
-                    'form.values.fullName',
-                    e.target.value
-                  )
-                )
-              )
+              onChange: this.handleChange('fullName')
             }
           ),
           // React.createElement(
