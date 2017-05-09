@@ -58,6 +58,14 @@ class ContactsContainer extends React.Component {
                 fieldRef: this.generateRef('email')
               }
             ),
+            React.createElement(
+              TextArea,
+              {
+                label: 'Message',
+                name: 'message',
+                fieldRef: this.generateRef('message')
+              }
+            ),
             // DOM.div(
             //   { className: 'ui field' },
             //   DOM.label(
@@ -98,6 +106,31 @@ class Text extends React.Component {
         ),
         DOM.input(
           {
+            type: 'text',
+            ref: fieldRef,
+            className: 'ui input',
+            id: name,
+            name
+          }
+        )
+      )
+    );
+  }
+}
+
+class TextArea extends React.Component {
+  render() {
+    const { label, name, fieldRef } = this.props;
+
+    return (
+      DOM.div(
+        { className: 'ui field' },
+        DOM.label(
+          { for: name },
+          label
+        ),
+        DOM.textarea(
+          {
             ref: fieldRef,
             className: 'ui input',
             id: name,
@@ -110,6 +143,12 @@ class Text extends React.Component {
 }
 
 Text.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  fieldRef: PropTypes.func.isRequired
+};
+
+TextArea.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   fieldRef: PropTypes.func.isRequired
