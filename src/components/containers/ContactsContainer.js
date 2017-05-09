@@ -1,5 +1,5 @@
 import React, { DOM, PropTypes } from 'react';
-import { assign, mapValues } from 'lodash/object';
+import { set, assign, mapValues } from 'lodash/object';
 import classNames from 'classnames';
 
 import { Container, Header } from 'semantic-ui-react';
@@ -8,11 +8,19 @@ import { Container, Header } from 'semantic-ui-react';
 class ContactsContainer extends React.Component {
   // constructor(props) {
   //   super(props);
-  //   this.state = { errors: {} };
-  //   this.form = {};
+  //   // this.state = {
+  //   //   form: {
+  //   //     values: {
+  //   //       fullName: '',
+  //   //       email: '',
+  //   //       message: ''
+  //   //     }
+  //   //   }
+  //   // };
+  //   // this.form = {};
   //
-  //   this.onSubmit = this.onSubmit.bind(this);
-  //   this.generateRef = this.generateRef.bind(this);
+  //   // this.onSubmit = this.onSubmit.bind(this);
+  //   // this.generateRef = this.generateRef.bind(this);
   // }
 
   // componentDidMount() {
@@ -54,8 +62,12 @@ class ContactsContainer extends React.Component {
             'Contacts'
           ),
           React.createElement(
-            UncontrolledForm
+            ControlledForm
           )
+          // ,
+          // React.createElement(
+          //   UncontrolledForm
+          // )
         )
       )
     );
@@ -63,6 +75,135 @@ class ContactsContainer extends React.Component {
 }
 
 export default ContactsContainer;
+
+
+class ControlledForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        values: {
+          fullName: '',
+          email: '',
+          message: ''
+        }
+      }
+    };
+    // this.form = {};
+
+    this.onSubmit = this.onSubmit.bind(this);
+    // this.generateRef = this.generateRef.bind(this);
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    // this.setState({ errors: {} });
+    //
+    // const values = mapValues(this.form, 'value');
+    //
+    // if (!values.email || values.email.length < 3) {
+    //   this.setState(
+    //     assign(
+    //       {},
+    //       this.state,
+    //       { errors: assign({}, this.state.errors, { email: true }) }
+    //     )
+    //   );
+    // }
+
+    // alert(JSON.stringify(values));
+    alert(JSON.stringify(this.state.form.values));
+  }
+  //
+  // generateRef(fieldName) {
+  //   return (input) => { this.form[fieldName] = input; };
+  // }
+
+  render() {
+    const { fullName } = this.state.form.values;
+
+    return (
+      DOM.div(
+        { className: 'meta-box' },
+        React.createElement(
+          Header,
+          { as: 'h3' },
+          'Controlled Form'
+        ),
+        DOM.form(
+          {
+            onSubmit: this.onSubmit,
+            className: 'ui form'
+          },
+          React.createElement(
+            TextControlled,
+            {
+              label: 'Full name',
+              name: 'fullName',
+              value: fullName,
+              onChange: (e) => (
+                this.setState(
+                  set(
+                    assign({}, this.state),
+                    'form.values.fullName',
+                    e.target.value
+                  )
+                )
+              )
+            }
+          ),
+          // React.createElement(
+          //   TextControlled,
+          //   {
+          //     label: 'Email',
+          //     name: 'email',
+          //     error: this.state.errors.email,
+          //     fieldRef: this.generateRef('email')
+          //   }
+          // ),
+          // React.createElement(
+          //   TextArea,
+          //   {
+          //     label: 'Message',
+          //     name: 'message',
+          //     fieldRef: this.generateRef('message')
+          //   }
+          // ),
+          DOM.input(
+            { className:'ui button primary', type: 'submit', value: 'Submit'}
+          )
+        )
+      )
+    );
+  }
+}
+
+class TextControlled extends React.Component {
+  render() {
+    const { label, name, value, onChange, error } = this.props;
+
+    return (
+      DOM.div(
+        { className: 'ui field' },
+        // { className: classNames('ui field', { error }) },
+        DOM.label(
+          { for: name },
+          label
+        ),
+        DOM.input(
+          {
+            type: 'text',
+            className: 'ui input',
+            value,
+            id: name,
+            name,
+            onChange
+          }
+        )
+      )
+    );
+  }
+}
 
 class UncontrolledForm extends React.Component {
   constructor(props) {
