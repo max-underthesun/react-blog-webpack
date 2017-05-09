@@ -5,7 +5,7 @@ import { Container, Header } from 'semantic-ui-react';
 class ContactsContainer extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { info: '' };
+    this.form = {};
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -15,7 +15,7 @@ class ContactsContainer extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    alert(this.fullName.value);
+    alert(this.form.fullName.value);
   }
 
   render() {
@@ -35,21 +35,29 @@ class ContactsContainer extends React.Component {
               onSubmit: this.onSubmit,
               className: 'ui form'
             },
-            DOM.div(
-              { className: 'ui field' },
-              DOM.label(
-                { for: 'fullName' },
-                'Full name:'
-              ),
-              DOM.input(
-                {
-                  ref: (input) => { this.fullName = input; },
-                  className: 'ui input',
-                  id: 'fullName',
-                  name: 'fullName'
-                }
-              )
+            React.createElement(
+              Text,
+              {
+                label: 'Full name',
+                name: 'fullName',
+                fieldRef: (input) => { this.form.fullName = input; }
+              }
             ),
+            // DOM.div(
+            //   { className: 'ui field' },
+            //   DOM.label(
+            //     { for: 'fullName' },
+            //     'Full name:'
+            //   ),
+            //   DOM.input(
+            //     {
+            //       ref: (input) => { this.form.fullName = input; },
+            //       className: 'ui input',
+            //       id: 'fullName',
+            //       name: 'fullName'
+            //     }
+            //   )
+            // ),
             DOM.input(
               { className:'ui button primary', type: 'submit', value: 'Submit'}
             )
@@ -61,3 +69,33 @@ class ContactsContainer extends React.Component {
 }
 
 export default ContactsContainer;
+
+class Text extends React.Component {
+  render() {
+    const { label, name, fieldRef } = this.props;
+
+    return (
+      DOM.div(
+        { className: 'ui field' },
+        DOM.label(
+          { for: name },
+          label
+        ),
+        DOM.input(
+          {
+            ref: fieldRef,
+            className: 'ui input',
+            id: name,
+            name
+          }
+        )
+      )
+    );
+  }
+}
+
+Text.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  fieldRef: PropTypes.func.isRequired
+};
