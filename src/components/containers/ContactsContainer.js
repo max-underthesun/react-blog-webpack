@@ -1,4 +1,6 @@
 import React, { DOM, PropTypes } from 'react';
+import { mapValues } from 'lodash/object';
+
 import { Container, Header } from 'semantic-ui-react';
 
 
@@ -7,15 +9,20 @@ class ContactsContainer extends React.Component {
     super(props);
     this.form = {};
     this.onSubmit = this.onSubmit.bind(this);
+    this.generateRef = this.generateRef.bind(this);
   }
 
-  componentDidMount() {
-    // this.fetchAbout();
-  }
+  // componentDidMount() {
+  // }
 
   onSubmit(e) {
     e.preventDefault();
-    alert(this.form.fullName.value);
+    const values = mapValues(this.form, 'value');
+    alert(JSON.stringify(values));
+  }
+
+  generateRef(fieldName) {
+    return (input) => { this.form[fieldName] = input; };
   }
 
   render() {
@@ -40,7 +47,15 @@ class ContactsContainer extends React.Component {
               {
                 label: 'Full name',
                 name: 'fullName',
-                fieldRef: (input) => { this.form.fullName = input; }
+                fieldRef: this.generateRef('fullName')
+              }
+            ),
+            React.createElement(
+              Text,
+              {
+                label: 'Email',
+                name: 'email',
+                fieldRef: this.generateRef('email')
               }
             ),
             // DOM.div(
