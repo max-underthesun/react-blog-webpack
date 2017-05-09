@@ -24,6 +24,15 @@ const PageHeader = () => (
         { to: '/about' },
         'About'
       )
+    ),
+    React.createElement(
+      Menu.Item,
+      {},
+      React.createElement(
+        Link,
+        { to: '/contacts' },
+        'Contacts'
+      )
     )
   )
 );

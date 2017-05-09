@@ -2,7 +2,8 @@ import MainLayout from 'components/layouts/MainLayout';
 import PostsContainer from 'components/containers/PostsContainer';
 import PostContainer from 'components/containers/PostContainer';
 import AboutContainer from 'components/containers/AboutContainer';
-import { postsPath, aboutPath } from 'helpers/routes';
+import ContactsContainer from 'components/containers/ContactsContainer';
+import { postsPath, aboutPath, contactsPath } from 'helpers/routes';
 import { fetchPosts } from 'actions/PostsAction';
 import { setPage } from 'actions/PaginationAction';
 import { fetchPost } from 'actions/PostAction';
@@ -43,11 +44,17 @@ const AboutRoute = {
   component: AboutContainer
 };
 
+const ContactsRoute = {
+  path: contactsPath(),
+  component: ContactsContainer
+};
+
 export default {
   component: MainLayout,
   childRoutes: [
     Index,
     PostRoute,
-    AboutRoute
+    AboutRoute,
+    ContactsRoute
   ]
 };
