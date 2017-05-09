@@ -178,32 +178,53 @@ class ControlledForm extends React.Component {
   }
 }
 
-class TextControlled extends React.Component {
-  render() {
-    const { label, name, value, onChange, error } = this.props;
+const TextControlled = ({ label, name, value, onChange, error }) => (
+  DOM.div(
+    { className: 'ui field' },
+    // { className: classNames('ui field', { error }) },
+    DOM.label(
+      { for: name },
+      label
+    ),
+    DOM.input(
+      {
+        type: 'text',
+        className: 'ui input',
+        value,
+        id: name,
+        name,
+        onChange
+      }
+    )
+  )
+);
 
-    return (
-      DOM.div(
-        { className: 'ui field' },
-        // { className: classNames('ui field', { error }) },
-        DOM.label(
-          { for: name },
-          label
-        ),
-        DOM.input(
-          {
-            type: 'text',
-            className: 'ui input',
-            value,
-            id: name,
-            name,
-            onChange
-          }
-        )
-      )
-    );
-  }
-}
+// class TextControlled extends React.Component {
+//   render() {
+//     const { label, name, value, onChange, error } = this.props;
+//
+//     return (
+//       DOM.div(
+//         { className: 'ui field' },
+//         // { className: classNames('ui field', { error }) },
+//         DOM.label(
+//           { for: name },
+//           label
+//         ),
+//         DOM.input(
+//           {
+//             type: 'text',
+//             className: 'ui input',
+//             value,
+//             id: name,
+//             name,
+//             onChange
+//           }
+//         )
+//       )
+//     );
+//   }
+// }
 
 class UncontrolledForm extends React.Component {
   constructor(props) {
