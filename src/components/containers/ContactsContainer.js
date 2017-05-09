@@ -133,7 +133,7 @@ class ControlledForm extends React.Component {
   // }
 
   render() {
-    const { fullName } = this.state.form.values;
+    const { fullName, email, message } = this.state.form.values;
 
     return (
       DOM.div(
@@ -157,15 +157,26 @@ class ControlledForm extends React.Component {
               onChange: this.handleChange('fullName')
             }
           ),
-          // React.createElement(
-          //   TextControlled,
-          //   {
-          //     label: 'Email',
-          //     name: 'email',
-          //     error: this.state.errors.email,
-          //     fieldRef: this.generateRef('email')
-          //   }
-          // ),
+          React.createElement(
+            TextControlled,
+            {
+              label: 'Email',
+              name: 'email',
+              value: email,
+              // error: this.state.errors.email,
+              onChange: this.handleChange('email')
+            }
+          ),
+          React.createElement(
+            TextAreaControlled,
+            {
+              label: 'Message',
+              name: 'message',
+              value: message,
+              // error: this.state.errors.email,
+              onChange: this.handleChange('message')
+            }
+          ),
           // React.createElement(
           //   TextArea,
           //   {
@@ -188,7 +199,7 @@ const TextControlled = ({ label, name, value, onChange, error }) => (
     { className: 'ui field' },
     // { className: classNames('ui field', { error }) },
     DOM.label(
-      { for: name },
+      { htmlFor: name },
       label
     ),
     DOM.input(
@@ -203,6 +214,27 @@ const TextControlled = ({ label, name, value, onChange, error }) => (
     )
   )
 );
+
+const TextAreaControlled = ({ label, name, value, onChange }) => (
+  DOM.div(
+    { className: 'ui field' },
+    // { className: classNames('ui field', { error }) },
+    DOM.label(
+      { htmlFor: name },
+      label
+    ),
+    DOM.textarea(
+      {
+        className: 'ui textarea',
+        value,
+        id: name,
+        name,
+        onChange
+      }
+    )
+  )
+);
+
 
 // class TextControlled extends React.Component {
 //   render() {
@@ -321,7 +353,7 @@ class Text extends React.Component {
         // { className: 'ui field' },
         { className: classNames('ui field', { error }) },
         DOM.label(
-          { for: name },
+          { htmlFor: name },
           label
         ),
         DOM.input(
@@ -346,7 +378,7 @@ class TextArea extends React.Component {
       DOM.div(
         { className: 'ui field' },
         DOM.label(
-          { for: name },
+          { htmlFor: name },
           label
         ),
         DOM.textarea(
