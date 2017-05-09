@@ -1,5 +1,6 @@
 import React, { DOM, PropTypes } from 'react';
-import { mapValues } from 'lodash/object';
+import { assign, mapValues } from 'lodash/object';
+import classNames from 'classnames';
 
 import { Container, Header } from 'semantic-ui-react';
 
@@ -7,7 +8,9 @@ import { Container, Header } from 'semantic-ui-react';
 class ContactsContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { errors: {} };
     this.form = {};
+
     this.onSubmit = this.onSubmit.bind(this);
     this.generateRef = this.generateRef.bind(this);
   }
@@ -17,7 +20,20 @@ class ContactsContainer extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
+    this.setState({ errors: {} });
+
     const values = mapValues(this.form, 'value');
+
+    if (!values.email || values.email.length < 3) {
+      this.setState(
+        assign(
+          {},
+          this.state,
+          { errors: assign({}, this.state.errors, { email: true }) }
+        )
+      );
+    }
+
     alert(JSON.stringify(values));
   }
 
@@ -55,6 +71,7 @@ class ContactsContainer extends React.Component {
               {
                 label: 'Email',
                 name: 'email',
+                error: this.state.errors.email,
                 fieldRef: this.generateRef('email')
               }
             ),
@@ -95,11 +112,12 @@ export default ContactsContainer;
 
 class Text extends React.Component {
   render() {
-    const { label, name, fieldRef } = this.props;
+    const { label, name, fieldRef, error } = this.props;
 
     return (
       DOM.div(
-        { className: 'ui field' },
+        // { className: 'ui field' },
+        { className: classNames('ui field', { error }) },
         DOM.label(
           { for: name },
           label
@@ -145,7 +163,8 @@ class TextArea extends React.Component {
 Text.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  fieldRef: PropTypes.func.isRequired
+  fieldRef: PropTypes.func.isRequired,
+  // error: PropTypes.
 };
 
 TextArea.propTypes = {
