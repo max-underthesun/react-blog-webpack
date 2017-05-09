@@ -7,20 +7,23 @@ import { fetchPosts } from 'actions/PostsAction';
 import { setPage } from 'actions/PaginationAction';
 import { fetchPost } from 'actions/PostAction';
 import { blank } from 'helpers/presence';
+import initialLoad from 'helpers/initialLoad';
 
 const Index = {
   path: '/',
   component: PostsContainer,
   prepareData: (store, query) => {
+    if (initialLoad()) return;
+
     const posts = store.getState().posts.entries;
     if (blank(posts) || posts.length === 0) {
-      store.dispatch(fetchPosts());
+      return store.dispatch(fetchPosts());
     }
     else if (posts.length !== 0 && !query.page) {
-      store.dispatch(setPage('1'));
+      return store.dispatch(setPage('1'));
     }
     else if (posts.length !== 0 && query.page) {
-      store.dispatch(setPage(query.page));
+      return store.dispatch(setPage(query.page));
     }
   }
 };
@@ -29,7 +32,9 @@ const PostRoute = {
   path: postsPath(),
   component: PostContainer,
   prepareData: (store, query, params) => {
-    store.dispatch(fetchPost(params.id));
+    if (initialLoad()) return;
+
+    return store.dispatch(fetchPost(params.id));
   }
 };
 

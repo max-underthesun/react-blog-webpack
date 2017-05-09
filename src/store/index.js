@@ -4,8 +4,9 @@ import reducers from 'reducers';
 import DevTools from 'components/containers/DevToolsContainer';
 import APIMiddleware from 'middleware/API';
 
-const store = createStore(
+const store = (initialState) => createStore(
   reducers,
+  initialState,
   compose(
     applyMiddleware(APIMiddleware),
     DevTools.instrument()
