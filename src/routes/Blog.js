@@ -3,6 +3,7 @@ import PostsContainer from 'components/containers/PostsContainer';
 import PostContainer from 'components/containers/PostContainer';
 import AboutContainer from 'components/containers/AboutContainer';
 import ContactsContainer from 'components/containers/ContactsContainer';
+import PostEditContainer from 'components/containers/PostEditContainer';
 import { postsPath, aboutPath, contactsPath } from 'helpers/routes';
 import { fetchPosts } from 'actions/PostsAction';
 import { setPage } from 'actions/PaginationAction';
@@ -49,12 +50,18 @@ const ContactsRoute = {
   component: ContactsContainer
 };
 
+const PostEditRoute = {
+  path: `${postsPath()}/edit`,
+  component: PostEditContainer
+};
+
 export default {
   component: MainLayout,
   childRoutes: [
     Index,
     PostRoute,
     AboutRoute,
-    ContactsRoute
+    ContactsRoute,
+    PostEditRoute
   ]
 };
