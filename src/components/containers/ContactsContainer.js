@@ -121,15 +121,17 @@ class ControlledForm extends React.Component {
     return (e) => {
       switch (fieldName) {
         case 'email': {
-          this.clearError('email');
+          // this.clearError('email');
+          this.setErrorStatus('email', false);
           if (!e.target.value || e.target.value.length < 3) {
-            this.setState(
-              set(
-                assign({}, this.state),
-                ['form','errors', 'email'],
-                true
-              )
-            );
+            this.setErrorStatus('email', true);
+            // this.setState(
+            //   set(
+            //     assign({}, this.state),
+            //     ['form','errors', 'email'],
+            //     true
+            //   )
+            // );
           }
           break;
         }
@@ -145,15 +147,25 @@ class ControlledForm extends React.Component {
     };
   }
 
-  clearError(fieldName) {
+  setErrorStatus(fieldName, status) {
     this.setState(
       set(
         assign({}, this.state),
         ['form','errors', fieldName],
-        false
+        status
       )
     );
   }
+
+  // clearError(fieldName) {
+  //   this.setState(
+  //     set(
+  //       assign({}, this.state),
+  //       ['form','errors', fieldName],
+  //       false
+  //     )
+  //   );
+  // }
 
   // generateRef(fieldName) {
   //   return (input) => { this.form[fieldName] = input; };
