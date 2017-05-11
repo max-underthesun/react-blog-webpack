@@ -86,7 +86,8 @@ class ControlledForm extends React.Component {
           fullName: '',
           email: '',
           message: ''
-        }
+        },
+        errors: {}
       }
     };
     // this.form = {};
@@ -117,13 +118,39 @@ class ControlledForm extends React.Component {
   }
 
   handleChange(fieldName) {
-    return (e) => (
+    return (e) => {
+      switch (fieldName) {
+        case 'email': {
+          this.clearError('email');
+          if (!e.target.value || e.target.value.length < 3) {
+            this.setState(
+              set(
+                assign({}, this.state),
+                ['form','errors', 'email'],
+                true
+              )
+            );
+          }
+          break;
+        }
+      }
+
       this.setState(
         set(
           assign({}, this.state),
           ['form','values', fieldName],
           e.target.value
         )
+      );
+    };
+  }
+
+  clearError(fieldName) {
+    this.setState(
+      set(
+        assign({}, this.state),
+        ['form','errors', fieldName],
+        false
       )
     );
   }
@@ -163,7 +190,7 @@ class ControlledForm extends React.Component {
               label: 'Email',
               name: 'email',
               value: email,
-              // error: this.state.errors.email,
+              error: this.state.form.errors.email,
               onChange: this.handleChange('email')
             }
           ),
@@ -196,8 +223,8 @@ class ControlledForm extends React.Component {
 
 const TextControlled = ({ label, name, value, onChange, error }) => (
   DOM.div(
-    { className: 'ui field' },
-    // { className: classNames('ui field', { error }) },
+    // { className: 'ui field' },
+    { className: classNames('ui field', { error }) },
     DOM.label(
       { htmlFor: name },
       label
@@ -215,10 +242,10 @@ const TextControlled = ({ label, name, value, onChange, error }) => (
   )
 );
 
-const TextAreaControlled = ({ label, name, value, onChange }) => (
+const TextAreaControlled = ({ label, name, value, onChange, error }) => (
   DOM.div(
-    { className: 'ui field' },
-    // { className: classNames('ui field', { error }) },
+    // { className: 'ui field' },
+    { className: classNames('ui field', { error }) },
     DOM.label(
       { htmlFor: name },
       label
