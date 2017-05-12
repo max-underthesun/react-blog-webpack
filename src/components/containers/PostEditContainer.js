@@ -15,13 +15,29 @@ const Form = ({ handleSubmit }) => (
       'Redux Form'
     ),
     DOM.form(
-      { className: 'ui form' },
+      {
+        onSubmit: handleSubmit,
+        className: 'ui form'
+      },
       React.createElement(
         TextField,
         {
-          onSubmit: handleSubmit,
           label: 'Title',
           name: 'title'
+        }
+      ),
+      // React.createElement(
+      //   TextField,
+      //   {
+      //     label: 'Author',
+      //     name: 'author'
+      //   }
+      // ),
+      React.createElement(
+        TextAreaField,
+        {
+          label: 'Text',
+          name: 'text'
         }
       ),
       DOM.input(
@@ -31,12 +47,32 @@ const Form = ({ handleSubmit }) => (
   )
 );
 
-const ReduxForm = reduxForm({ form: 'editPost' })(Form);
-const FormConnected = connect(
-  (state) => ({
-    initialValues: state.post.entry
-  })
-)(ReduxForm);
+const onSubmit = (values) => alert(JSON.stringify(values));
+
+const ReduxForm = reduxForm({ form: 'editPost', onSubmit })(Form);
+
+const stateToProps = (state) => ({
+  initialValues: {
+    title: state.post.entry.title,
+    text: state.post.entry.text.post
+  }
+});
+
+const FormConnected = connect(stateToProps)(ReduxForm);
+
+// const FormConnected = connect(
+//   (state) => ({
+//     initialValues: {
+//       title: state.post.entry.title,
+//       text: state.post.entry.text.post
+//     }
+//   })
+// )(
+//   reduxForm({
+//     form: 'editPost',
+//     onSubmit: (values) => alert(JSON.stringify(values))
+//   })(Form)
+// );
 
 class PostEditContainer extends React.Component {
   render() {
@@ -75,6 +111,23 @@ const TextField = ({ label, name }) => (
         component: 'input',
         type: 'text',
         className: 'ui input',
+        id: name,
+        name
+      }
+    )
+  )
+);
+
+const TextAreaField = ({ label, name }) => (
+  DOM.div(
+    { className: 'ui field' },
+    // { className: classNames('ui field', { error }) },
+    DOM.label({ htmlFor: name }, label),
+    React.createElement(
+      Field,
+      {
+        component: 'textarea',
+        className: 'ui textarea',
         id: name,
         name
       }

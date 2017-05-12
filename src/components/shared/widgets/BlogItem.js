@@ -27,12 +27,7 @@ const BlogItem = ({ id, title, image, text, meta }) => (
       React.createElement(MetaData, meta),
       React.createElement(Image, image),
       React.createElement(TextBox, text),
-      React.createElement(LikeContainer, { meta, id }),
-      React.createElement(
-        Link,
-        { to: `${postsPath(id)}/edit` },
-        'Edit'
-      )
+      React.createElement(LikeContainer, { meta, id })
     )
   )
 );
