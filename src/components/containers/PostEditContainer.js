@@ -2,6 +2,7 @@ import React, { DOM, PropTypes } from 'react';
 // import { set, assign, mapValues } from 'lodash/object';
 // import classNames from 'classnames';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 
 import { Container, Header } from 'semantic-ui-react';
 
@@ -31,6 +32,11 @@ const Form = ({ handleSubmit }) => (
 );
 
 const ReduxForm = reduxForm({ form: 'editPost' })(Form);
+const FormConnected = connect(
+  (state) => ({
+    initialValues: state.post.entry
+  })
+)(ReduxForm);
 
 class PostEditContainer extends React.Component {
   render() {
@@ -46,7 +52,8 @@ class PostEditContainer extends React.Component {
             'Edit Post'
           ),
           React.createElement(
-            ReduxForm,
+            // ReduxForm,
+            FormConnected,
             {}
           )
         )
