@@ -61,7 +61,12 @@ const ContactsRoute = {
 
 const PostEditRoute = {
   path: `${postsPath()}/edit`,
-  component: PostEditContainer
+  component: PostEditContainer,
+  prepareData: (store, query, params) => {
+    if (initialLoad()) return;
+
+    return store.dispatch(fetchPost(params.id));
+  }
 };
 
 export default {
