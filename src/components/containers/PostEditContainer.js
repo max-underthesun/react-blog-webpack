@@ -45,10 +45,9 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
   DOM.div(
     { className: classNames('ui field', { error }) },
     DOM.label({}, label),
-    // DOM.input({ ...input, type, className: 'ui input' }),
-    // DOM.input({ input, type, className: 'ui input' }),
+    DOM.input({ ...input, type, className: 'ui input' }),
     // DOM.input(assign({}, input, { type, className: 'ui input' })),
-    DOM.input(assign({ type, className: 'ui input' }, input)),
+    // DOM.input(assign({ type, className: 'ui input' }, input)),
     touched && (
       error && DOM.div({ className: 'ui red label' }, error)
     ) || (
@@ -61,9 +60,6 @@ const renderTextArea = ({ input, label, type, meta: { touched, error, warning } 
   DOM.div(
     { className: classNames('ui field', { error }) },
     DOM.label({}, label),
-    // DOM.input({ ...input, type, className: 'ui input' }),
-    // DOM.input({ input, type, className: 'ui input' }),
-    // DOM.input(assign({}, input, { type, className: 'ui input' })),
     DOM.textarea(assign({ type, className: 'ui input' }, input)),
     touched && (
       error && DOM.div({ className: 'ui red label' }, error)
