@@ -159,6 +159,7 @@ const Form = ({ handleSubmit, pristine, submitting, reset }) => (
 
 // const ReduxForm = reduxForm({ form: 'editPost', onSubmit })(Form);
 const ReduxForm = reduxForm(
+  // { form: 'editPost', validate, warn, onSubmit }
   { form: 'editPost', validate, warn, onSubmit: submit }
 )(Form);
 

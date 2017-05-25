@@ -7,6 +7,7 @@ import { Button, Grid } from 'semantic-ui-react';
 import Link from 'components/shared/elements/Link';
 import { postsPath } from 'helpers/routes';
 import BlogItem from 'components/shared/widgets/BlogItem';
+import EditButton from './elements/EditButton';
 
 const Post = ({ item }) => (
   React.createElement(
@@ -24,33 +25,33 @@ const Post = ({ item }) => (
   )
 );
 
-// MOVE IT SOMETHERE ????
-// MOVE IT SOMETHERE ????
-// MOVE IT SOMETHERE ????
-// MOVE IT SOMETHERE ????
-const EditButton = () => (
-  React.createElement(
-    Grid,
-    {},
-    React.createElement(
-      Grid.Row,
-      {},
-      React.createElement(
-        Grid.Column,
-        {},
-        React.createElement(
-          Button,
-          {
-            inverted: true,
-            color: 'red',
-            floated: 'left'
-          },
-          'Edit'
-        )
-      )
-    )
-  )
-);
+// // MOVE IT SOMETHERE ????
+// // MOVE IT SOMETHERE ????
+// // MOVE IT SOMETHERE ????
+// // MOVE IT SOMETHERE ????
+// const EditButton = () => (
+//   React.createElement(
+//     Grid,
+//     {},
+//     React.createElement(
+//       Grid.Row,
+//       {},
+//       React.createElement(
+//         Grid.Column,
+//         {},
+//         React.createElement(
+//           Button,
+//           {
+//             inverted: true,
+//             color: 'red',
+//             floated: 'left'
+//           },
+//           'Edit'
+//         )
+//       )
+//     )
+//   )
+// );
 
 Post.propTypes = {
   item: PropTypes.shape(BlogItem.propTypes)
