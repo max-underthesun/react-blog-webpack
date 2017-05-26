@@ -5,7 +5,6 @@ import Form from './Form';
 
 const validate = (values) => {
   const errors = {};
-  console.log(values);
 
   if (values.title.length < 5) {
     errors.title = 'Title length have to be longer than 5 characters';
