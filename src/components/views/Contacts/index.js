@@ -3,7 +3,7 @@ import React, { DOM } from 'react';
 import { Container, Header } from 'semantic-ui-react';
 
 import ControlledForm from './forms/ControlledFormContainer';
-// import UncontrolledForm from './forms/UncontrolledForm';
+// import UncontrolledForm from './forms/UncontrolledFormContainer';
 
 const Contacts = () => (
   React.createElement(
@@ -17,7 +17,8 @@ const Contacts = () => (
         'Contacts'
       ),
       React.createElement(ControlledForm)
-      // , React.createElement(UncontrolledForm)
+      // ,
+      // React.createElement(UncontrolledForm)
     )
   )
 );
