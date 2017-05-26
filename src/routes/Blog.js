@@ -8,10 +8,11 @@ import {
   PostsContainer,
   PostContainer,
   AboutContainer,
-  ContactsContainer,
-  PostEditContainer
+  ContactsContainer
+  // , PostEditContainer
 } from 'components/containers';
 
+import EditPost from 'components/views/Post/Edit';
 import { postsPath, aboutPath, contactsPath } from 'helpers/routes';
 // import { fetchPosts } from 'actions/PostsAction';
 // import { setPage } from 'actions/PaginationAction';
@@ -61,7 +62,8 @@ const ContactsRoute = {
 
 const PostEditRoute = {
   path: `${postsPath()}/edit`,
-  component: PostEditContainer,
+  // component: PostEditContainer,
+  component: EditPost,
   prepareData: (store, query, params) => {
     if (initialLoad()) return;
 
