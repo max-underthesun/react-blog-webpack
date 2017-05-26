@@ -1,22 +1,16 @@
 import MainLayout from 'components/layouts/MainLayout';
-// import PostsContainer from 'components/containers/PostsContainer';
-// import PostContainer from 'components/containers/PostContainer';
-// import AboutContainer from 'components/containers/AboutContainer';
-// import ContactsContainer from 'components/containers/ContactsContainer';
-// import PostEditContainer from 'components/containers/PostEditContainer';
+
 import {
   PostsContainer,
   PostContainer,
-  AboutContainer,
-  ContactsContainer
+  AboutContainer
+  // , ContactsContainer
   // , PostEditContainer
 } from 'components/containers';
 
 import EditPost from 'components/views/Post/Edit';
+import Contacts from 'components/views/Contacts';
 import { postsPath, aboutPath, contactsPath } from 'helpers/routes';
-// import { fetchPosts } from 'actions/PostsAction';
-// import { setPage } from 'actions/PaginationAction';
-// import { fetchPost } from 'actions/PostAction';
 import { fetchPosts, setPage, fetchPost } from 'actions';
 import { blank } from 'helpers/presence';
 import initialLoad from 'helpers/initialLoad';
@@ -57,7 +51,8 @@ const AboutRoute = {
 
 const ContactsRoute = {
   path: contactsPath(),
-  component: ContactsContainer
+  // component: ContactsContainer
+  component: Contacts
 };
 
 const PostEditRoute = {
