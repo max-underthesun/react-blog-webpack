@@ -36,7 +36,7 @@ const MetaBox = ({ author, createdAt, updatedAt }) => (
     { className: 'meta-box' },
     React.createElement(MetaAuthor, { value: author }),
     React.createElement(MetaDate, { title: 'Created', value: createdAt }),
-    updatedAt === undefined || React.createElement(
+    updatedAt && React.createElement(
       MetaDate, { title: 'Updated', value: updatedAt }
     )
   )
