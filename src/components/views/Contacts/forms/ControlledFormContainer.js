@@ -73,51 +73,6 @@ class ControlledFormContainer extends React.Component {
           errors: this.state.form.errors
         }
       )
-      // DOM.div(
-      //   { className: 'meta-box' },
-      //   React.createElement(
-      //     Header,
-      //     { as: 'h3' },
-      //     'Controlled Form'
-      //   ),
-      //   DOM.form(
-      //     {
-      //       onSubmit: this.onSubmit,
-      //       className: 'ui form'
-      //     },
-      //     React.createElement(
-      //       TextControlled,
-      //       {
-      //         label: 'Full name',
-      //         name: 'fullName',
-      //         value: fullName,
-      //         onChange: this.handleChange('fullName')
-      //       }
-      //     ),
-      //     React.createElement(
-      //       TextControlled,
-      //       {
-      //         label: 'Email',
-      //         name: 'email',
-      //         value: email,
-      //         error: this.state.form.errors.email,
-      //         onChange: this.handleChange('email')
-      //       }
-      //     ),
-      //     React.createElement(
-      //       TextAreaControlled,
-      //       {
-      //         label: 'Message',
-      //         name: 'message',
-      //         value: message,
-      //         onChange: this.handleChange('message')
-      //       }
-      //     ),
-      //     DOM.input(
-      //       { className:'ui button primary', type: 'submit', value: 'Submit'}
-      //     )
-      //   )
-      // )
     );
   }
 }
