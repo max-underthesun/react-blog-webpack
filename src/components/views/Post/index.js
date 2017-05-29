@@ -14,14 +14,11 @@ const Post = ({ item }) => (
     Item.Group,
     {},
     React.createElement(BlogItem, item),
-    // React.createElement(Helmet, { title: item && item.title }),
     React.createElement(Helmet, { title: get(item, 'title') }),
     React.createElement(
       Link,
       { to: `${postsPath(get(item, 'id'))}/edit` },
-      React.createElement(
-        EditButton
-      )
+      React.createElement(EditButton)
     )
   )
 );

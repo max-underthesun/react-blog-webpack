@@ -47,13 +47,6 @@ const ReduxForm = reduxForm({
   onSubmit: submit
 })(Form);
 
-// const stateToProps = (state) => ({
-//   initialValues: {
-//     title: state.post.entry.title,
-//     text: state.post.entry.text.post
-//   }
-// });
-
 const stateToProps = (state) => ({
   initialValues: {
     title: get(state, 'post.entry.title', '*** loading ***'),

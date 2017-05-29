@@ -15,10 +15,7 @@ const EditPost = () => (
         { as: 'h2', className: 'blog-item-header'},
         'Edit Post'
       ),
-      React.createElement(
-        FormConnected,
-        {}
-      )
+      React.createElement(FormConnected, {})
     )
   )
 );

@@ -4,8 +4,6 @@ import {
   PostsContainer,
   PostContainer,
   AboutContainer
-  // , ContactsContainer
-  // , PostEditContainer
 } from 'components/containers';
 
 import EditPost from 'components/views/Post/Edit';
@@ -51,13 +49,11 @@ const AboutRoute = {
 
 const ContactsRoute = {
   path: contactsPath(),
-  // component: ContactsContainer
   component: Contacts
 };
 
 const PostEditRoute = {
   path: `${postsPath()}/edit`,
-  // component: PostEditContainer,
   component: EditPost,
   prepareData: (store, query, params) => {
     if (initialLoad()) return;
