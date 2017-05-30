@@ -10,7 +10,7 @@ import EditPost from 'components/views/Post/Edit';
 import Contacts from 'components/views/Contacts';
 
 import {
-  postsPath, aboutPath, contactsPath, postsEditRoute, postsNewPath
+  postsPath, aboutPath, contactsPath, postsEditPath, postsNewPath
 } from 'helpers/routes';
 
 import { fetchPosts, setPage, fetchPost } from 'actions';
@@ -57,7 +57,7 @@ const ContactsRoute = {
 };
 
 const PostEditRoute = {
-  path: postsEditRoute(),
+  path: postsEditPath(),
   component: EditPost,
   prepareData: (store, query, params) => {
     if (initialLoad()) return;
@@ -67,15 +67,8 @@ const PostEditRoute = {
 };
 
 const PostNewRoute = {
-  // path: postsNewPath(),
-  path: '/post/new',
+  path: postsNewPath(),
   component: EditPost
-  // ,
-  // prepareData: (store, query, params) => {
-  //   if (initialLoad()) return;
-  //
-  //   return store.dispatch(fetchPost(params.id));
-  // }
 };
 
 export default {

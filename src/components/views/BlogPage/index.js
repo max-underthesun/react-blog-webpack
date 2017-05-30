@@ -45,35 +45,6 @@ const BlogPage = ({ items, currentPage, pageNumbers, itemsCurrent }) => (
       React.createElement(Helmet, { title: 'Posts list' })
     )
   )
-  // React.createElement(
-  //   Grid,
-  //   { divided: 'vertically' },
-  //   React.createElement(
-  //     Grid.Row,
-  //     { columns: 2 },
-  //     React.createElement(
-  //       Grid.Column,
-  //       { width: 10 },
-  //       pageNumbers && React.createElement(
-  //         Pagination,
-  //         { currentPage, pageNumbers }
-  //       ),
-  //       React.createElement(
-  //         BlogList,
-  //         { items: itemsCurrent }
-  //       )
-  //     ),
-  //     React.createElement(
-  //       Grid.Column,
-  //       { width: 6 },
-  //       React.createElement(
-  //         PieChartBox,
-  //         { columns: map(items, (item) => ([item.title, item.meta.count])) }
-  //       )
-  //     )
-  //   ),
-  //   React.createElement(Helmet, { title: 'Posts list' })
-  // )
 );
 
 BlogPage.propTypes = {

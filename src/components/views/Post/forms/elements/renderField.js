@@ -8,12 +8,10 @@ const renderField = (
   DOM.div(
     { className: classNames('ui field', { error }) },
     DOM.label({}, label),
-    DOM.input({ ...input, type, className: 'ui input' }),
-    // DOM.input(assign({}, input, { type, className: 'ui input' })),
     // DOM.input(assign({ type, className: 'ui input' }, input)),
+    DOM.input({ ...input, type, className: 'ui input' }),
     touched && (
-      error && DOM.div({ className: 'ui red label' }, error)
-    ) || (
+      error && DOM.div({ className: 'ui red label' }, error) ||
       warning && DOM.div({ className: 'ui yellow label' }, warning)
     )
   )

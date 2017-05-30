@@ -10,8 +10,7 @@ const renderTextArea = (
     DOM.label({}, label),
     DOM.textarea(assign({ type, className: 'ui input' }, input)),
     touched && (
-      error && DOM.div({ className: 'ui red label' }, error)
-    ) || (
+      error && DOM.div({ className: 'ui red label' }, error) ||
       warning && DOM.div({ className: 'ui yellow label' }, warning)
     )
   )

@@ -30,7 +30,6 @@ class ControlledFormContainer extends React.Component {
     return (e) => {
       switch (fieldName) {
         case 'email': {
-          // this.clearError('email');
           this.setErrorStatus('email', false);
           if (!e.target.value || e.target.value.length < 3) {
             this.setErrorStatus('email', true);

@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import { Button } from 'semantic-ui-react';
 
 import Link from 'components/shared/elements/Link';
-import { postsPath } from 'helpers/routes';
+import { postsEditPath } from 'helpers/routes';
 
 const EditPostButton = ({ id }) => (
   React.createElement(
     Link,
-    { to: `${postsPath(id)}/edit` },
+    { to: postsEditPath(id) },
     React.createElement(
       Button,
       {
@@ -21,28 +21,8 @@ const EditPostButton = ({ id }) => (
   )
 );
 
-// const EditButton = () => (
-//   React.createElement(
-//     Grid,
-//     {},
-//     React.createElement(
-//       Grid.Row,
-//       {},
-//       React.createElement(
-//         Grid.Column,
-//         {},
-//         React.createElement(
-//           Button,
-//           {
-//             inverted: true,
-//             color: 'red',
-//             floated: 'left'
-//           },
-//           'Edit'
-//         )
-//       )
-//     )
-//   )
-// );
+EditPostButton.propTypes = {
+  id: PropTypes.number
+};
 
 export default EditPostButton;

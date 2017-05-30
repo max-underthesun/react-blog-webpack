@@ -2,14 +2,10 @@ import React, { PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { get } from 'lodash';
 
-import { Item } from 'semantic-ui-react';
-import { Grid } from 'semantic-ui-react';
+import { Item, Grid } from 'semantic-ui-react';
 
 import Buttons from 'components/layouts/widgets/Buttons';
-// import Link from 'components/shared/elements/Link';
-// import { postsPath } from 'helpers/routes';
 import BlogItem from 'components/shared/widgets/BlogItem';
-// import EditPostButton from './elements/EditPostButton';
 
 const Post = ({ item }) => (
   React.createElement(
