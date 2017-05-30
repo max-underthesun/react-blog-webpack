@@ -1,11 +1,19 @@
 import MainLayout from 'components/layouts/MainLayout';
-import PostsContainer from 'components/containers/PostsContainer';
-import PostContainer from 'components/containers/PostContainer';
-import AboutContainer from 'components/containers/AboutContainer';
-import { postsPath, aboutPath } from 'helpers/routes';
-import { fetchPosts } from 'actions/PostsAction';
-import { setPage } from 'actions/PaginationAction';
-import { fetchPost } from 'actions/PostAction';
+
+import {
+  PostsContainer,
+  PostContainer,
+  AboutContainer
+} from 'components/containers';
+
+import EditPost from 'components/views/Post/Edit';
+import Contacts from 'components/views/Contacts';
+
+import {
+  postsPath, aboutPath, contactsPath, postsEditPath, postsNewPath
+} from 'helpers/routes';
+
+import { fetchPosts, setPage, fetchPost } from 'actions';
 import { blank } from 'helpers/presence';
 import initialLoad from 'helpers/initialLoad';
 
@@ -43,11 +51,34 @@ const AboutRoute = {
   component: AboutContainer
 };
 
+const ContactsRoute = {
+  path: contactsPath(),
+  component: Contacts
+};
+
+const PostEditRoute = {
+  path: postsEditPath(),
+  component: EditPost,
+  prepareData: (store, query, params) => {
+    if (initialLoad()) return;
+
+    return store.dispatch(fetchPost(params.id));
+  }
+};
+
+const PostNewRoute = {
+  path: postsNewPath(),
+  component: EditPost
+};
+
 export default {
   component: MainLayout,
   childRoutes: [
     Index,
     PostRoute,
-    AboutRoute
+    AboutRoute,
+    ContactsRoute,
+    PostEditRoute,
+    PostNewRoute
   ]
 };
