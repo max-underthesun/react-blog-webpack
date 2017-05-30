@@ -3,11 +3,12 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 
 import Link from 'components/shared/elements/Link';
+import { postsNewPath } from 'helpers/routes';
 
 const NewPostButton = () => (
   React.createElement(
     Link,
-    { to: '/post/new' },
+    { to: postsNewPath() },
     React.createElement(
       Button,
       {
