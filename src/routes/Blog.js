@@ -8,7 +8,11 @@ import {
 
 import EditPost from 'components/views/Post/Edit';
 import Contacts from 'components/views/Contacts';
-import { postsPath, aboutPath, contactsPath } from 'helpers/routes';
+
+import {
+  postsPath, aboutPath, contactsPath, postsEditRoute, postsNewPath
+} from 'helpers/routes';
+
 import { fetchPosts, setPage, fetchPost } from 'actions';
 import { blank } from 'helpers/presence';
 import initialLoad from 'helpers/initialLoad';
@@ -53,13 +57,25 @@ const ContactsRoute = {
 };
 
 const PostEditRoute = {
-  path: `${postsPath()}/edit`,
+  path: postsEditRoute(),
   component: EditPost,
   prepareData: (store, query, params) => {
     if (initialLoad()) return;
 
     return store.dispatch(fetchPost(params.id));
   }
+};
+
+const PostNewRoute = {
+  // path: postsNewPath(),
+  path: '/post/new',
+  component: EditPost
+  // ,
+  // prepareData: (store, query, params) => {
+  //   if (initialLoad()) return;
+  //
+  //   return store.dispatch(fetchPost(params.id));
+  // }
 };
 
 export default {
@@ -69,6 +85,7 @@ export default {
     PostRoute,
     AboutRoute,
     ContactsRoute,
-    PostEditRoute
+    PostEditRoute,
+    PostNewRoute
   ]
 };
