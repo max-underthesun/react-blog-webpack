@@ -49,8 +49,8 @@ const ReduxForm = reduxForm({
 
 const stateToProps = (state) => ({
   initialValues: {
-    title: get(state, 'post.entry.title', '*** loading ***'),
-    text: get(state, 'post.entry.text.post', '*** loading ***')
+    title: get(state, 'post.entry.title'),
+    text: get(state, 'post.entry.text.post')
   }
 });
 

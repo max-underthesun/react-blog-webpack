@@ -3,22 +3,32 @@ import Helmet from 'react-helmet';
 import { get } from 'lodash';
 
 import { Item } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
-import Link from 'components/shared/elements/Link';
-import { postsPath } from 'helpers/routes';
+import Buttons from 'components/layouts/widgets/Buttons';
+// import Link from 'components/shared/elements/Link';
+// import { postsPath } from 'helpers/routes';
 import BlogItem from 'components/shared/widgets/BlogItem';
-import EditButton from './elements/EditButton';
+// import EditPostButton from './elements/EditPostButton';
 
 const Post = ({ item }) => (
   React.createElement(
-    Item.Group,
+    Grid,
     {},
-    React.createElement(BlogItem, item),
-    React.createElement(Helmet, { title: get(item, 'title') }),
+    React.createElement(Buttons, { goBack: true, editPost: get(item, 'id') }),
     React.createElement(
-      Link,
-      { to: `${postsPath(get(item, 'id'))}/edit` },
-      React.createElement(EditButton)
+      Grid.Row,
+      {},
+      React.createElement(
+        Grid.Column,
+        { width: 10 },
+        React.createElement(
+          Item.Group,
+          {},
+          React.createElement(BlogItem, item),
+          React.createElement(Helmet, { title: get(item, 'title') })
+        )
+      )
     )
   )
 );
