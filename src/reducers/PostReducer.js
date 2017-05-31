@@ -32,6 +32,8 @@ export default function(state = initialState, action) {
       const count = action.response.count;
       return assign({}, state, { entry: addLike(state.entry, id, count) });
     }
+    case types.CLEAR_POST:
+      return assign({}, state, { entry: null });
     default:
       return state;
   }

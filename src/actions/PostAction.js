@@ -13,3 +13,7 @@ export const fetchPost = (id) => ({
     ]
   }
 });
+
+export const clearPost = () => ({
+  type: types.CLEAR_POST
+});
