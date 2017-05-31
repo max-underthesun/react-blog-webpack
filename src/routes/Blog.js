@@ -7,13 +7,14 @@ import {
 } from 'components/containers';
 
 import EditPost from 'components/views/Post/Edit';
+import NewPost from 'components/views/Post/New';
 import Contacts from 'components/views/Contacts';
 
 import {
   postsPath, aboutPath, contactsPath, postsEditPath, postsNewPath
 } from 'helpers/routes';
 
-import { fetchPosts, setPage, fetchPost } from 'actions';
+import { fetchPosts, setPage, fetchPost, clearPost } from 'actions';
 import { blank } from 'helpers/presence';
 import initialLoad from 'helpers/initialLoad';
 
@@ -68,17 +69,22 @@ const PostEditRoute = {
 
 const PostNewRoute = {
   path: postsNewPath(),
-  component: EditPost
+  component: NewPost,
+  prepareData: (store) => {
+    if (initialLoad()) return;
+
+    return store.dispatch(clearPost());
+  }
 };
 
 export default {
   component: MainLayout,
   childRoutes: [
     Index,
+    PostNewRoute,
     PostRoute,
     AboutRoute,
     ContactsRoute,
-    PostEditRoute,
-    PostNewRoute
+    PostEditRoute
   ]
 };

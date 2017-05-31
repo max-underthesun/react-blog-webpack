@@ -1,5 +1,5 @@
 import { fetchPosts } from './PostsAction';
 import { setPage } from './PaginationAction';
-import { fetchPost } from './PostAction';
+import { fetchPost, clearPost } from './PostAction';
 
-export { fetchPosts, setPage, fetchPost };
+export { fetchPosts, setPage, fetchPost, clearPost };
