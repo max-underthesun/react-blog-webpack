@@ -7,6 +7,7 @@ import {
 } from 'components/containers';
 
 import EditPost from 'components/views/Post/Edit';
+import NewPost from 'components/views/Post/New';
 import Contacts from 'components/views/Contacts';
 
 import {
@@ -68,7 +69,7 @@ const PostEditRoute = {
 
 const PostNewRoute = {
   path: postsNewPath(),
-  component: EditPost,
+  component: NewPost,
   prepareData: (store) => {
     if (initialLoad()) return;
 
