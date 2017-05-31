@@ -81,10 +81,10 @@ export default {
   component: MainLayout,
   childRoutes: [
     Index,
+    PostNewRoute,
     PostRoute,
     AboutRoute,
     ContactsRoute,
-    PostEditRoute,
-    PostNewRoute
+    PostEditRoute
   ]
 };
