@@ -114,6 +114,13 @@ function render404(res) {
 // };
 
 /*
+++++ issue:
+on F5 likes dropes to initial values -
+the values witch were on the first load of application after the start of the
+server
+
+++++ explanation:
+
 1.
 - START server
 - while starting server require 'require('./render').default'
@@ -143,4 +150,10 @@ function render404(res) {
 - prepareData() check store (server side store!) and find data (old!) in it
 - prepareData didn't fire dispatch(fetchPosts)
 - render() render index.ejs with old store and send it to the browser
+
++++++ solution:
+move  store creation 'const store = createStore();' from outside of default
+'render.js' function to inside the function... in this way the store will be
+renewed every time the function called and no old data will be used
+
 */
