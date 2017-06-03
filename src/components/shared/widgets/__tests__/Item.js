@@ -27,5 +27,20 @@ describe('BlogItem', () => {
 
       expect(item.contains(header)).toEqual(true);
     });
+
+    it('should render usual item', () => {
+      const itemProps = {
+        title: 'Hello, World!',
+        id: 1,
+        image: {
+          alt: 'Hello, World',
+          src: 'dist/images/img1-lg.jpg'
+        }
+      };
+
+      const item = shallow(<BlogItem item={itemProps} />);
+
+      expect(item).toMatchSnapshot();
+    });
   });
 });
