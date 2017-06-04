@@ -11,7 +11,6 @@ describe('BlogItem', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     const store = createStore({});
-    // ReactDOM.render(<BlogItem />, div);
     ReactDOM.render(<Provider store={store}><BlogItem /></Provider>, div);
   });
 
@@ -19,7 +18,6 @@ describe('BlogItem', () => {
     it('should render the title', () => {
       const itemProps = { title: 'Hello, World!', id: 5 };
 
-      // const item = shallow(<BlogItem item={itemProps} />);
       const item = shallow(
         React.createElement(BlogItem, itemProps)
       );
