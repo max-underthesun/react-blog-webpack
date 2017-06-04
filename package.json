@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --config jest.config.json"
+    "test": "jest --config jest.config.json --verbose"
   },
   "repository": {
     "type": "git",
