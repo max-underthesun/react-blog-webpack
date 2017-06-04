@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogItem render should render usual item 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Container
+    className="blog-item-container"
+    text={true}
+>
+    <div
+        className="blog-item"
+    >
+        <Header
+            as="h2"
+            className="blog-item-header"
+        >
+            <Link
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to="/posts/null"
+            />
+        </Header>
+        <MetaData
+            author="** anonimus **"
+        />
+        <Image
+            height="200px"
+            src="/images/no_image.png"
+            width="250px"
+        />
+        <TextBox
+            post="** empty entry **"
+        />
+        <Connect(Like)
+            id={null}
+            meta={Object {}}
+        />
+    </div>
+</Container>,
+  "nodes": Array [
+    <Container
+      className="blog-item-container"
+      text={true}
+>
+      <div
+            className="blog-item"
+      >
+            <Header
+                  as="h2"
+                  className="blog-item-header"
+            >
+                  <Link
+                        onlyActiveOnIndex={false}
+                        style={Object {}}
+                        to="/posts/null"
+                  />
+            </Header>
+            <MetaData
+                  author="** anonimus **"
+            />
+            <Image
+                  height="200px"
+                  src="/images/no_image.png"
+                  width="250px"
+            />
+            <TextBox
+                  post="** empty entry **"
+            />
+            <Connect(Like)
+                  id={null}
+                  meta={Object {}}
+            />
+      </div>
+</Container>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <BlogItem
+        id={null}
+        image={Object {}}
+        item={
+                Object {
+                        "id": 1,
+                        "image": Object {
+                          "alt": "Hello, World",
+                          "src": "dist/images/img1-lg.jpg",
+                        },
+                        "title": "Hello, World!",
+                      }
+        }
+        like={null}
+        meta={Object {}}
+        text={Object {}}
+        title=""
+/>,
+      "_debugID": 40,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "id": null,
+          "image": Object {},
+          "item": Object {
+            "id": 1,
+            "image": Object {
+              "alt": "Hello, World",
+              "src": "dist/images/img1-lg.jpg",
+            },
+            "title": "Hello, World!",
+          },
+          "like": null,
+          "meta": Object {},
+          "text": Object {},
+          "title": "",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Container
+          className="blog-item-container"
+          text={true}
+>
+          <div
+                    className="blog-item"
+          >
+                    <Header
+                              as="h2"
+                              className="blog-item-header"
+                    >
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to="/posts/null"
+                              />
+                    </Header>
+                    <MetaData
+                              author="** anonimus **"
+                    />
+                    <Image
+                              height="200px"
+                              src="/images/no_image.png"
+                              width="250px"
+                    />
+                    <TextBox
+                              post="** empty entry **"
+                    />
+                    <Connect(Like)
+                              id={null}
+                              meta={Object {}}
+                    />
+          </div>
+</Container>,
+        "_debugID": 41,
+        "_renderedOutput": <Container
+          className="blog-item-container"
+          text={true}
+>
+          <div
+                    className="blog-item"
+          >
+                    <Header
+                              as="h2"
+                              className="blog-item-header"
+                    >
+                              <Link
+                                        onlyActiveOnIndex={false}
+                                        style={Object {}}
+                                        to="/posts/null"
+                              />
+                    </Header>
+                    <MetaData
+                              author="** anonimus **"
+                    />
+                    <Image
+                              height="200px"
+                              src="/images/no_image.png"
+                              width="250px"
+                    />
+                    <TextBox
+                              post="** empty entry **"
+                    />
+                    <Connect(Like)
+                              id={null}
+                              meta={Object {}}
+                    />
+          </div>
+</Container>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <BlogItem
+    id={null}
+    image={Object {}}
+    item={
+        Object {
+            "id": 1,
+            "image": Object {
+              "alt": "Hello, World",
+              "src": "dist/images/img1-lg.jpg",
+            },
+            "title": "Hello, World!",
+          }
+    }
+    like={null}
+    meta={Object {}}
+    text={Object {}}
+    title=""
+/>,
+}
+`;
