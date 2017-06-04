@@ -11,7 +11,15 @@ describe('BlogItem', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     const store = createStore({});
-    ReactDOM.render(<Provider store={store}><BlogItem /></Provider>, div);
+    // ReactDOM.render(<Provider store={store}><BlogItem /></Provider>, div);
+    ReactDOM.render(
+      React.createElement(
+        Provider,
+        { store },
+        React.createElement(BlogItem)
+      ),
+      div
+    );
   });
 
   describe('render', () => {

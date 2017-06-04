@@ -9,7 +9,7 @@ describe('When visit the homepage', () => {
     expect(text).toContain('ThinkneticaBlog');
   });
 
-  describe('When edit the post', () => {
+  describe('When filling New Post form', () => {
     let editPostPage;
 
     beforeEach(() => {
