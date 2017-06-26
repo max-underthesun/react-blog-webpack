@@ -1,4 +1,5 @@
-import React, { DOM, PropTypes } from 'react';
+import React, { DOM } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class TextField extends React.Component {
