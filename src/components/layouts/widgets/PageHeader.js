@@ -13,7 +13,7 @@ const PageHeader = () => (
       React.createElement(
         Link,
         { to: '/' },
-        'ThinknetikaBlog'
+        'ThinkneticaBlog'
       )
     ),
     React.createElement(

@@ -1,4 +1,5 @@
-import { DOM, PropTypes } from 'react';
+import { DOM } from 'react';
+import PropTypes from 'prop-types';
 
 const TextBox = ({ post }) => (
   DOM.div({ className: 'text-box' }, post)
