@@ -9,3 +9,5 @@ semantic/dist
 /npm-debug.log
 /npm-debug.log*
 public
+
+/src/static
