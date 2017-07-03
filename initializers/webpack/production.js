@@ -3,7 +3,7 @@
 import path from 'path';
 import webpack from 'webpack';
 
-// import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const root = path.join(process.cwd(), 'src');
@@ -28,15 +28,10 @@ export default {
       },
       {
         test: /\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?importLoaders=1'
-        ]
-        // ,
-        // use: ExtractTextPlugin.extract({
-        //   fallback: 'style-loader',
-        //   use: ['css-loader']
-        // })
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader']
+        })
       },
       { test: /\.(eot|png|ttf|svg|woff|woff2)$/, loader: 'url-loader'}
     ]
@@ -56,8 +51,8 @@ export default {
       __DEVELOPMENT__: false,
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    // new ExtractTextPlugin('[name].[chunkhash].css'),
-    // new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|ru)$/),
+    new ExtractTextPlugin('[name].[chunkhash].css'),
+    new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|ru)$/),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module) {

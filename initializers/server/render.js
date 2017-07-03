@@ -9,7 +9,7 @@ import createStore from 'store';
 import routes from 'routes';
 
 import prepareData from 'helpers/routes/prepareData';
-
+import webpackAsset from  './webpackAsset';
 // const store = createStore();
 
 export default (req, res) => {
@@ -68,7 +68,7 @@ function renderIndex(res, initialState, content, head) {
   res.status(200);
   res.render(
     'index',
-    { initialState, content, head }
+    { initialState, content, head, webpackAsset }
   );
 }
 
