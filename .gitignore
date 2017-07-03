@@ -11,3 +11,4 @@ semantic/dist
 public
 
 /src/static
+webpack-manifest.json
