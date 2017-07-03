@@ -34,9 +34,17 @@ export default {
       { test: /\.(eot|png|ttf|svg|woff|woff2)$/, loader: 'url-loader'}
     ]
   },
+
+  // resolve: {
+  //   root: root
+  // },
   resolve: {
-    root: root
+    modules: [
+      path.join(process.cwd(), 'src'),
+      'node_modules'
+    ]
   },
+
   plugins: [
     new webpack.DefinePlugin({
       __SERVER__: false,
